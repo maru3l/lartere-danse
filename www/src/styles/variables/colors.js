@@ -2,19 +2,17 @@
 import { rgb } from "polished"
 
 const colors = {
-  prussianBlue: `#07002b`,
-  scarlet: `#ef2904`,
-  // scarlet: rgb(208, 89, 53),
-  verdunGreen: `#3c6518`,
-  doublePearlLusta: `#ebdeba`,
-  black: `#090708`,
+  PortlandOrange: `#ef5a30`,
+  PaleCerulean: `#92bae2`,
+  Isabelline: `#eeecea`,
+  Jet: `#302d2e`,
 }
 
 const alias = {
-  text: colors.prussianBlue,
-  background: colors.doublePearlLusta,
-  primary: colors.prussianBlue,
-  secondary: colors.scarlet,
+  text: colors.Isabelline,
+  background: colors.Jet,
+  primary: colors.PortlandOrange,
+  secondary: colors.PaleCerulean,
 }
 
 export default { ...colors, ...alias }

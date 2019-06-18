@@ -1,14 +1,16 @@
 // vendors
 import { css } from "@emotion/core"
-import { fluidRange } from "polished"
+import { between } from "polished"
 
 // style varaibles
 import { colors, fonts, lineHeights } from "../variables"
 
 export default css`
   :root {
-    --font-size: ${((10 * (57 / 35)) / 16) * 100}%;
-    --line-height: ${12 / 10};
+    /* --font-size: ${(55 / 16) * 100}%; */
+    /* --font-size: ${(55 / 1920) * 100}vw; */
+    --font-size: ${between("20px", "55px", "375px", "1920px")};
+    --line-height: ${66 / 55};
   }
 
   html {
@@ -16,6 +18,7 @@ export default css`
     line-height: var(--line-height);
     font-family: ${fonts.body};
     scroll-behavior: smooth;
+    background-color: ${colors.background};
   }
 
   body {
@@ -26,6 +29,7 @@ export default css`
     font-weight: medium;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: ${53 / 1000}em;
 
     /* Rythme background */
     /* background-image: linear-gradient(#eee 1px, transparent 1px);
@@ -50,17 +54,5 @@ export default css`
     &:first-child {
       margin-top: 0;
     }
-  }
-
-  .panel-font-size {
-    ${fluidRange(
-      {
-        prop: "font-size",
-        fromSize: `${29 / 10}rem`,
-        toSize: `${36 / 10}rem`,
-      },
-      "320px",
-      "768px"
-    )}
   }
 `
