@@ -2,11 +2,10 @@ require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Default Starter",
+    title: "L'Artère, art de la danse et du mouvement",
     description:
-      "Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.",
-    author: "@maru3l",
-    siteUrl: "https://www.example.com",
+      "L’Artère est un organisme à but non lucratif œuvrant à faire rayonner l’art de la danse contemporaine professionnelle sur le territoire de la Capitale-Nationale.",
+    siteUrl: "https://www.larteredanse.ca/",
   },
   plugins: [
     "gatsby-plugin-emotion",
