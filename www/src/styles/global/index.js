@@ -7,7 +7,7 @@ import { colors, fonts, lineHeights } from "../variables"
 
 export default css`
   :root {
-    --font-size: ${between("20px", "27.5px", "375px", "1920px")};
+    --font-size: ${between("20px", "55px", "375px", "1920px")};
     --line-height: ${66 / 55};
   }
 
