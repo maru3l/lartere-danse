@@ -2,5 +2,12 @@
   "version": "1.0.0",
   "packages": [
     "www"
+  ],
+  "loglevel": "success",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "ignoreChanges": [
+    "**/__tests__/**",
+    "**/__mocks__/**"
   ]
 }
