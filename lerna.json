@@ -4,7 +4,6 @@
     "www"
   ],
   "loglevel": "success",
-  "npmClient": "yarn",
   "ignoreChanges": [
     "**/__tests__/**",
     "**/__mocks__/**"
