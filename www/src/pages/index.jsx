@@ -14,7 +14,7 @@ import { colors } from "../styles/variables"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO />
 
     <div
       css={css`

@@ -1,6 +1,11 @@
 {
-  "version": "1.0.0",
+  "version": "independent",
   "packages": [
     "www"
+  ],
+  "loglevel": "success",
+  "ignoreChanges": [
+    "**/__tests__/**",
+    "**/__mocks__/**"
   ]
 }
