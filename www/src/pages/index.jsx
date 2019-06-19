@@ -75,7 +75,7 @@ const IndexPage = ({ data }) => (
           grid-column: 1 / span 1;
           grid-row: 2 / span 1;
           text-transform: lowercase;
-          margin-bottom: 0;
+          margin: 0;
 
           @media screen and (min-width: 475px) {
             grid-column: 1 / span 1;
