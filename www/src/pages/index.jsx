@@ -101,6 +101,7 @@ const IndexPage = ({ data }) => (
             margin-bottom: 0;
             grid-column: 2 / span 1;
             grid-row: 3 / span 1;
+            writing-mode: tb;
             writing-mode: sideways-rl;
           }
         `}
