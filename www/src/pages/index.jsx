@@ -119,6 +119,7 @@ const IndexPage = ({ data }) => (
             width: ${(1280 / 1920) * 100}vw;
             grid-column: 1 / span 1;
             grid-row: 3 / span 1;
+            margin-top: 0;
           }
         `}
       >
