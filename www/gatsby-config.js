@@ -33,15 +33,6 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-    // {
-    //   resolve: "gatsby-source-sanity",
-    //   options: {
-    //     projectId: process.env.SANITY_PROJECT_ID,
-    //     dataset: process.env.SANITY_DATASET,
-    //     token: process.env.SANITY_DEPLOY_STUDIO_TOKEN,
-    //     overlayDrafts: false,
-    //   },
-    // },
     "gatsby-transformer-sharp",
     "gatsby-transformer-yaml",
   ],
