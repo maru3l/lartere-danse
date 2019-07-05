@@ -46,13 +46,13 @@ const IndexPage = ({ data }) => (
         css={css`
           width: ${(1280 / 1920) * 100}vw;
           grid-column: 1 / span 1;
-          grid-row: 5 / span 1;
+          grid-row: 6 / span 1;
           color: ${colors.PaleCerulean};
           text-transform: uppercase;
 
           @media screen and (min-width: 475px) {
             grid-column: 1 / span 2;
-            grid-row: 4 / span 1;
+            grid-row: 5 / span 1;
           }
         `}
       >
@@ -61,7 +61,6 @@ const IndexPage = ({ data }) => (
           alt="L'artère"
           css={css`
             width: ${876 / 55}rem;
-            margin-top: ${(436 / 1920) * 100}vw;
           `}
         />
       </h1>
@@ -131,10 +130,29 @@ const IndexPage = ({ data }) => (
         ainsi à la rétention d’artistes de grand talent sur le territoire.
       </p>
 
+      <p
+        css={css`
+          grid-column: 1 / span 1;
+          grid-row: 5 / span 1;
+          font-size: ${21 / 55}rem;
+          line-height: ${28 / 21}em;
+
+          @media screen and (min-width: 475px) {
+            margin-top: ${(436 / 1920) * 100}vw;
+            margin-bottom: 0;
+            margin-left: calc(${37 / 55}rem + ${(150 / 1920) * 100}vw);
+            grid-column: 1 / span 2;
+            grid-row: 4 / span 1;
+          }
+        `}
+      >
+        Notre site complet sera disponible prochainement.
+      </p>
+
       <div
         css={css`
           grid-column: 1 / span 1;
-          grid-row: 6 / span 1;
+          grid-row: 7 / span 1;
           display: flex;
           color: ${colors.PortlandOrange};
           font-size: ${21 / 55}rem;
@@ -142,7 +160,7 @@ const IndexPage = ({ data }) => (
 
           @media screen and (min-width: 475px) {
             grid-column: 1 / span 1;
-            grid-row: 5 / span 1;
+            grid-row: 6 / span 1;
           }
 
           p {
@@ -185,16 +203,13 @@ const IndexPage = ({ data }) => (
             `}
           >
             <li>
-              <a href="mailto:artere@larteredanse.ca">artere@larteredanse.ca</a>
-            </li>
-            <li>
               <a href="mailto:direction@larteredanse.ca">
                 direction@larteredanse.ca
               </a>
             </li>
             <li>
-              <a href="mailto:inscription@larteredanse.ca">
-                inscription@larteredanse.ca
+              <a href="mailto:inscriptions@larteredanse.ca">
+                inscriptions@larteredanse.ca
               </a>
             </li>
           </ul>
@@ -219,7 +234,7 @@ const IndexPage = ({ data }) => (
           @media screen and (min-width: 475px) {
             margin-left: 0;
             grid-column: 2 / span 1;
-            grid-row: 5 / span 1;
+            grid-row: 6 / span 1;
           }
         `}
       >
