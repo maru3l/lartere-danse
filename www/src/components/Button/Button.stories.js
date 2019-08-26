@@ -7,12 +7,6 @@ import Button from "./index"
 
 const stories = storiesOf("Button", module)
 
-stories.addDecorator(withKnobs)
-
 stories.add("Primary", () => (
-  <Button
-    disabled={boolean("Disabled", false)}
-  >
-    Boutton
-  </Button>
+  <Button disabled={boolean("Disabled", false)}>Boutton</Button>
 ))

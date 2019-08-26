@@ -18,10 +18,9 @@ const IndexPage = ({ data }) => (
 
     <div
       css={css`
-        display: block;
+        display: grid;
         width: ${(1796 / 1920) * 100}vw;
         margin: ${(135 / 1920) * 100}vw auto;
-        display: grid;
 
         @media screen and (min-width: 475px) {
           grid-template-columns: repeat(2, auto);

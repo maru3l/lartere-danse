@@ -1,6 +1,3 @@
-// vendors
-import { rgb } from "polished"
-
 const colors = {
   PortlandOrange: `#ef5a30`,
   PaleCerulean: `#92bae2`,
