@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selective tag rendering renders correctly 1`] = `
+<button
+  css={
+    Object {
+      "&&": Object {
+        "map": "/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkJ1dHRvbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFxQjBCIiwiZmlsZSI6IkJ1dHRvbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vIHZlbmRvcnNcbmltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIlxuaW1wb3J0IHsgTGluayB9IGZyb20gXCJnYXRzYnlcIlxuaW1wb3J0IHsgY3NzIH0gZnJvbSBcIkBlbW90aW9uL2NvcmVcIlxuXG5jb25zdCBjb21wb25lbnRzID0ge1xuICBsaW5rOiBMaW5rLFxuICBhOiAoeyBjaGlsZHJlbiwgLi4ucmVzdCB9KSA9PiA8YSB7Li4ucmVzdH0+e2NoaWxkcmVufTwvYT4sXG4gIGhyZWY6ICh7IGNoaWxkcmVuLCAuLi5yZXN0IH0pID0+IDxhIHsuLi5yZXN0fT57Y2hpbGRyZW59PC9hPixcbiAgYnV0dG9uOiAoeyBjaGlsZHJlbiwgLi4ucmVzdCB9KSA9PiA8YnV0dG9uIHsuLi5yZXN0fT57Y2hpbGRyZW59PC9idXR0b24+LFxufVxuXG5jb25zdCBCdXR0b24gPSAoeyBjaGlsZHJlbiwgdGFnLCB0bywgLi4ucmVzdCB9KSA9PiB7XG4gIGNvbnN0IFRhZyA9IGNvbXBvbmVudHNbdGFnIHx8IFwiYnV0dG9uXCJdXG5cbiAgY29uc3QgcHJvcHMgPSB7XG4gICAgdG86IHRhZyA9PT0gXCJsaW5rXCIgPyB0byA6IHVuZGVmaW5lZCxcbiAgICBocmVmOiB0YWcgPT09IGBocmVmYCB8fCB0YWcgPT09IGBhYCA/IHRvIDogdW5kZWZpbmVkLFxuICAgIC4uLnJlc3QsXG4gIH1cblxuICBjb25zdCBidXR0b25TdHlsZXMgPSBjc3NgYFxuXG4gIGNvbnN0IHN0eWxlID0ge1xuICAgIFwiJiZcIjoge1xuICAgICAgLi4uYnV0dG9uU3R5bGVzLFxuICAgIH0sXG4gIH1cblxuICByZXR1cm4gKFxuICAgIDxUYWcgey4uLnByb3BzfSBjc3M9e3N0eWxlfT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgICA8L1RhZz5cbiAgKVxufVxuXG5leHBvcnQgZGVmYXVsdCBCdXR0b25cbiJdfQ== */",
+        "name": "jkwsv3-buttonStyles",
+        "styles": "label:buttonStyles;",
+      },
+    }
+  }
+>
+  Voir les régions
+</button>
+`;

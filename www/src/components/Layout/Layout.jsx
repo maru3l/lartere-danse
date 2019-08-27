@@ -1,15 +1,24 @@
 // vendors
 import React from "react"
 import PropTypes from "prop-types"
-import { Global } from "@emotion/core"
+import { Global, css } from "@emotion/core"
 
 // styles
 import "normalize.css"
 import globalStyle from "../../styles/global"
+import { colors } from "../../styles/variables"
 
-const Layout = ({ children }) => (
+const Layout = ({ children, orange }) => (
   <>
     <Global styles={globalStyle} />
+
+    <Global
+      styles={css`
+        html {
+          background-color: ${orange && colors.PortlandOrange};
+        }
+      `}
+    />
 
     <main>{children}</main>
   </>
