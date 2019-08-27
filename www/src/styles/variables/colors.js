@@ -1,8 +1,9 @@
 const colors = {
   PortlandOrange: `#ef5a30`,
   PaleCerulean: `#92bae2`,
-  Isabelline: `#eeecea`,
-  Jet: `#302d2e`,
+  Isabelline: `#eeecea`, // White
+  Jet: `#302d2e`, // black
+  pink: `#f8b3a2`, // pink
 }
 
 const alias = {
