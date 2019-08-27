@@ -11,6 +11,8 @@ import Cress from "../images/vector-header.svg"
 import Logo from "../images/logo-lartere.svg"
 import IconFacebook from "../images/icon-facebook.svg"
 import { colors } from "../styles/variables"
+import mediaQuery from "../utils/media-query"
+import wrapper from "../utils/wrapper"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -18,12 +20,18 @@ const IndexPage = ({ data }) => (
 
     <div
       css={css`
+        ${wrapper.bolt()}
         display: grid;
-        width: ${(1796 / 1920) * 100}vw;
-        margin: ${(135 / 1920) * 100}vw auto;
+        margin-top: ${(135 / 1920) * 100}vw;
+        margin-bottom: ${(135 / 1920) * 100}vw;
 
-        @media screen and (min-width: 475px) {
+        ${mediaQuery.greaterThen(475)} {
           grid-template-columns: repeat(2, auto);
+        }
+
+        ${mediaQuery.greaterThen(1920)} {
+          margin-top: 135px;
+          margin-bottom: 135px;
         }
       `}
     >
@@ -35,9 +43,13 @@ const IndexPage = ({ data }) => (
           grid-row: 1 / span 1;
           margin-bottom: ${(150 / 1920) * 100}vw;
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             grid-column: 1 / span 2;
             grid-row: 1 / span 1;
+          }
+
+          ${mediaQuery.greaterThen(1920)} {
+            margin-bottom: 150px;
           }
         `}
       />
@@ -49,8 +61,9 @@ const IndexPage = ({ data }) => (
           grid-row: 5 / span 1;
           color: ${colors.PaleCerulean};
           text-transform: uppercase;
+          max-width: 1280px;
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             grid-column: 1 / span 2;
             grid-row: 4 / span 1;
           }
@@ -60,8 +73,12 @@ const IndexPage = ({ data }) => (
           src={Logo}
           alt="L'artère"
           css={css`
-            width: ${876 / 55}rem;
+            width: ${876 / 33}rem;
             margin-top: ${(436 / 1920) * 100}vw;
+
+            ${mediaQuery.greaterThen(1920)} {
+              margin-top: 436px;
+            }
           `}
         />
       </h1>
@@ -69,17 +86,21 @@ const IndexPage = ({ data }) => (
       <p
         css={css`
           color: ${colors.PortlandOrange};
-          font-size: ${122 / 55}em;
+          font-size: ${122 / 33}em;
           letter-spacing: ${55 / 1000}em;
           grid-column: 1 / span 1;
           grid-row: 2 / span 1;
           text-transform: lowercase;
           margin: 0;
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             grid-column: 1 / span 1;
             grid-row: 2 / span 1;
             margin-bottom: ${(378 / 1920) * 100}vw;
+          }
+
+          ${mediaQuery.greaterThen(1920)} {
+            margin-bottom: 378px;
           }
         `}
       >
@@ -88,7 +109,7 @@ const IndexPage = ({ data }) => (
       <p
         css={css`
           color: ${colors.PortlandOrange};
-          font-size: ${122 / 55}em;
+          font-size: ${122 / 33}em;
           letter-spacing: ${55 / 1000}em;
           text-transform: lowercase;
           grid-column: 1 / span 1;
@@ -96,12 +117,16 @@ const IndexPage = ({ data }) => (
           margin-top: 0;
           margin-bottom: ${(378 / 1920) * 100}vw;
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             margin-bottom: 0;
             grid-column: 2 / span 1;
             grid-row: 3 / span 1;
             writing-mode: tb;
             writing-mode: sideways-rl;
+          }
+
+          ${mediaQuery.greaterThen(1920)} {
+            margin-bottom: 378px;
           }
         `}
       >
@@ -110,11 +135,13 @@ const IndexPage = ({ data }) => (
       </p>
 
       <p
+        className="h3"
         css={css`
           grid-column: 1 / span 1;
           grid-row: 4 / span 1;
+          max-width: 1280px;
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             width: ${(1280 / 1920) * 100}vw;
             grid-column: 1 / span 1;
             grid-row: 3 / span 1;
@@ -137,13 +164,8 @@ const IndexPage = ({ data }) => (
           grid-row: 6 / span 1;
           display: flex;
           color: ${colors.PortlandOrange};
-          font-size: ${21 / 55}rem;
-          line-height: ${28 / 21}em;
-
-          @media screen and (min-width: 475px) {
-            grid-column: 1 / span 1;
-            grid-row: 5 / span 1;
-          }
+          font-size: ${21 / 33}rem;
+          line-height: ${28 / 21};
 
           p {
             margin: ${28 / 21}em 0;
@@ -153,11 +175,20 @@ const IndexPage = ({ data }) => (
             color: ${colors.PortlandOrange};
             text-decoration: none;
           }
+
+          ${mediaQuery.greaterThen(475)} {
+            grid-column: 1 / span 1;
+            grid-row: 5 / span 1;
+          }
         `}
       >
         <div
           css={css`
             margin-right: ${(150 / 1920) * 100}vw;
+
+            ${mediaQuery.greaterThen(1920)} {
+              margin-left: 150px;
+            }
           `}
         >
           <a href="https://www.facebook.com/artereQC">
@@ -165,7 +196,7 @@ const IndexPage = ({ data }) => (
               src={IconFacebook}
               alt="Lien vers la page facebook de L'artère"
               css={css`
-                width: ${37 / 55}rem;
+                width: ${37 / 33}rem;
                 display: block;
               `}
             />
@@ -211,15 +242,19 @@ const IndexPage = ({ data }) => (
           grid-column: 1 / span 1;
           grid-row: 7 / span 1;
           color: ${colors.PortlandOrange};
-          font-size: ${21 / 55}rem;
-          line-height: ${28 / 21}em;
+          font-size: ${21 / 33}rem;
+          line-height: ${28 / 21};
 
-          margin-left: calc(${(150 / 1920) * 100}vw + ${37 / 55}rem);
+          margin-left: calc(${(150 / 1920) * 100}vw + ${37 / 33}rem);
 
-          @media screen and (min-width: 475px) {
+          ${mediaQuery.greaterThen(475)} {
             margin-left: 0;
             grid-column: 2 / span 1;
             grid-row: 5 / span 1;
+          }
+
+          ${mediaQuery.greaterThen(1920)} {
+            margin-left: calc(150px + ${37 / 33}rem);
           }
         `}
       >

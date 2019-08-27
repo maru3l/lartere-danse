@@ -4,11 +4,16 @@ import { between } from "polished"
 
 // style varaibles
 import { colors, fonts, lineHeights } from "../variables"
+import mediaQuery from "../../utils/media-query"
 
 export default css`
   :root {
-    --font-size: ${between("20px", "55px", "375px", "1920px")};
+    --font-size: ${between("16px", "33px", "375px", "1920px")};
     --line-height: ${66 / 55};
+
+    ${mediaQuery.greaterThen(1920)} {
+      --font-size: 33px;
+    }
   }
 
   html {
@@ -52,5 +57,29 @@ export default css`
     &:first-child {
       margin-top: 0;
     }
+  }
+
+  h2,
+  .h2 {
+    /* 35 / 96 */
+
+    font-size: ${96 / 33}em;
+    margin-bottom: ${186 / 96}em;
+  }
+
+  h3,
+  .h3,
+  .big {
+    /* 20 / 55 */
+
+    font-size: ${55 / 33}em;
+  }
+
+  .color-black {
+    color: ${colors.Jet};
+  }
+
+  .color-pink {
+    color: ${colors.pink};
   }
 `
