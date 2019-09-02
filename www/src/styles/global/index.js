@@ -3,7 +3,7 @@ import { css } from "@emotion/core"
 import { between } from "polished"
 
 // style varaibles
-import { colors, fonts, lineHeights } from "../variables"
+import { colors, fonts, lineHeights, transition } from "../variables"
 import mediaQuery from "../../utils/media-query"
 
 export default css`
@@ -54,8 +54,30 @@ export default css`
     margin: ${lineHeights.body}rem 0;
     padding: 0;
 
+    a {
+      transition: color ${transition.speed.fast} ${transition.curve.default};
+      color: inherit;
+      break-inside: avoid !important;
+
+      :hover {
+        color: ${colors.pink};
+      }
+    }
+
     &:first-child {
       margin-top: 0;
+    }
+  }
+
+  li {
+    a {
+      transition: color ${transition.speed.fast} ${transition.curve.default};
+      color: inherit;
+      break-inside: avoid !important;
+
+      :hover {
+        color: ${colors.pink};
+      }
     }
   }
 
