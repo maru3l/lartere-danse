@@ -6,7 +6,7 @@ import css from "@emotion/css"
 import TeamMemberCard from "./TeamMemberCard"
 import mediaQuery from "../../utils/media-query"
 
-const TeamGrid = ({ members = [1, 2, 3, 4, 5, 6], ...props }) => {
+const TeamGrid = ({ members, ...props }) => {
   return (
     <ul
       css={css`

@@ -1,8 +1,9 @@
 // vendors
 import React from "react"
 import css from "@emotion/css"
+import { transition, colors } from "../../styles/variables"
 
-const TeamMemberCard = ({ name, role, emails = [] }) => {
+const TeamMemberCard = ({ name, role, email = [] }) => {
   return (
     <div
       css={css`
@@ -53,14 +54,50 @@ const TeamMemberCard = ({ name, role, emails = [] }) => {
         </picture>
       </div>
 
-      <div>
-        <p>Nom</p>
+      <div
+        css={css`
+          font-size: ${27 / 33}em;
+          p,
+          ul {
+            margin: 1em auto;
+          }
+        `}
+      >
+        <p>{name}</p>
 
-        <p>Titre</p>
+        <p>{role}</p>
 
-        <ul>
-          <li>courriel</li>
-        </ul>
+        {email.length > 0 && (
+          <ul
+            css={css`
+              list-style: none;
+              margin: 0;
+              padding: 0;
+            `}
+          >
+            {email.map(address => (
+              <li>
+                <a
+                  href="mailto:{address}"
+                  css={css`
+                    color: inherit;
+
+                    transition: color ${transition.speed.fast}
+                      ${transition.curve.default};
+
+                    :hover {
+                      color: ${colors.pink};
+                    }
+                  `}
+                >
+                  {address.substr(0, address.indexOf("@") + 1)}
+                  <br />
+                  {address.substr(address.indexOf("@") + 1)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )
