@@ -104,4 +104,8 @@ export default css`
   .color-pink {
     color: ${colors.pink};
   }
+
+  .color-orange {
+    color: ${colors.PortlandOrange};
+  }
 `
