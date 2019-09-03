@@ -8,6 +8,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import board from './documents/board'
 import equipe from './documents/equipe'
 import partner from './documents/partner'
+import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
 import mainImage from './objects/mainImage'
@@ -25,6 +26,7 @@ export default createSchema({
     board,
     equipe,
     partner,
+    winnerAwardOvation,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
