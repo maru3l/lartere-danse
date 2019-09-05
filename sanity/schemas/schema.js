@@ -7,12 +7,19 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // document types
 import board from './documents/board'
 import equipe from './documents/equipe'
+import event from './documents/event'
 import partner from './documents/partner'
 import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
+import venue from './objects/venue'
+import eventType from './objects/eventType'
 import mainImage from './objects/mainImage'
 import richText from './objects/richText'
+import customTime from './objects/customTime'
+import weekly from './objects/recurrenceType/weekly'
+import daily from './objects/recurrenceType/daily'
+import singleEvent from './objects/recurrenceType/single'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,12 +32,19 @@ export default createSchema({
     // in the studio.
     board,
     equipe,
+    event,
     partner,
     winnerAwardOvation,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
+    customTime,
+    daily,
+    eventType,
     mainImage,
-    richText
+    richText,
+    singleEvent,
+    venue,
+    weekly,
   ])
 })
