@@ -108,4 +108,20 @@ export default css`
   .color-orange {
     color: ${colors.PortlandOrange};
   }
+
+  .color-canary {
+    color: ${colors.canary};
+  }
+
+  .color-pale-cerulean {
+    color: ${colors.PaleCerulean};
+  }
+
+  .color-grey {
+    color: ${colors.grey};
+  }
+
+  .font-accent {
+    font-family: ${fonts.accent};
+  }
 `
