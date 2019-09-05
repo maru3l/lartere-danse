@@ -1,0 +1,6 @@
+
+@font-face {
+    font-family:"Wigrum";
+    src:url("Wigrum-Medium.woff2") format("woff2"),url("Wigrum-Medium.woff") format("woff"),url("Wigrum-Medium.otf") format("opentype");
+    font-style:normal;font-weight:500;
+}
