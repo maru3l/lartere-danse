@@ -94,7 +94,7 @@ export default css`
   .big {
     /* 20 / 55 */
 
-    font-size: ${55 / 33}em;
+    font-size: ${45 / 33}em;
   }
 
   .color-black {
