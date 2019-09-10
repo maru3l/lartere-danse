@@ -112,7 +112,13 @@ const Dates = ({ month, year, events = [] }) => {
                   .filter(event => {
                     const today = new Date(year, month, index + 1, 0, 0, 0)
 
-                    return today.getTime() === event.date.getTime()
+                    console.log(`${today} === ${event.date}`)
+
+                    return (
+                      today.getDate() === event.date.getDate() &&
+                      today.getMonth() === event.date.getMonth() &&
+                      today.getFullYear() === event.date.getFullYear()
+                    )
                   })
                   .map(event => (
                     <Event event={event} />
