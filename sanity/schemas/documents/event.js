@@ -108,6 +108,12 @@ export default {
       options: {
         source: 'title',
       }
+    },
+    {
+      title: "Prix",
+      name: "rate",
+      type: 'array',
+      of: [{}],
     }
   ]
 }

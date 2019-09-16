@@ -8,7 +8,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import board from './documents/board'
 import equipe from './documents/equipe'
 import event from './documents/event'
+import honoraryMember from './documents/honoraryMember'
 import partner from './documents/partner'
+import Ressources from './documents/ressources'
 import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
@@ -33,7 +35,9 @@ export default createSchema({
     board,
     equipe,
     event,
+    honoraryMember,
     partner,
+    Ressources,
     winnerAwardOvation,
 
     // When added to this list, object types can be used as
