@@ -1,6 +1,1 @@
-export default (value) => {
-  const number = Number(value || 0);
-  return number < 10
-    ? `0${number.toString()}`
-    : number.toString()
-};
+export default (value = '0') => value < 10 ? `0${value}` : value
