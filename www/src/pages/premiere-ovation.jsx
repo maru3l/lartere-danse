@@ -5,11 +5,8 @@ import VisuallyHidden from "@reach/visually-hidden"
 import css from "@emotion/css"
 import wrapper from "../utils/wrapper"
 import TextColumns from "../components/TextColumns/TextColumns"
-import { graphql } from "gatsby"
 
-const premiereOvationPage = ({ data }) => {
-  const awardWinners = data.awardWinners.edges.map(({ node }) => node)
-
+const premiereOvationPage = () => {
   return (
     <Layout>
       <article
@@ -83,48 +80,9 @@ const premiereOvationPage = ({ data }) => {
             </p>
           </TextColumns>
         </section>
-
-        {awardWinners.length > 0 && (
-          <section id="boursiers">
-            <h2 className="h3 color-orange">
-              Boursier·ère·s des années passées
-            </h2>
-            <ul
-              className="color-orange"
-              css={css`
-                list-style: none;
-                padding: 0;
-                font-size: ${148 / 33}em;
-                margin-top: 0;
-              `}
-            >
-              {awardWinners.map(winner => (
-                <li>
-                  {winner.firstname}, {winner.lastname} ({winner.year})
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
       </article>
     </Layout>
   )
 }
 
 export default premiereOvationPage
-
-export const query = graphql`
-  query premiereOvationPageQuery {
-    awardWinners: allSanityWinnerAwardOvation(
-      sort: { fields: year, order: ASC }
-    ) {
-      edges {
-        node {
-          firstname
-          lastname
-          year
-        }
-      }
-    }
-  }
-`
