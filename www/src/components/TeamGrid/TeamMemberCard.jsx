@@ -78,7 +78,7 @@ const TeamMemberCard = ({ name, role, email = [] }) => {
             {email.map(address => (
               <li>
                 <a
-                  href="mailto:{address}"
+                  href={`mailto:${address}`}
                   css={css`
                     color: inherit;
                     text-decoration: none;
