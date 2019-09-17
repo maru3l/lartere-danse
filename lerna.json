@@ -1,7 +1,8 @@
 {
   "version": "independent",
   "packages": [
-    "www"
+    "www",
+    "sanity"
   ],
   "loglevel": "success",
   "ignoreChanges": [
