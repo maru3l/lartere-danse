@@ -88,7 +88,7 @@ const AProposPage = ({ data }) => {
             <p>
               Offrir, à Québec, une programmation de stages en art de la danse
               et du mouvement destinés aux artistes professionnel·le·s,
-              répondant aux besoins actuels de la discipline;{" "}
+              répondant aux besoins actuels de la discipline;
             </p>
 
             <p>
@@ -99,12 +99,12 @@ const AProposPage = ({ data }) => {
 
             <p>
               Nourrir le foisonnement et la singularité des démarches
-              artistiques en favorisant des espaces de réflexion;{" "}
+              artistiques en favorisant des espaces de réflexion;
             </p>
 
             <p>
               Favoriser les rencontres intergénérationnelles et
-              interdisciplinaires entre les artistes d’ici et d’ailleurs;{" "}
+              interdisciplinaires entre les artistes d’ici et d’ailleurs;
             </p>
 
             <p>
@@ -127,7 +127,13 @@ const AProposPage = ({ data }) => {
           </p>
 
           <TextColumns className="h3 color-black">
-            <p>
+            <p
+              css={css`
+                break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid; /* Theoretically FF 20+ */
+                display: table; /* Actually FF 20+ */
+              `}
+            >
               Unique organisme de service consacré entièrement à cet objectif
               depuis 2003, L’Artère joue un rôle prédominant dans l’avancement
               de la danse contemporaine à Québec en offrant les activités de
@@ -410,26 +416,41 @@ const AProposPage = ({ data }) => {
             {partners.map(partner => (
               <li
                 css={css`
-                  break-inside: avoid;
-                  margin: 0 0 1em;
+                  break-inside: avoid; /* Chrome, Safari */
+                  page-break-inside: avoid; /* Theoretically FF 20+ */
+                  display: table; /* Actually FF 20+ */
+                  margin: 0 0 1.5em;
+
+                  p:last-child {
+                    margin-bottom: 0;
+                  }
                 `}
               >
                 <p
                   css={css`
                     color: ${colors.Jet};
-                    margin-bottom: 0.5em;
+                    margin: 0 0 0.5em;
                   `}
                 >
                   {partner.name}
                 </p>
 
-                <div
-                  css={css`
-                    margin-top: 0.5em;
-                  `}
-                >
-                  <PortableText blocks={partner._rawDescription} />
-                </div>
+                {partner._rawDescription && (
+                  <div
+                    css={css`
+                      margin-top: 0.5em;
+
+                      p:first-child {
+                        margin-top: 0;
+                      }
+                      p:last-child {
+                        margin-bottom: 0;
+                      }
+                    `}
+                  >
+                    <PortableText blocks={partner._rawDescription} />
+                  </div>
+                )}
               </li>
             ))}
           </ul>
