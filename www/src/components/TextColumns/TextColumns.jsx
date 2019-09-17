@@ -11,6 +11,10 @@ const TextColumns = ({ columns = 2, children, ...props }) => {
         margin-top: ${100 / 55}em;
         margin-bottom: ${200 / 55}em;
 
+        :first-child {
+          margin-top: 0px;
+        }
+
         ${mediaQuery.greaterThen(768)} {
           columns: ${columns};
         }
