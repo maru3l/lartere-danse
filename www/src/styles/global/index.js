@@ -63,10 +63,6 @@ export default css`
         color: ${colors.pink};
       }
     }
-
-    &:first-child {
-      margin-top: 0;
-    }
   }
 
   li {
@@ -101,6 +97,10 @@ export default css`
     font-weight: 500;
     margin-top: ${180 / 56}em;
     margin-bottom: ${80 / 56}em;
+
+    & + .h2 {
+      margin-top: 0;
+    }
   }
 
   .color-black {
