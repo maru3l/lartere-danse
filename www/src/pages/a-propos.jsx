@@ -21,8 +21,6 @@ const AProposPage = ({ data }) => {
   const boardMembers = data.boardMembers.edges.map(({ node }) => node)
   const partners = data.partners.edges.map(({ node }) => node)
 
-  console.log(teamMembers)
-
   return (
     <Layout orange>
       <article
