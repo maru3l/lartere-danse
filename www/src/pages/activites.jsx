@@ -170,7 +170,7 @@ const ActivitesPage = ({ data }) => {
             </li>
             <li>
               <a href="#session-improvisation-artere">
-                Session d’improvisation de&nbsp;L’Artère (SIA)
+                Session d’improvisation de&nbsp;L’Artère (SIA)
               </a>
             </li>
             <li>
@@ -191,7 +191,7 @@ const ActivitesPage = ({ data }) => {
             >
               Tout·e acteur·rice du milieu est essentiel·le au développement de
               l’art de la danse et du mouvement à Québec, car il·elle fait
-              partie intégrante de celui-ci. L’investissement et l’inspiration
+              partie intégrante de celui-ci. L’investissement et l’inspiration
               insufflés dans la pratique de chaque artiste sur le territoire a
               des retombées notoires sur la vitalité de tout un milieu.
             </p>
@@ -218,14 +218,14 @@ const ActivitesPage = ({ data }) => {
           <p className="h3">
             Activités ouvertes aux{" "}
             <span className="font-accent color-canary">
-              bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
+              bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
             </span>{" "}
             <span className="color-pale-cerulean">
-              aux artistes des arts de la scène (théâtre, musique, performance,
+              aux artistes des arts de la scène (théâtre, musique, performance,
               cinéma),
             </span>{" "}
             <span className="font-accent color-grey">
-              et au le grand public
+              et au le grand public
             </span>
             .
           </p>
@@ -252,8 +252,8 @@ const ActivitesPage = ({ data }) => {
             <h3>Le saviez-vous?</h3>
 
             <p>
-              Les interprètes admissibles peuvent obtenir un soutien financier
-              du Regroupement québécois de la danse s’ils·elles sont admis·es au{" "}
+              Les interprètes admissibles peuvent obtenir un soutien financier
+              du Regroupement québécois de la danse s’ils·elles sont admis·es au{" "}
               <a href="/">Programme de soutien à l’entraînement</a>.
             </p>
           </TextColumns>
@@ -347,15 +347,15 @@ const ActivitesPage = ({ data }) => {
             `}
           >
             Comme suite des ateliers de création offerts par L’Artère, le public
-            est convié à une présentation informelle dévoilant le travail
-            effectué par les participant·e·s.
+            est convié à une présentation informelle dévoilant le travail
+            effectué par les participant·e·s.
           </p>
         </section>
 
         <section id="session-improvisation-artere">
           <h2>
             Session d’improvisation <br />
-            de L'Artère (SIA)
+            de L'Artère (SIA)
           </h2>
 
           <blockquote
@@ -375,7 +375,7 @@ const ActivitesPage = ({ data }) => {
                 }
               `}
             >
-              Our job is not to make art, our job is to create a space for art
+              Our job is not to make art, our job is to create a space for art
               to happen in.
             </p>
 
@@ -387,14 +387,14 @@ const ActivitesPage = ({ data }) => {
                 }
               `}
             >
-              Ady Elzam / improvisateur invité à&nbsp;L’Artère
+              Ady Elzam / improvisateur invité à&nbsp;L’Artère
             </footer>
           </blockquote>
 
           {ImprovisationSession.length > 0 && (
             <section>
               <VisuallyHidden>
-                <h3>Session d’improvisation de L'Artère à venir</h3>
+                <h3>Session d’improvisation de L'Artère à venir</h3>
               </VisuallyHidden>
               <ul
                 css={css`
@@ -423,9 +423,9 @@ const ActivitesPage = ({ data }) => {
           </p>
 
           <p>
-            Que vous soyez spectateur·rice ou acteur·rice, passif·ve ou
-            actif·ve, la table sera mise pour que vous puissiez donner libre
-            cours à vos élans créatifs! Nous acceptons la présence de tou·te·s
+            Que vous soyez spectateur·rice ou acteur·rice, passif·ve ou
+            actif·ve, la table sera mise pour que vous puissiez donner libre
+            cours à vos élans créatifs! Nous acceptons la présence de tou·te·s
             créateur·rice·s, peu importe la discipline.
           </p>
         </section>
