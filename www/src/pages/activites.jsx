@@ -208,27 +208,29 @@ const ActivitesPage = ({ data }) => {
             </p>
           </TextColumns>
 
-          <p className="h3">
-            Calendrier des activitées pour les{" "}
-            <span className="color-orange">
-              professionnel·le·s des arts de la danse et du mouvement.
-            </span>
-          </p>
+          <div className="h3">
+            <p>
+              Calendrier des activitées pour les{" "}
+              <span className="color-orange">
+                professionnel·le·s des arts de la danse et du mouvement.
+              </span>
+            </p>
 
-          <p className="h3">
-            Activités ouvertes aux{" "}
-            <span className="font-accent color-canary">
-              bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
-            </span>{" "}
-            <span className="color-pale-cerulean">
-              aux artistes des arts de la scène (théâtre, musique, performance,
-              cinéma),
-            </span>{" "}
-            <span className="font-accent color-grey">
-              et au le grand public
-            </span>
-            .
-          </p>
+            <p>
+              Activités ouvertes aux{" "}
+              <span className="font-accent color-canary">
+                bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
+              </span>{" "}
+              <span className="color-pale-cerulean">
+                aux artistes des arts de la scène (théâtre, musique,
+                performance, cinéma),
+              </span>{" "}
+              <span className="font-accent color-grey">
+                et au le grand public
+              </span>
+              .
+            </p>
+          </div>
 
           <Calendar switcher events={calendarEvents} />
         </section>
@@ -267,6 +269,12 @@ const ActivitesPage = ({ data }) => {
                 css={css`
                   list-style: none;
                   padding: 0;
+                  li:first-child article {
+                    margin-top: 0px;
+                  }
+                  li:last-child article {
+                    margin-bottom: 0px;
+                  }
                 `}
               >
                 {intensiveCourses.map(event => (
