@@ -57,7 +57,6 @@ export default css`
     a {
       transition: color ${transition.speed.fast} ${transition.curve.default};
       color: inherit;
-      break-inside: avoid !important;
 
       :hover {
         color: ${colors.pink};
@@ -95,10 +94,10 @@ export default css`
 
     font-size: ${56 / 32}em;
     font-weight: 500;
-    margin-top: ${180 / 56}em;
+    margin-top: ${130 / 56}em;
     margin-bottom: ${80 / 56}em;
 
-    & + .h2 {
+    & + p {
       margin-top: 0;
     }
   }

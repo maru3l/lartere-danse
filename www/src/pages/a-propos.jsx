@@ -81,10 +81,19 @@ const AProposPage = ({ data }) => {
           </p>
         </section>
 
-        <section id="mandat">
+        <section id="mandat" css={css``}>
           <h2 className="h3 color-black">Mandats</h2>
 
-          <TextColumns className="h3 color-pink">
+          <TextColumns
+            className="h3 color-pink"
+            css={css`
+              p {
+                break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid; /* Theoretically FF 20+ */
+                display: table; /* Actually FF 20+ */
+              }
+            `}
+          >
             <p>
               Offrir, à Québec, une programmation de stages en art de la danse
               et du mouvement destinés aux artistes professionnel·le·s,
@@ -279,7 +288,13 @@ const AProposPage = ({ data }) => {
           </TextColumns>
 
           <TextColumns className="h3">
-            <p>
+            <p
+              css={css`
+                break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid; /* Theoretically FF 20+ */
+                display: table; /* Actually FF 20+ */
+              `}
+            >
               <u>
                 Membres fondatrices de L’Artère, coopérative de danseurs
                 professionnels de Québec :
@@ -289,7 +304,13 @@ const AProposPage = ({ data }) => {
               Rosalie Trudel et Arielle Warnke St-Pierre.
             </p>
 
-            <p>
+            <p
+              css={css`
+                break-inside: avoid; /* Chrome, Safari */
+                page-break-inside: avoid; /* Theoretically FF 20+ */
+                display: table; /* Actually FF 20+ */
+              `}
+            >
               <u>
                 Membres fondateur·rice·s de l’OBNL, L’Artère, développement et
                 perfectionnement en danse contemporaine :
