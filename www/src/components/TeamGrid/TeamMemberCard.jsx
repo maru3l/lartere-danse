@@ -59,7 +59,7 @@ const TeamMemberCard = ({ name, role, email = [] }) => {
           font-size: ${27 / 33}em;
           p,
           ul {
-            margin: 1em auto;
+            margin: 0.75em auto;
           }
         `}
       >
@@ -81,6 +81,7 @@ const TeamMemberCard = ({ name, role, email = [] }) => {
                   href="mailto:{address}"
                   css={css`
                     color: inherit;
+                    text-decoration: none;
 
                     transition: color ${transition.speed.fast}
                       ${transition.curve.default};

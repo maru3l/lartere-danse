@@ -12,11 +12,14 @@ const TeamGrid = ({ members, ...props }) => {
       css={css`
         display: grid;
         grid-gap: ${(30 / 1920) * 100}vw;
-        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
         list-style: none;
         margin: 0;
         padding: 0;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
+        ${mediaQuery.greaterThen(1650)} {
+          grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        }
         ${mediaQuery.greaterThen(1920)} {
           grid-gap: 30px;
         }
