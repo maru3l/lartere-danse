@@ -30,7 +30,7 @@ const DevenirMembrePage = ({ data }) => {
           <p className="h2">
             Devenir membre de L’Artère, c’est démontrer votre appartenance à la
             communauté de la danse et du mouvement de Québec. Grâce à votre
-            soutien, vous assurez la pérennité de l’organisme et contribuez à
+            soutien, vous assurez la pérennité de l’organisme et contribuez à
             son épanouissement.
           </p>
 
@@ -41,7 +41,13 @@ const DevenirMembrePage = ({ data }) => {
         </section>
 
         <section id="inscrire">
-          <h2>S'inscrire</h2>
+          <h2
+            css={css`
+              margin-top: 0;
+            `}
+          >
+            S'inscrire
+          </h2>
 
           <p
             css={css`
@@ -86,9 +92,9 @@ const DevenirMembrePage = ({ data }) => {
             <li>
               <p>
                 Le montant de <br />
-                la cotisation en <br />
-                espèces ou <br />
-                en chèque&nbsp;
+                la cotisation en <br />
+                espèces ou <br />
+                en chèque&nbsp;
                 <sup>(au&nbsp;nom&nbsp;de&nbsp;L’Artère)</sup>
               </p>
             </li>
@@ -100,48 +106,73 @@ const DevenirMembrePage = ({ data }) => {
               max-width: 710px;
             `}
           >
-            Votre statut devient effectif uniquement lorsque toutes ces
+            Votre statut devient effectif uniquement lorsque toutes ces
             conditions sont remplies
           </p>
         </section>
 
-        <TextColumns>
-          <section id="Criteres-dadmissibilite" css={css``}>
+        <TextColumns
+          css={css`
+            margin-top: ${180 / 30}em;
+            h3 {
+              margin-top: ${90 / 56}em;
+              margin-bottom: 0.5rem;
+
+              &.color-orange {
+                margin-bottom: 0;
+              }
+            }
+
+            section p:last-child {
+              margin-bottom: 0;
+            }
+          `}
+        >
+          <section
+            id="Criteres-dadmissibilite"
+            className="prevent-column-break"
+          >
             <h2>Critères d'admissibilité</h2>
 
             <p>
-              Chaque membre doit répondre à la définition et aux conditions
+              Chaque membre doit répondre à la définition et aux conditions
               d’admissibilité de sa catégorie, ainsi que soumettre les pièces
               justificatives nécessaires. Toute demande d’adhésion peut être
-              soumise à un comité de pairs possédant les connaissances
+              soumise à un comité de pairs possédant les connaissances
               appropriées pour en vérifier la conformité.
             </p>
 
             <p>
-              La période d’adhésion à L’Artère commence au 1er septembre et
+              La période d’adhésion à L’Artère commence au 1er septembre et
               prend fin au 31 août, même en cas d’adhésion tardive. Des frais de
               50 $ seront exigés pour le remplacement de chèques sans provision
-              ou retournés par l’institution financière.
+              ou retournés par l’institution financière.
             </p>
 
             <h3 className="color-orange">Cas particuliers</h3>
 
             <p className="color-orange">
-              Toute personne ne répondant pas à tous les critères de la{" "}
-              <a href="/">Politique d’adhésion</a> de L’Artère, mais se
-              considérant comme un professionnel de la danse, peut nous
+              Toute personne ne répondant pas à tous les critères de la{" "}
+              <a href="/">Politique d’adhésion</a> de L’Artère, mais se
+              considérant comme un professionnel de la danse, peut nous
               contacter par courriel à{" "}
-              <a href="inscriptions@larteredanse.ca">
-                inscriptions@larteredanse.ca
+              <a href="inscriptions@larteredanse.ca">
+                inscriptions@larteredanse.ca
               </a>{" "}
-              ou au 418-523-1777 poste 4.
+              ou au 418-523-1777 poste 4.
             </p>
           </section>
 
-          <section id="status-de-membres">
-            <h2>Status de membres</h2>
+          <section id="status-de-membres" className="prevent-column-break">
+            <h2>Status de membres</h2>
 
-            <h3>Actif·ve</h3>
+            <h3
+              css={css`
+                margin-top: 0 !important;
+              `}
+            >
+              Actif·ve
+            </h3>
 
             <p>
               Tout·e artiste de la danse et du mouvement qui œuvre dans un
@@ -164,7 +195,7 @@ const DevenirMembrePage = ({ data }) => {
 
             <p className="color-orange">
               Pour chacun des statuts, les conditions d’admissibilité, les
-              pièces justificatives à fournir ainsi que les privilèges sont
+              pièces justificatives à fournir ainsi que les privilèges sont
               spécifiés dans le document de politique d’adhésion 18-19.
             </p>
           </section>
@@ -178,6 +209,10 @@ const DevenirMembrePage = ({ data }) => {
               display: grid;
               grid-template-columns: repeat(auto-fit, minmax(220px, 580px));
               grid-column-gap: 1em;
+
+              div p:first-child {
+                margin-top: 0;
+              }
             `}
           >
             <div>
@@ -191,7 +226,7 @@ const DevenirMembrePage = ({ data }) => {
               </p>
 
               <p>
-                Développer votre réseau et échanger entre collègues lors de nos
+                Développer votre réseau et échanger entre collègues lors de nos
                 différentes activités.
               </p>
             </div>
@@ -215,10 +250,10 @@ const DevenirMembrePage = ({ data }) => {
           <p className="h2">
             Le·La membre honoraire est une personne physique, ou compagnie de
             danse, méritante annuellement ayant par son expertise ou son
-            implication continue contribué de manière exceptionnelle à
+            implication continue contribué de manière exceptionnelle à
             l’enrichissement et au développement de L’Artère et ses membres.
             Il·Elle est élu·e tous les deux ans et devient membre de L’Artère à
-            vie. Il·Elle a les mêmes privilèges que les membres actif·ve·s.
+            vie. Il·Elle a les mêmes privilèges que les membres actif·ve·s.
           </p>
           {honoraryMembers.length > 0 && (
             <>
