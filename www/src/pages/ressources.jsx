@@ -38,15 +38,21 @@ const RessourcesPage = ({ data }) => {
 
         {localCompagniesAndCollectifs.length > 0 && (
           <section id="compagnies-collectifs">
-            <h2 className="p">
+            <h2
+              className="h3"
+              css={css`
+                max-width: 630px;
+              `}
+            >
               Compagnies et collectifs de la Ville de Québec
             </h2>
 
             <ul
-              className="h2"
+              className="h1"
               css={css`
                 list-style: none;
                 padding: 0;
+                margin: 0;
 
                 a {
                   text-decoration: none;
@@ -81,18 +87,40 @@ const RessourcesPage = ({ data }) => {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 560px));
             grid-gap: 2em;
+
+            section {
+              > h2 {
+                margin-bottom: 1rem;
+              }
+
+              > ul {
+                margin: 0;
+                list-style: none;
+                padding: 0;
+
+                > li p {
+                  margin: 0;
+
+                  :first-child {
+                    margin-top: 1rem;
+                  }
+
+                  :last-child {
+                    margin-bottom: 1rem;
+                  }
+                }
+              }
+            }
           `}
         >
           {organisation.length > 0 && (
             <section id="organismes-specialises">
-              <h2 className="h3 color-black">Organismes spécialisés</h2>
+              <h2 className="h3 color-black">
+                Organismes <br />
+                spécialisés
+              </h2>
 
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-                `}
-              >
+              <ul>
                 {organisation.map(({ name, url, _rawDescription = null }) => (
                   <li>
                     <p>{name}</p>
@@ -112,12 +140,7 @@ const RessourcesPage = ({ data }) => {
             <section id="ressources">
               <h2 className="h3 color-black">Ressources</h2>
 
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-                `}
-              >
+              <ul>
                 {other.map(({ name, url, _rawDescription = null }) => (
                   <li>
                     <p>{name}</p>
@@ -142,7 +165,7 @@ export default RessourcesPage
 
 export const query = graphql`
   query RessourcesPageQuery {
-    ressources: allSanityRessource {
+    ressources: allSanityRessource(sort: { fields: sort, order: ASC }) {
       group(field: type) {
         fieldValue
         edges {
