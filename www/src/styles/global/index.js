@@ -75,6 +75,10 @@ export default css`
     }
   }
 
+  ul {
+    list-style-type: "- ";
+  }
+
   li {
     a {
       transition: color ${transition.speed.fast} ${transition.curve.default};
