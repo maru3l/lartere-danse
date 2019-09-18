@@ -31,5 +31,20 @@ export default {
         layout: 'radio' // <-- defaults to 'dropdown'
       }
     },
+    {
+      title: "Position [ordre]",
+      name: "sort",
+      type: "number",
+      validation: Rule => Rule.integer()
+    },
+  ],
+  orderings: [
+    {
+      title: 'Ordre déterminé',
+      name: 'sortDesc',
+      by: [
+        { field: 'sort', direction: 'asc' }
+      ]
+    }
   ]
 }
