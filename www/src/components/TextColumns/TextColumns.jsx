@@ -9,7 +9,7 @@ const TextColumns = ({ columns = 2, children, ...props }) => {
       css={css`
         columns: 1;
 
-        p:first-child {
+        *:first-child {
           margin-top: 0px;
         }
 
