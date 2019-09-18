@@ -262,7 +262,11 @@ const DevenirMembrePage = ({ data }) => {
               </p>
 
               {honoraryMembers[0]._rawDescription && (
-                <TextColumns>
+                <TextColumns
+                  css={css`
+                    line-height: 1.5em;
+                  `}
+                >
                   <PortableText blocks={honoraryMembers[0]._rawDescription} />
                 </TextColumns>
               )}
