@@ -8,6 +8,7 @@ const TextColumns = ({ columns = 2, children, ...props }) => {
     <div
       css={css`
         columns: 1;
+        column-gap: 1.5em;
 
         *:first-child {
           margin-top: 0px;
