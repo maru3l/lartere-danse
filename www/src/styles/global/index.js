@@ -32,7 +32,7 @@ export default css`
     font-weight: medium;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: ${73 / 1000}em;
+    letter-spacing: ${26 / 1000}em;
 
     /* Rythme background */
     /* background-image: linear-gradient(#eee 1px, transparent 1px);
