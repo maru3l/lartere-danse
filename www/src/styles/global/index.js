@@ -50,6 +50,12 @@ export default css`
     letter-spacing: -7;
   }
 
+  .p {
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-family: ${fonts.body};
+  }
+
   p {
     margin: ${lineHeights.body}rem 0;
     padding: 0;
