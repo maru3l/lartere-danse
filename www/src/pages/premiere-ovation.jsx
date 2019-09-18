@@ -5,6 +5,7 @@ import VisuallyHidden from "@reach/visually-hidden"
 import css from "@emotion/css"
 import wrapper from "../utils/wrapper"
 import TextColumns from "../components/TextColumns/TextColumns"
+import { colors, transition } from "../styles/variables"
 
 const premiereOvationPage = () => {
   return (
@@ -34,38 +35,79 @@ const premiereOvationPage = () => {
           </p>
 
           <TextColumns className="h3">
-            <p>
+            <p className="prevent-column-break">
               Première Ovation — Danse vise le développement des artistes, des
               collectifs et des compagnies de la relève pour faciliter leur
               intégration au milieu professionnel en respectant l’équilibre en
               place.
             </p>
 
-            <p>
+            <p className="prevent-column-break">
               Par l’attribution de différentes bourses, ce volet contribue à :
             </p>
 
-            <p>
+            <p className="prevent-column-break">
               Faciliter le démarrage de la carrière en soutenant les premières
               expériences professionnelles;
             </p>
 
-            <p>
+            <p className="prevent-column-break">
               Favoriser l'intégration des artistes de la relève au milieu
               professionnel de la danse;
             </p>
 
-            <p>
+            <p className="prevent-column-break">
               Soutenir des projets artistiques qui contribuent à la
               professionnalisation des artistes de la relève;
             </p>
 
-            <p>
+            <p className="prevent-column-break">
               Contribuer à l'enrichissement de la démarche des artistes de la
               relève.
             </p>
 
             <p
+              className="prevent-column-break"
+              css={css`
+                margin: 2em 0;
+              `}
+            >
+              <a
+                href="https://premiereovation.com/programmes-aide/danse-presentation.aspx"
+                css={css`
+                  color: initial;
+                  text-decoration: none;
+                  text-transform: uppercase;
+                  background-image: linear-gradient(
+                    120deg,
+                    ${colors.PaleCerulean} 0%,
+                    ${colors.PaleCerulean} 100%
+                  );
+                  background-size: 100% 80%;
+                  background-position: 0 center;
+                  background-repeat: no-repeat;
+
+                  transition: background-image ${transition.speed.fast}
+                    ${transition.curve.default};
+
+                  :hover {
+                    color: initial;
+                    background-image: linear-gradient(
+                      120deg,
+                      ${colors.pink} 0%,
+                      ${colors.pink} 100%
+                    );
+                  }
+                `}
+              >
+                Consulter <br />
+                les programmes <br />
+                offerts
+              </a>
+            </p>
+
+            <p
+              className="prevent-column-break"
               css={css`
                 font-size: ${33 / 55}em;
                 max-width: 630px;
