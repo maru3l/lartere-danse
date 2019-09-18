@@ -139,4 +139,10 @@ export default css`
   .font-accent {
     font-family: ${fonts.accent};
   }
+
+  .prevent-column-break {
+    break-inside: avoid; /* Chrome, Safari */
+    page-break-inside: avoid; /* Theoretically FF 20+ */
+    display: table; /* Actually FF 20+ */
+  }
 `
