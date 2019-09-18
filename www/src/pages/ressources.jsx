@@ -25,8 +25,6 @@ const RessourcesPage = ({ data }) => {
 
   const other = getRessourcesByType("other")
 
-  console.log(ressources)
-
   return (
     <Layout orange>
       <article
