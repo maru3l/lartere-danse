@@ -51,6 +51,15 @@ export default {
       }
     },
     {
+      title: "Prix",
+      name: "rate",
+      type: 'array',
+      of: [
+        { type: 'regularRate' },
+        { type: 'free' },
+      ],
+    },
+    {
       title: "date",
       name: 'date',
       type: 'array',
@@ -108,6 +117,6 @@ export default {
       options: {
         source: 'title',
       }
-    }
+    },
   ]
 }

@@ -8,11 +8,11 @@ import mediaQuery from "../../utils/media-query"
 
 export default css`
   :root {
-    --font-size: ${between("16px", "33px", "375px", "1920px")};
+    --font-size: ${between("16px", "30px", "375px", "1920px")};
     --line-height: ${66 / 55};
 
     ${mediaQuery.greaterThen(1920)} {
-      --font-size: 33px;
+      --font-size: 30px;
     }
   }
 
@@ -32,7 +32,7 @@ export default css`
     font-weight: medium;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: ${53 / 1000}em;
+    letter-spacing: ${73 / 1000}em;
 
     /* Rythme background */
     /* background-image: linear-gradient(#eee 1px, transparent 1px);
@@ -63,15 +63,10 @@ export default css`
     a {
       transition: color ${transition.speed.fast} ${transition.curve.default};
       color: inherit;
-      break-inside: avoid !important;
 
       :hover {
         color: ${colors.pink};
       }
-    }
-
-    &:first-child {
-      margin-top: 0;
     }
   }
 
@@ -95,8 +90,11 @@ export default css`
   .h2 {
     /* 35 / 96 */
 
-    font-size: ${96 / 33}em;
-    margin-bottom: ${186 / 96}em;
+    font-size: ${94 / 32}em;
+    line-height: ${108 / 92};
+    margin-top: ${180 / 96}em;
+    margin-bottom: ${80 / 96}em;
+    font-weight: 500;
   }
 
   h3,
@@ -104,7 +102,14 @@ export default css`
   .big {
     /* 20 / 55 */
 
-    font-size: ${55 / 33}em;
+    font-size: ${56 / 32}em;
+    font-weight: 500;
+    margin-top: ${130 / 56}em;
+    margin-bottom: ${80 / 56}em;
+
+    & + p {
+      margin-top: 0;
+    }
   }
 
   .color-black {

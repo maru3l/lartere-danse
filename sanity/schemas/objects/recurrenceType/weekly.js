@@ -1,3 +1,17 @@
+import normalizeNumber from "../../../../utils/normalizeNumber";
+
+const dayOfTheWeekById = (id) => {
+  switch (id) {
+    case "0": return "Dimanche";
+    case "1": return "Lundi";
+    case "2": return "Mardi";
+    case "3": return "Mercredi";
+    case "4": return "Jeudi";
+    case "5": return "Vendredi";
+    case "6": return "Samedi";
+  }
+}
+
 export default {
   title: "Hebdomadaire",
   name: "weekly",
@@ -39,34 +53,54 @@ export default {
         list: [
           {
             title: "Dimanche",
-            value: "sunday",
+            value: "0",
           },
           {
             title: "Lundi",
-            value: "monday",
+            value: "1",
           },
           {
             title: "Mardi",
-            value: "tuesday",
+            value: "2",
           },
           {
             title: "Mercredi",
-            value: "wednesday",
+            value: "3",
           },
           {
             title: "Jeudi",
-            value: "thuesday",
+            value: "4",
           },
           {
             title: "Vendredi",
-            value: "friday",
+            value: "5",
           },
           {
             title: "Samedi",
-            value: "saturday",
+            value: "6",
           },
         ]
       }
     }
-  ]
+  ],
+  preview: {
+    select: {
+      from: 'from',
+      to: 'to',
+      fromTime: 'fromTime',
+      toTime: 'toTime',
+      days: 'day',
+    },
+    prepare(selection) {
+      const { from, to, fromTime, toTime, days } = selection
+
+      const fromDate = new Date(`${from}T${normalizeNumber(fromTime.hour)}:${normalizeNumber(toTime.minute)}:00-0400`);
+      const toDate = new Date(`${to}T${normalizeNumber(toTime.hour)}:${normalizeNumber(toTime.minute)}:00-0400`);
+
+      return {
+        title: `${fromDate.toLocaleDateString('fr')} au ${toDate.toLocaleDateString('fr')}`,
+        subtitle: `Le ${days.map(day => dayOfTheWeekById(day)).join(', ')}`
+      }
+    }
+  }
 }
