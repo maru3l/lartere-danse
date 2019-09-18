@@ -184,11 +184,7 @@ const ActivitesPage = ({ data }) => {
 
         <section id="intro">
           <TextColumns className="h3 color-orange">
-            <p
-              css={css`
-                break-inside: avoid;
-              `}
-            >
+            <p className="prevent-column-break">
               Tout·e acteur·rice du milieu est essentiel·le au développement de
               l’art de la danse et du mouvement à Québec, car il·elle fait
               partie intégrante de celui-ci. L’investissement et l’inspiration
@@ -196,11 +192,7 @@ const ActivitesPage = ({ data }) => {
               des retombées notoires sur la vitalité de tout un milieu.
             </p>
 
-            <p
-              css={css`
-                break-inside: avoid;
-              `}
-            >
+            <p className="prevent-column-break">
               Toutes ces formations offertes par L’Artère permettent à nos
               artistes de briller dans leur parcours individuel et stimulent les
               échanges au sein et à l’extérieur du milieu de l’art de la danse
