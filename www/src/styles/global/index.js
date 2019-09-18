@@ -86,6 +86,22 @@ export default css`
     }
   }
 
+  h1,
+  .h1 {
+    /* 24 / 148 */
+
+    font-size: ${between(`24px`, `148px`, "375px", "1920px")};
+
+    ${mediaQuery.greaterThen(1920)} {
+      font-size: 148px;
+    }
+
+    line-height: ${165 / 148};
+    margin-top: ${180 / 148}em;
+    margin-bottom: ${80 / 148}em;
+    font-weight: 500;
+  }
+
   h2,
   .h2 {
     /* 35 / 96 */
