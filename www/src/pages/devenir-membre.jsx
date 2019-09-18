@@ -84,7 +84,9 @@ const DevenirMembrePage = ({ data }) => {
 
             <li>
               <p>
-                <a href="/">Le Formulaire adhesions et renouvellement</a>{" "}
+                <a href="/formulaire-dadhesion-et-renouvellement-19-20.pdf">
+                  Le Formulaire adhesions et renouvellement
+                </a>{" "}
                 2018-2019 rempli
               </p>
             </li>
@@ -153,9 +155,11 @@ const DevenirMembrePage = ({ data }) => {
 
             <p className="color-orange">
               Toute personne ne répondant pas à tous les critères de la{" "}
-              <a href="/">Politique d’adhésion</a> de L’Artère, mais se
-              considérant comme un professionnel de la danse, peut nous
-              contacter par courriel à{" "}
+              <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
+                Politique d’adhésion
+              </a>{" "}
+              de L’Artère, mais se considérant comme un professionnel de la
+              danse, peut nous contacter par courriel à{" "}
               <a href="inscriptions@larteredanse.ca">
                 inscriptions@larteredanse.ca
               </a>{" "}
@@ -196,7 +200,11 @@ const DevenirMembrePage = ({ data }) => {
             <p className="color-orange">
               Pour chacun des statuts, les conditions d’admissibilité, les
               pièces justificatives à fournir ainsi que les privilèges sont
-              spécifiés dans le document de politique d’adhésion 18-19.
+              spécifiés dans le document de{" "}
+              <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
+                politique d’adhésion 18-19
+              </a>
+              .
             </p>
           </section>
         </TextColumns>
