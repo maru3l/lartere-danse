@@ -122,11 +122,12 @@ const IndexPage = ({ data }) => (
       >
         L’Artère est un organisme à but non lucratif œuvrant à faire rayonner
         l’art de la danse et du mouvement sur le territoire de la
-        Capitale-Nationale. Sa mission est de soutenir le développement
+        Capitale-Nationale. Sa mission est de soutenir le dévelop&shy;pement
         artistique et professionnel des artistes en danse contemporaine en
-        offrant une programmation de stages et de services à la fine pointe de
-        la pratique actuelle de l’art de la danse et du mouvement, contribuant
-        ainsi à la rétention d’artistes de grand talent sur le territoire.
+        offrant une program&shy;mation de stages et de services à la fine pointe
+        de la pratique actuelle de l’art de la danse et du mouvement,
+        contribuant ainsi à la rétention d’artistes de grand talent sur le
+        territoire.
       </p>
     </div>
   </Layout>

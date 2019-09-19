@@ -28,10 +28,10 @@ const DevenirMembrePage = ({ data }) => {
           </VisuallyHidden>
 
           <p className="h2">
-            Devenir membre de L’Artère, c’est démontrer votre appartenance à la
-            communauté de la danse et du mouvement de Québec. Grâce à votre
+            Devenir membre de L’Artère, c’est démontrer votre appart&shy;enance
+            à la communauté de la danse et du mouvement de Québec. Grâce à votre
             soutien, vous assurez la pérennité de l’organisme et contribuez à
-            son épanouissement.
+            son épanouis&shy;sement.
           </p>
 
           <p className="h3 color-orange">
@@ -65,7 +65,7 @@ const DevenirMembrePage = ({ data }) => {
           <ul
             css={css`
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+              grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
               list-style: none;
               padding: 0;
 
@@ -134,13 +134,13 @@ const DevenirMembrePage = ({ data }) => {
             id="Criteres-dadmissibilite"
             className="prevent-column-break"
           >
-            <h2>Critères d'admissibilité</h2>
+            <h2>Critères d'admis&shy;sibilité</h2>
 
             <p>
               Chaque membre doit répondre à la définition et aux conditions
-              d’admissibilité de sa catégorie, ainsi que soumettre les pièces
-              justificatives nécessaires. Toute demande d’adhésion peut être
-              soumise à un comité de pairs possédant les connaissances
+              d’admis&shy;sibilité de sa catégorie, ainsi que soumettre les
+              pièces justificatives nécessaires. Toute demande d’adhésion peut
+              être soumise à un comité de pairs possédant les connaissances
               appropriées pour en vérifier la conformité.
             </p>
 
@@ -183,22 +183,23 @@ const DevenirMembrePage = ({ data }) => {
               contexte professionnel et qui est reconnu·e par ses pairs, dont la
               pratique de son art est son activité principale. Il·Elle est
               rémunéré·e pour ses activités et répond aux conditions
-              d’admissibilité prévues à l’article 1.2 du document de politique
-              d’adhésion 18-19.
+              d’admis&shy;sibilité prévues à l’article 1.2 du document de
+              politique d’adhésion 18-19.
             </p>
 
             <h3>Associé·e</h3>
 
             <p>
-              Toute personne morale ou physique qui a à cœur le développement de
-              L’Artère sans toutefois être un·e artiste professionnel·le en
-              danse et en mouvement, ou qui est en voie de le devenir.
+              Toute personne morale ou physique qui a à cœur le
+              dévelop&shy;pement de L’Artère sans toutefois être un·e artiste
+              professionnel·le en danse et en mouvement, ou qui est en voie de
+              le devenir.
             </p>
 
             <h3 className="color-orange">Important</h3>
 
             <p className="color-orange">
-              Pour chacun des statuts, les conditions d’admissibilité, les
+              Pour chacun des statuts, les conditions d’admis&shy;sibilité, les
               pièces justificatives à fournir ainsi que les privilèges sont
               spécifiés dans le document de{" "}
               <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
@@ -230,7 +231,7 @@ const DevenirMembrePage = ({ data }) => {
 
               <p>
                 Bénéficier des tarifs préférentiels des membres pour les classes
-                et les stages de perfectionnement de L’Artère.
+                et les stages de perfect&shy;ionnement de L’Artère.
               </p>
 
               <p>
@@ -258,10 +259,11 @@ const DevenirMembrePage = ({ data }) => {
           <p className="h2">
             Le·La membre honoraire est une personne physique, ou compagnie de
             danse, méritante annuellement ayant par son expertise ou son
-            implication continue contribué de manière exceptionnelle à
-            l’enrichissement et au développement de L’Artère et ses membres.
-            Il·Elle est élu·e tous les deux ans et devient membre de L’Artère à
-            vie. Il·Elle a les mêmes privilèges que les membres actif·ve·s.
+            implication continue contribué de manière except&shy;ionnelle à
+            l’enrichis&shy;sement et au dévelop&shy;pement de L’Artère et ses
+            membres. Il·Elle est élu·e tous les deux ans et devient membre de
+            L’Artère à vie. Il·Elle a les mêmes privilèges que les membres
+            actif·ve·s.
           </p>
           {honoraryMembers.length > 0 && (
             <>

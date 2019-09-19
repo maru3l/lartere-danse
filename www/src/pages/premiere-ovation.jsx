@@ -36,8 +36,8 @@ const premiereOvationPage = () => {
 
           <TextColumns className="h3">
             <p className="prevent-column-break">
-              Première Ovation — Danse vise le développement des artistes, des
-              collectifs et des compagnies de la relève pour faciliter leur
+              Première Ovation — Danse vise le dévelop&shy;pement des artistes,
+              des collectifs et des compagnies de la relève pour faciliter leur
               intégration au milieu professionnel en respectant l’équilibre en
               place.
             </p>
@@ -62,8 +62,8 @@ const premiereOvationPage = () => {
             </p>
 
             <p className="prevent-column-break">
-              Contribuer à l'enrichissement de la démarche des artistes de la
-              relève.
+              Contribuer à l'enrichis&shy;sement de la démarche des artistes de
+              la relève.
             </p>
 
             <p

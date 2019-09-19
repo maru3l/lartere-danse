@@ -37,9 +37,9 @@ const AProposPage = ({ data }) => {
 
           <p className="h2 color-black">
             L’Artère est un catalyseur de rencontres humaines et artistiques,
-            donnant lieu à des expérimentations et des réflexions, dans un but
-            d’actualisation permanente de la discipline de l’art de la danse et
-            du mouvement.
+            donnant lieu à des expér&shy;imen&shy;ta&shy;tions et des
+            réflexions, dans un but d’actua&shy;lisa&shy;tion perm&shy;anente de
+            la discipline de l’art de la danse et du mouvement.
           </p>
         </section>
 
@@ -72,10 +72,10 @@ const AProposPage = ({ data }) => {
           <h2 className="h3 color-black">Mission</h2>
 
           <p className="h2">
-            Contribuer au développement et à la valorisation de l’art de la
+            Contribuer au dévelop&shy;pement et à la valorisation de l’art de la
             danse et du mouvement sur le territoire de la Capitale-Nationale et
-            au-delà, en soutenant le perfectionnement des artistes
-            professionnel·le·s au quotidien.
+            au-delà, en soutenant le perfect&shy;ionnement des artistes
+            prof&shy;ess&shy;ionnel·le·s au quotidien.
           </p>
         </section>
 
@@ -93,8 +93,8 @@ const AProposPage = ({ data }) => {
             `}
           >
             <p>
-              Offrir, à Québec, une programmation de stages en art de la danse
-              et du mouvement destinés aux artistes professionnel·le·s,
+              Offrir, à Québec, une program&shy;mation de stages en art de la
+              danse et du mouvement destinés aux artistes professionnel·le·s,
               répondant aux besoins actuels de la discipline;
             </p>
 
@@ -120,8 +120,8 @@ const AProposPage = ({ data }) => {
             </p>
 
             <p>
-              Viser le développement des artistes, collectifs et compagnies de
-              la relève en étant gestionnaire de la mesure Première Ovation –
+              Viser le dévelop&shy;pement des artistes, collectifs et compagnies
+              de la relève en étant gestionnaire de la mesure Première Ovation –
               Danse, en facilitant leur intégration au milieu professionnel par
               l’attribution de différentes bourses.
             </p>
@@ -130,7 +130,7 @@ const AProposPage = ({ data }) => {
           <p className="h2 color-black">
             L’une des spécificités et singularité de la discipline de la danse
             réside dans la nécessité pour les praticien·ne·s de cet art de
-            demeurer dans un constant perfectionnement.
+            demeurer dans un constant perfect&shy;ionnement.
           </p>
 
           <TextColumns className="h3 color-black">
@@ -138,10 +138,10 @@ const AProposPage = ({ data }) => {
               Unique organisme de service consacré entièrement à cet objectif
               depuis 2003, L’Artère joue un rôle prédominant dans l’avancement
               de la danse contemporaine à Québec en offrant les activités de
-              perfectionnement aux artistes, indispensable au maintien d’une
-              carrière en danse. Étant organisme résident à la Maison pour la
-              danse, L’Artère contribue grandement à la vitalité de ce lieu par
-              sa programmation d’envergure.
+              perfect&shy;ionnement aux artistes, indispensable au maintien
+              d’une carrière en danse. Étant organisme résident à la Maison pour
+              la danse, L’Artère contribue grandement à la vitalité de ce lieu
+              par sa program&shy;mation d’envergure.
             </p>
 
             <p>
@@ -156,15 +156,15 @@ const AProposPage = ({ data }) => {
 
           <TextColumns className="h3 color-black">
             <p>
-              La programmation de L’Artère est tissée soigneusement en fonction
-              des besoins spécifiques du milieu afin d’assurer une offre de
-              perfectionnement continu sur le territoire. Elle est articulée
-              dans l’intention de contribuer à la rétention des artistes sur le
-              territoire, de nourrir et d’encourager l’émergence des démarches
-              des créateur·rice·s, de contribuer au décloisonnement des
-              pratiques et d’offrir une incursion singulière au grand public
-              dans la pratique : conférences-performances, sorties d’atelier de
-              création, classes ouvertes.
+              La program&shy;mation de L’Artère est tissée soigneusement en
+              fonction des besoins spécifiques du milieu afin d’assurer une
+              offre de perfect&shy;ionnement continu sur le territoire. Elle est
+              articulée dans l’intention de contribuer à la rétention des
+              artistes sur le territoire, de nourrir et d’encourager l’émergence
+              des démarches des créateur·rice·s, de contribuer au
+              décloisonnement des pratiques et d’offrir une incursion singulière
+              au grand public dans la pratique : conférences-performances,
+              sorties d’atelier de création, classes ouvertes.
             </p>
           </TextColumns>
 
@@ -229,10 +229,10 @@ const AProposPage = ({ data }) => {
 
             <p>
               Ainsi, le groupe a commencé à organiser des stages de danse
-              contemporaine avec un désir d’ouverture et de développement pour
-              la communauté. Cette programmation, toujours plus à la pointe de
-              la pratique de la danse, a contribué et contribue encore à la
-              rétention d’artistes de grand talent sur le territoire en
+              contemporaine avec un désir d’ouverture et de dévelop&shy;pement
+              pour la communauté. Cette program&shy;mation, toujours plus à la
+              pointe de la pratique de la danse, a contribué et contribue encore
+              à la rétention d’artistes de grand talent sur le territoire en
               favorisant une création et une production locale, ainsi que
               l’employabilité des artistes de ce secteur.
             </p>
@@ -245,7 +245,8 @@ const AProposPage = ({ data }) => {
               fermement. De nouvelles compagnies se sont installées à Québec et
               le public s’est peu à peu manifesté. Depuis sa création, L’Artère
               fait partie intégrante de ce mouvement d’effervescence en jouant
-              un rôle prédominant dans le développement de la danse à Québec.
+              un rôle prédominant dans le dévelop&shy;pement de la danse à
+              Québec.
             </p>
 
             <p>
@@ -257,7 +258,8 @@ const AProposPage = ({ data }) => {
               </a>{" "}
               et{" "}
               <a href="https://www.quebecdanse.org/wp-content/uploads/2018/11/danseqc_plan_dev_v16mars20121.pdf">
-                le Plan de développement de la danse professionnelle à Québec
+                le Plan de dévelop&shy;pement de la danse professionnelle à
+                Québec
               </a>
               en soulignent d’ailleurs l’importance.
             </p>
@@ -273,9 +275,9 @@ const AProposPage = ({ data }) => {
               </a>
               , L’Artère continue d’affirmer et d’assumer son rôle de
               précurseur, en prenant entièrement en charge l’offre d’activités
-              de perfectionnement en art de la danse et du mouvement à Québec de
-              façon organisée et professionnelle, mettant ainsi à profit toute
-              l’expertise développée au fil des ans.
+              de perfect&shy;ionnement en art de la danse et du mouvement à
+              Québec de façon organisée et professionnelle, mettant ainsi à
+              profit toute l’expertise développée au fil des ans.
             </p>
           </TextColumns>
 
@@ -292,8 +294,8 @@ const AProposPage = ({ data }) => {
 
             <p className="prevent-column-break">
               <u>
-                Membres fondateur·rice·s de l’OBNL, L’Artère, développement et
-                perfectionnement en danse contemporaine :
+                Membres fondateur·rice·s de l’OBNL, L’Artère, dévelop&shy;pement
+                et perfect&shy;ionnement en danse contemporaine :
               </u>{" "}
               Maryse Damecour, Anne-Pier Dion, Annie Gagnon, Isabelle Gagnon,
               Véronique Jalbert, Brice Noeser, Fabien Piché, Eve Rousseau-Cyr et
@@ -352,7 +354,7 @@ const AProposPage = ({ data }) => {
               L’Artère valorise et reconnaît les compétences de ses membres,
               contribue au partage d’expertises, favorise l’éclosion de
               nouvelles initiatives dans le milieu, participe au sentiment
-              d’appartenance à une communauté et stimule l’engagement à son
+              d’appart&shy;enance à une communauté et stimule l’engagement à son
               égard.
             </p>
           </TextColumns>
@@ -385,14 +387,14 @@ const AProposPage = ({ data }) => {
 
           <p className="h2">
             La vitalité et le dynamisme de L’Artère se forgent à travers une
-            vision de développement ancrée sur la maximisation et le
-            renforcement de collaborations sur le territoire et ailleurs. Grâce
-            à l’apport de partenaires de choix développés et renforcés au fil
-            des ans, elle déploie une programmation de grande qualité, dans un
-            souci d’inclusion, de partage avec les autres disciplines
+            vision de dévelop&shy;pement ancrée sur la maximisation et le
+            renforcement de collabo&shy;rations sur le territoire et ailleurs.
+            Grâce à l’apport de partenaires de choix développés et renforcés au
+            fil des ans, elle déploie une program&shy;mation de grande qualité,
+            dans un souci d’inclusion, de partage avec les autres disciplines
             artistiques et d’ouverture avec le grand public. Ainsi, L’Artère
-            compte sur des collaborations entretenues depuis plusieurs années
-            avec des organismes homologues canadiens.
+            compte sur des collabo&shy;rations entretenues depuis plusieurs
+            années avec des organismes homologues canadiens.
           </p>
 
           <ul

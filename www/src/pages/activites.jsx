@@ -185,11 +185,12 @@ const ActivitesPage = ({ data }) => {
         <section id="intro">
           <TextColumns className="h3 color-orange">
             <p className="prevent-column-break">
-              Tout·e acteur·rice du milieu est essentiel·le au développement de
-              l’art de la danse et du mouvement à Québec, car il·elle fait
-              partie intégrante de celui-ci. L’investissement et l’inspiration
-              insufflés dans la pratique de chaque artiste sur le territoire a
-              des retombées notoires sur la vitalité de tout un milieu.
+              Tout·e acteur·rice du milieu est essentiel·le au
+              dévelop&shy;pement de l’art de la danse et du mouvement à Québec,
+              car il·elle fait partie intégrante de celui-ci. L’investissement
+              et l’inspiration insufflés dans la pratique de chaque artiste sur
+              le territoire a des retombées notoires sur la vitalité de tout un
+              milieu.
             </p>
 
             <p className="prevent-column-break">
@@ -235,12 +236,12 @@ const ActivitesPage = ({ data }) => {
 
           <TextColumns>
             <p>
-              Dans son but d’offrir du perfectionnement tout au long de l’année,
-              L’Artère a mis en place des stages et classes régulières donnés
-              par des professeur·e·s de Québec et d’ailleurs. Dépendamment des
-              activités, il est possible de s’inscrire à la classe. Nous offrons
-              également des stages avec des danseur·se·s souhaitant parfaire
-              leur enseignement.
+              Dans son but d’offrir du perfect&shy;ionnement tout au long de
+              l’année, L’Artère a mis en place des stages et classes régulières
+              donnés par des professeur·e·s de Québec et d’ailleurs.
+              Dépendamment des activités, il est possible de s’inscrire à la
+              classe. Nous offrons également des stages avec des danseur·se·s
+              souhaitant parfaire leur enseignement.
             </p>
 
             <h3>Le saviez-vous?</h3>
