@@ -1,9 +1,4 @@
-const getByTerm = (term) => {
-  switch (term) {
-    case 'day': return 'jour'
-    case 'halfDay': return 'Demi-journée'
-  }
-}
+import getByTerm from "../../../../utils/getByTerm"
 
 export default {
   name: 'regularRate',
@@ -22,8 +17,8 @@ export default {
       type: 'string',
       options: {
         list: [
-          { title: 'Jour', value: 'day' },
-          { title: 'Demi-journée', value: 'halfDay' },
+          { title: getByTerm('day'), value: 'day' },
+          { title: getByTerm('halfDay'), value: 'halfDay' },
         ]
       },
     },
