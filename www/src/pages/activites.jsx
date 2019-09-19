@@ -246,7 +246,10 @@ const ActivitesPage = ({ data }) => {
             <p>
               Les interprètes admissibles peuvent obtenir un soutien financier
               du Regroupement québécois de la danse s’ils·elles sont admis·es au{" "}
-              <a href="/">Programme de soutien à l’entraînement</a>.
+              <a href="https://premiereovation.com/programmes-aide/danse-presentation.aspx">
+                Programme de soutien à l’entraînement
+              </a>
+              .
             </p>
           </TextColumns>
 
