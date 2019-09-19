@@ -6,23 +6,48 @@ import { Global, css } from "@emotion/core"
 // styles
 import "normalize.css"
 import globalStyle from "../../styles/global"
-import { colors } from "../../styles/variables"
+import { colors, transition } from "../../styles/variables"
+import SiteHeader from "../SiteHeader"
 
-const Layout = ({ children, orange }) => (
-  <>
-    <Global styles={globalStyle} />
+const Layout = ({ children, themeColor = "DARK" }) => {
+  let backgroundColor = colors.Jet
 
-    <Global
-      styles={css`
-        html {
-          background-color: ${orange && colors.PortlandOrange};
-        }
-      `}
-    />
+  switch (themeColor) {
+    case "DARK":
+      backgroundColor = colors.Jet
+      break
 
-    <main>{children}</main>
-  </>
-)
+    case "ORANGE":
+      backgroundColor = colors.PortlandOrange
+      break
+
+    case "LIGHT":
+      backgroundColor = colors.Isabelline
+      break
+
+    default:
+      backgroundColor = colors.Jet
+      break
+  }
+
+  return (
+    <>
+      <Global styles={globalStyle} />
+      <Global
+        styles={css`
+          html {
+            background-color: ${backgroundColor};
+            transition: background-color ${transition.speed.default}
+              ${transition.curve.default};
+          }
+        `}
+      />
+      <SiteHeader themeColor={themeColor} />
+
+      <main>{children}</main>
+    </>
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

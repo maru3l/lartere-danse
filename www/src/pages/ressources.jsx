@@ -26,7 +26,7 @@ const RessourcesPage = ({ data }) => {
   const other = getRessourcesByType("other")
 
   return (
-    <Layout orange>
+    <Layout themeColor="ORANGE">
       <article
         css={css`
           ${wrapper.bolt()}

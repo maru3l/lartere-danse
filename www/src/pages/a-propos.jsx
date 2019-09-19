@@ -22,7 +22,7 @@ const AProposPage = ({ data }) => {
   const partners = data.partners.edges.map(({ node }) => node)
 
   return (
-    <Layout orange>
+    <Layout themeColor="ORANGE">
       <article
         css={css`
           ${wrapper.bolt()}

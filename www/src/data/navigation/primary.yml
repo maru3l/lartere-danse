@@ -1,9 +1,15 @@
 title: Primary navigation
 key: primary
 items:
-  - title: Items 1
-    link: item-1
-  - title: Items 2
-    link: item-2
-  - title: Items 3
-    link: item-3
+  - title: À propos
+    link: /a-propos
+  - title: Activités
+    link: /activites
+  - title: Devenir membre
+    link: /devenir-membre
+  # - title: Archives
+  #   link: /archives
+  - title: Ressources
+    link: /ressources
+  - title: Première Ovation
+    link: /premiere-ovation
