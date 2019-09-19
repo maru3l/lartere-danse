@@ -1,6 +1,5 @@
 export default {
   body: ["SuisseIntl"],
-  accent: ["Wigrum"],
   system: [
     `-apple-system`,
     `BlinkMacSystemFont`,

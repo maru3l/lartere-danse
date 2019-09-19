@@ -16,15 +16,6 @@ export const onRenderBody = ({ setHeadComponents }) => {
       type="font/woff2"
       crossOrigin="true"
     />,
-    <link
-      key="2"
-      rel="preload"
-      href="/fonts/Wigrum/Wigrum-Medium.woff2"
-      as="font"
-      type="font/woff2"
-      crossOrigin="true"
-    />,
-    <link key="3" href="/fonts/SuisseIntl/SuisseIntl.css" rel="stylesheet" />,
-    <link key="4" href="/fonts/Wigrum/Wigrum.css" rel="stylesheet" />,
+    <link key="2" href="/fonts/SuisseIntl/SuisseIntl.css" rel="stylesheet" />,
   ])
 }

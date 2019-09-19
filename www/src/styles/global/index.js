@@ -152,10 +152,6 @@ export default css`
     color: ${colors.grey};
   }
 
-  .font-accent {
-    font-family: ${fonts.accent};
-  }
-
   .prevent-column-break {
     break-inside: avoid; /* Chrome, Safari */
     page-break-inside: avoid; /* Theoretically FF 20+ */

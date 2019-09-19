@@ -211,17 +211,14 @@ const ActivitesPage = ({ data }) => {
 
             <p>
               Activités ouvertes aux{" "}
-              <span className="font-accent color-canary">
+              <span className="color-canary">
                 bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
               </span>{" "}
               <span className="color-pale-cerulean">
                 aux artistes des arts de la scène (théâtre, musique,
                 performance, cinéma),
               </span>{" "}
-              <span className="font-accent color-grey">
-                et au le grand public
-              </span>
-              .
+              <span className="color-grey">et au le grand public</span>.
             </p>
           </div>
 
