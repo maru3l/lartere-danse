@@ -6,8 +6,15 @@ import VisuallyHidden from "@reach/visually-hidden"
 import PortableText from "../PortableText/PortableText"
 import Collapse from "../Collapse/Collapse"
 import { hideVisually } from "polished"
+import getByTerm from "../../../../utils/getByTerm"
 
-const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
+const EventCard = ({
+  event,
+  hiddenTitle = false,
+  title = null,
+  hideDetail = false,
+  ...props
+}) => {
   let fromDate = null
   let toDate = null
   let hours = []
@@ -38,6 +45,7 @@ const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
       id={event.slug.current}
       css={css`
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         margin: ${285 / 33}em 0;
       `}
@@ -45,77 +53,19 @@ const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
     >
       <div
         css={css`
-          order: 2;
-          flex-basis: 0;
-          flex-grow: 999;
-        `}
-      >
-        <section
-          css={css`
-            ${hiddenTitle && hideVisually()}
-          `}
-        >
-          <h1
-            className="h2 color-orange"
-            css={css`
-              margin: 0 0 1rem;
-            `}
-          >
-            {title ? title : event.title}
-          </h1>
-
-          {event._rawDescription && (
-            <Collapse>
-              <PortableText blocks={event._rawDescription} />
-            </Collapse>
-          )}
-        </section>
-
-        <section
-          css={css`
-            margin-top: ${150 / 33}em;
-
-            ${hiddenTitle &&
-              css`
-                margin-top: 0;
-              `}
-          `}
-        >
-          <p
-            className="h2 color-orange"
-            css={css`
-              margin: 0 0 1rem;
-            `}
-          >
-            {event.artist}
-          </p>
-
-          {event._rawArtistDescription && (
-            <Collapse>
-              <PortableText blocks={event._rawArtistDescription} />
-            </Collapse>
-          )}
-        </section>
-      </div>
-
-      <div
-        css={css`
           flex-grow: 1;
+          flex-basis: 480px;
           max-width: 480px;
-          margin-right: 200px;
         `}
       >
-        <p
-          aria-hidden="true"
-          role="presentation"
+        <h1
+          className="p"
           css={css`
             margin: 0;
           `}
         >
           {event.title}
-          <br />
-          {event.artist}
-        </p>
+        </h1>
 
         {event.targetAudience.length > 0 && (
           <section>
@@ -238,25 +188,61 @@ const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
           )}
         </section>
 
-        <section>
-          <VisuallyHidden>
-            <h2>Lieu</h2>
-          </VisuallyHidden>
+        {event.venue && (
+          <section>
+            <VisuallyHidden>
+              <h2>Lieu</h2>
+            </VisuallyHidden>
 
-          <p
-            css={css`
-              margin-top: 0;
-            `}
-          >
-            <a href="http://www.maisonpourladanse.ca/">Maison pour la danse</a>
-          </p>
-        </section>
+            <p
+              css={css`
+                margin-top: 0;
+              `}
+            >
+              <a
+                href={`https://www.google.com/maps/place/${encodeURI(
+                  `${event.venue.street},+${event.venue.city},+${event.venue.zip}`
+                )}/`}
+              >
+                {event.venue.name}
+              </a>
+            </p>
+          </section>
+        )}
 
-        <section>
-          <VisuallyHidden>
-            <h2>Prix</h2>
-          </VisuallyHidden>
-        </section>
+        {event.rate && event.rate.length > 0 && (
+          <section>
+            <VisuallyHidden>
+              <h2>Prix</h2>
+            </VisuallyHidden>
+
+            <ul
+              css={css`
+                list-style: none;
+                padding: 0;
+              `}
+            >
+              {event.rate.map(rate => (
+                <li>
+                  {rate._type === "regularRate" && (
+                    <>
+                      {rate.amount}${rate.by && <>/</>}
+                      {rate.by && getByTerm(rate.by)} (
+                      {rate.member ? "membre" : "non-membres"})
+                    </>
+                  )}
+                  {rate._type === "free" && (
+                    <>
+                      {rate.voluntaryContribution
+                        ? "Contribution volontaire"
+                        : "Gratuit"}
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {event._rawAdditionalInformation && (
           <section>
@@ -279,7 +265,11 @@ const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
             <h2>Inscription</h2>
           </VisuallyHidden>
 
-          <p>
+          <p
+            css={css`
+              margin-top: 3em;
+            `}
+          >
             <a
               href="mailto:inscriptions@larteredanse.ca"
               css={css`
@@ -291,6 +281,66 @@ const EventCard = ({ event, hiddenTitle = false, title = null, ...props }) => {
           </p>
         </section>
       </div>
+
+      {!hideDetail && (
+        <div
+          css={css`
+            flex-grow: 999;
+            flex-basis: 0;
+            min-width: 50%;
+            max-width: 1020px;
+          `}
+        >
+          <section
+            css={css`
+              ${hiddenTitle && hideVisually()}
+            `}
+          >
+            <p
+              aria-hidden="true"
+              role="presentation"
+              className="h2 color-orange"
+              css={css`
+                margin: 0 0 1rem;
+              `}
+            >
+              {title ? title : event.title}
+            </p>
+
+            {event._rawDescription && (
+              <Collapse>
+                <PortableText blocks={event._rawDescription} />
+              </Collapse>
+            )}
+          </section>
+
+          <section
+            css={css`
+              margin-top: ${150 / 33}em;
+
+              ${hiddenTitle &&
+                css`
+                  margin-top: 0;
+                `}
+            `}
+          >
+            <p
+              className="h2 color-orange"
+              css={css`
+                margin: 0 0 1rem;
+              `}
+            >
+              {event.artist}
+            </p>
+
+            {event._rawArtistDescription && (
+              <Collapse>
+                <PortableText blocks={event._rawArtistDescription} />
+              </Collapse>
+            )}
+          </section>
+        </div>
+      )}
     </article>
   )
 }
