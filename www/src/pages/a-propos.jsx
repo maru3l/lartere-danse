@@ -37,7 +37,7 @@ const AProposPage = ({ data }) => {
 
           <p className="h2 color-black">
             L’Artère est un catalyseur de rencontres humaines et artistiques,
-            donnant lieu à des expér&shy;imen&shy;ta&shy;tions et des
+            donnant lieu à des expéri&shy;men&shy;ta&shy;tions et des
             réflexions, dans un but d’actua&shy;lisa&shy;tion perm&shy;anente de
             la discipline de l’art de la danse et du mouvement.
           </p>
