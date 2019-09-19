@@ -8,8 +8,9 @@ import "normalize.css"
 import globalStyle from "../../styles/global"
 import { colors, transition } from "../../styles/variables"
 import SiteHeader from "../SiteHeader"
+import SiteFooter from "../SiteFooter/SiteFooter"
 
-const Layout = ({ children, themeColor = "DARK" }) => {
+const Layout = ({ children, themeColor }) => {
   let backgroundColor = colors.Jet
 
   switch (themeColor) {
@@ -45,12 +46,19 @@ const Layout = ({ children, themeColor = "DARK" }) => {
       <SiteHeader themeColor={themeColor} />
 
       <main>{children}</main>
+
+      <SiteFooter themeColor={themeColor} />
     </>
   )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  themeColor: PropTypes.string,
+}
+
+Layout.defaultProps = {
+  themeColor: "DARK",
 }
 
 export default Layout
