@@ -260,7 +260,7 @@ const AProposPage = ({ data }) => {
               <a href="https://www.quebecdanse.org/wp-content/uploads/2018/11/danseqc_plan_dev_v16mars20121.pdf">
                 le Plan de dévelop&shy;pement de la danse professionnelle à
                 Québec
-              </a>
+              </a>{" "}
               en soulignent d’ailleurs l’importance.
             </p>
 
