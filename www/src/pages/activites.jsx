@@ -355,7 +355,7 @@ const ActivitesPage = ({ data }) => {
 
         <section id="session-improvisation-artere">
           <h2>
-            Session d’improvisation <br />
+            Session d’impro&shy;visation <br />
             de L'Artère (SIA)
           </h2>
 
@@ -506,6 +506,18 @@ export const query = graphql`
             name
             street
             zip
+          }
+          rate {
+            ... on SanityFree {
+              voluntaryContribution
+              _type
+            }
+            ... on SanityRegularRate {
+              _type
+              amount
+              by
+              member
+            }
           }
         }
       }
