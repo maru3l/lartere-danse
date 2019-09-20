@@ -59,6 +59,7 @@ const SiteFooter = ({ themeColor }) => {
     <footer
       css={css`
         ${wrapper.bolt("padding")}
+        margin-top: 10em;
 
         ${mediaQuery.greaterThen(breakpoint)} {
           display: grid;
