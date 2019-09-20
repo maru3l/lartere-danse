@@ -94,18 +94,21 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
         css={css`
           display: flex;
           align-items: flex-start;
+          flex-grow: 1;
         `}
       >
         <LogoComponent
           css={css`
             margin: 0;
             display: block;
+            flex-grow: 1;
           `}
         >
           <LogoLartere
             css={css`
               display: block;
               max-width: 876px;
+              margin-right: 3em;
               fill: ${textColor};
               transition: fill ${transition.speed.default}
                 ${transition.curve.default};
