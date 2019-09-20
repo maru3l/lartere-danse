@@ -1,8 +1,9 @@
 // vendors
-import React from "react"
+import React, { useState } from "react"
 import css from "@emotion/css"
 import { colors } from "../../styles/variables"
 import { keyframes } from "@emotion/core"
+import useMobile from "../../hooks/useMobile"
 
 const getColorForAudience = audience => {
   switch (audience) {
@@ -64,6 +65,8 @@ const Event = ({ event }) => {
 }
 
 const Dates = ({ month, year, events = [] }) => {
+  const isMobile = useMobile()
+
   const daysInMonth = new Date(year, month + 1, 0, 0, 0, 0).getUTCDate()
   const firstDayInMonthPosition = new Date(year, month, 1, 0, 0, 0).getUTCDay()
 
@@ -71,81 +74,85 @@ const Dates = ({ month, year, events = [] }) => {
     <>
       {Array(daysInMonth)
         .fill()
-        .map((val, index) => (
-          <div
-            css={css`
-              padding-bottom: 100%;
-              position: relative;
+        .map((val, index) => {
+          const todayEvents = events.filter(event => {
+            const today = new Date(year, month, index + 1, 0, 0, 0)
 
-              ${index === 0 &&
-                css`
-                  grid-column: ${firstDayInMonthPosition + 1};
-                `}
-            `}
-          >
+            return (
+              today.getDate() === event.date.getDate() &&
+              today.getMonth() === event.date.getMonth() &&
+              today.getFullYear() === event.date.getFullYear()
+            )
+          })
+
+          if (todayEvents.length < 1 && isMobile) return <></>
+
+          return (
             <div
               css={css`
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                overflow: hidden;
-                overflow-y: scroll;
-                z-index: 1;
-                height: 100%;
+                padding-bottom: 100%;
+                position: relative;
+
+                ${index === 0 &&
+                  css`
+                    grid-column: ${!isMobile
+                      ? firstDayInMonthPosition + 1
+                      : "1"};
+                  `}
               `}
             >
-              <ul
+              <div
                 css={css`
-                  min-height: 100%;
-                  display: flex;
-                  flex-flow: column;
-                  justify-content: center;
-                  font-size: ${27 / 33}em;
-                  list-style: none;
-                  margin: 0;
-                  padding: 0;
-                  margin-right: 1em;
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  overflow: hidden;
+                  overflow-y: scroll;
+                  z-index: 1;
+                  height: 100%;
                 `}
               >
-                {events
-                  .filter(event => {
-                    const today = new Date(year, month, index + 1, 0, 0, 0)
-
-                    console.log(`${today} === ${event.date}`)
-
-                    return (
-                      today.getDate() === event.date.getDate() &&
-                      today.getMonth() === event.date.getMonth() &&
-                      today.getFullYear() === event.date.getFullYear()
-                    )
-                  })
-                  .map(event => (
+                <ul
+                  css={css`
+                    min-height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    justify-content: center;
+                    font-size: ${27 / 33}em;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    margin-right: 1em;
+                  `}
+                >
+                  {todayEvents.map(event => (
                     <Event event={event} />
                   ))}
-              </ul>
+                </ul>
+              </div>
+
+              <time
+                css={css`
+                  position: absolute;
+                  display: flex;
+                  justify-content: center;
+                  width: 2ch;
+                  color: #000;
+                  margin-left: 0.25em;
+                  font-size: ${94 / 32}em;
+
+                  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+                  font-family: "Adieu";
+                `}
+                dateTime={`${year}-${month + 1}-${index + 1}`}
+              >
+                {index + 1}
+              </time>
             </div>
-
-            <time
-              css={css`
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                width: 2ch;
-                color: #000;
-                margin-left: 0.25em;
-                font-size: ${94 / 32}em;
-
-                /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-                font-family: "Adieu";
-              `}
-              dateTime={`${year}-${month + 1}-${index + 1}`}
-            >
-              {index + 1}
-            </time>
-          </div>
-        ))}
+          )
+        })}
     </>
   )
 }

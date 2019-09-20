@@ -4,6 +4,7 @@ import Dates from "./Dates"
 import css from "@emotion/css"
 import styled from "@emotion/styled"
 import { colors } from "../../styles/variables"
+import mediaQuery from "../../utils/media-query"
 
 const SwitcherButton = styled.button`
   appearance: none;
@@ -49,8 +50,16 @@ const Calendar = ({
     <div
       css={css`
         display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-auto-rows: 1fr;
+
+        ${mediaQuery.lessThen(1024)} {
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-rows: auto 1fr;
+        }
+
+        ${mediaQuery.greaterThen(1024)} {
+          grid-template-columns: repeat(7, 1fr);
+          grid-auto-rows: 1fr;
+        }
       `}
     >
       <div
