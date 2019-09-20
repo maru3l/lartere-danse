@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 
 const windowWidth = () => {
-  return window !== undefined ? window.innerWidth : 0
+  if (typeof window === undefined) return 0
+
+  return window.innerWidth
 }
 
 export default (breakpoint = 1024) => {
