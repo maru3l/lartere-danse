@@ -12,6 +12,7 @@ import EventCard from "../components/EventCard/EventCard"
 import Calendar from "../components/Calendar"
 import { between } from "polished"
 import mediaQuery from "../utils/media-query"
+import { colors } from "../styles/variables"
 
 const getDayInt = day => {
   switch (day.toLowerCase()) {
@@ -239,6 +240,64 @@ const ActivitesPage = ({ data }) => {
             </p>
           </div>
 
+          <ul
+            css={css`
+              list-style: none;
+              padding: 0;
+              margin: 0 0 5em 0;
+
+              li:before {
+                width: 48px;
+                height: 24px;
+                content: "";
+                display: inline-block;
+              }
+            `}
+          >
+            <li
+              css={css`
+                :before {
+                  background-color: ${colors.PortlandOrange};
+                }
+              `}
+            >
+              {" "}
+              = Professionnel·le·s des arts de la danse et du mouvement
+            </li>
+            <li
+              css={css`
+                :before {
+                  background-color: ${colors.PaleCerulean};
+                }
+              `}
+            >
+              {" "}
+              = Artistes des arts de la scène (théâtre, musique, perfomance,
+              cinéma)
+            </li>
+            <li
+              css={css`
+                :before {
+                  background-color: ${colors.canary};
+                }
+              `}
+            >
+              {" "}
+              = Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
+              etc.)
+            </li>
+            <li
+              css={css`
+                :before {
+                  background-color: ${colors.grey};
+                }
+              `}
+            >
+              {" "}
+              = Grand public
+            </li>
+          </ul>
+
           <Calendar switcher events={calendarEvents} />
         </section>
 
@@ -309,6 +368,13 @@ const ActivitesPage = ({ data }) => {
                 css={css`
                   list-style: none;
                   padding: 0;
+
+                  li:first-child article {
+                    margin-top: 0px;
+                  }
+                  li:last-child article {
+                    margin-bottom: 0px;
+                  }
                 `}
               >
                 {masterClasses.map(event => (
@@ -337,6 +403,13 @@ const ActivitesPage = ({ data }) => {
                 css={css`
                   list-style: none;
                   padding: 0;
+
+                  li:first-child article {
+                    margin-top: 0px;
+                  }
+                  li:last-child article {
+                    margin-bottom: 0px;
+                  }
                 `}
               >
                 {creativeWorkshops.map(event => (
@@ -361,7 +434,7 @@ const ActivitesPage = ({ data }) => {
 
           <p
             css={css`
-              max-width: 50%;
+              max-width: 960px;
             `}
           >
             Comme suite des ateliers de création offerts par L’Artère, le public
@@ -384,6 +457,11 @@ const ActivitesPage = ({ data }) => {
                     auto-fill,
                     minmax(290px, 480px)
                   );
+
+                  /* stylelint-disable-next-line no-descending-specificity */
+                  article {
+                    margin: 0;
+                  }
                 `}
               >
                 {creativeWorkshopFieldTrip.map(event => (
@@ -444,6 +522,13 @@ const ActivitesPage = ({ data }) => {
                 css={css`
                   list-style: none;
                   padding: 0;
+
+                  li:first-child article {
+                    margin-top: 0px;
+                  }
+                  li:last-child article {
+                    margin-bottom: 0px;
+                  }
                 `}
               >
                 {ImprovisationSession.map(event => (
@@ -461,7 +546,7 @@ const ActivitesPage = ({ data }) => {
 
           <div
             css={css`
-              max-width: 50%;
+              max-width: 960px;
             `}
           >
             <p>
@@ -494,6 +579,11 @@ const ActivitesPage = ({ data }) => {
                     auto-fill,
                     minmax(290px, 480px)
                   );
+
+                  /* stylelint-disable-next-line no-descending-specificity */
+                  article {
+                    margin: 0;
+                  }
                 `}
               >
                 {CommonPlaces.map(event => (
@@ -524,6 +614,11 @@ const ActivitesPage = ({ data }) => {
                     auto-fill,
                     minmax(290px, 480px)
                   );
+
+                  /* stylelint-disable-next-line no-descending-specificity */
+                  article {
+                    margin: 0;
+                  }
                 `}
               >
                 {talk.map(event => (
