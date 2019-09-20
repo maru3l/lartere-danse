@@ -102,6 +102,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
             margin: 0;
             display: block;
             flex-grow: 1;
+            font-size: inherit;
           `}
         >
           <LogoLartere
