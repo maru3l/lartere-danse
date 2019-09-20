@@ -105,11 +105,7 @@ const IndexPage = ({ data }) => {
             ${mediaQuery.greaterThen(475)} {
               grid-column: 1 / span 1;
               grid-row: 2 / span 1;
-              margin-bottom: ${(378 / 1920) * 100}vw;
-            }
-
-            ${mediaQuery.greaterThen(1920)} {
-              margin-bottom: 378px;
+              color: ${colors.text};
             }
           `}
         >
@@ -154,7 +150,8 @@ const IndexPage = ({ data }) => {
               width: ${(1280 / 1920) * 100}vw;
               grid-column: 1 / span 1;
               grid-row: 3 / span 1;
-              margin-top: 0;
+              margin-bottom: 0;
+              align-self: end;
             }
           `}
         >
@@ -169,7 +166,12 @@ const IndexPage = ({ data }) => {
         </p>
       </section>
 
-      <section id="activites">
+      <section
+        id="activites"
+        css={css`
+          ${wrapper.bolt()}
+        `}
+      >
         <div className="h3">
           <p>
             Calendrier des activitées pour les{" "}
