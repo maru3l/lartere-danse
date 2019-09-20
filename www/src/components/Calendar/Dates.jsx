@@ -4,6 +4,7 @@ import css from "@emotion/css"
 import { colors } from "../../styles/variables"
 import { keyframes } from "@emotion/core"
 import useMobile from "../../hooks/useMobile"
+import { Link } from "gatsby"
 
 const getColorForAudience = audience => {
   switch (audience) {
@@ -46,7 +47,7 @@ const Event = ({ event }) => {
         margin-top: 0.5em;
       `}
     >
-      <a
+      <Link
         css={css`
           text-decoration: none;
           animation: ${animateLink} ${delta * 0.25}s infinite;
@@ -56,10 +57,10 @@ const Event = ({ event }) => {
             color: ${colors.pink};
           }
         `}
-        href={`/activites#${event.slug}`}
+        to={`/activites#${event.slug}`}
       >
         {event.title}
-      </a>
+      </Link>
     </li>
   )
 }
