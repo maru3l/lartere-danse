@@ -8,6 +8,8 @@ import { graphql } from "gatsby"
 import { colors } from "../styles/variables"
 import wrapper from "../utils/wrapper"
 import PortableText from "../components/PortableText/PortableText"
+import mediaQuery from "../utils/media-query"
+import { between } from "polished"
 
 const RessourcesPage = ({ data }) => {
   const ressources = data.ressources.group || []
@@ -53,6 +55,18 @@ const RessourcesPage = ({ data }) => {
                 list-style: none;
                 padding: 0;
                 margin: 0;
+
+                li {
+                  margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
+
+                  :last-child {
+                    margin-bottom: 0;
+                  }
+
+                  ${mediaQuery.greaterThen(1920)} {
+                    margin-bottom: 0px;
+                  }
+                }
 
                 a {
                   text-decoration: none;

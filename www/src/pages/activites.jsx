@@ -10,6 +10,8 @@ import wrapper from "../utils/wrapper"
 import { graphql } from "gatsby"
 import EventCard from "../components/EventCard/EventCard"
 import Calendar from "../components/Calendar"
+import { between } from "polished"
+import mediaQuery from "../utils/media-query"
 
 const getDayInt = day => {
   switch (day.toLowerCase()) {
@@ -149,6 +151,20 @@ const ActivitesPage = ({ data }) => {
               list-style: none;
               padding: 0;
 
+              li {
+                font-size: ${between("25px", "96px", "375px", "1920px")};
+                margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
+
+                :last-child {
+                  margin-bottom: 0;
+                }
+
+                ${mediaQuery.greaterThen(1920)} {
+                  font-size: 96px;
+                  margin-bottom: 0px;
+                }
+              }
+
               a {
                 text-decoration: none;
               }
@@ -212,7 +228,8 @@ const ActivitesPage = ({ data }) => {
             <p>
               Activités ouvertes aux{" "}
               <span className="color-canary">
-                bougeur·se·s expérimenté·e·s(cirque, arts martiaux, danse, etc.)
+                bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
+                etc.)
               </span>{" "}
               <span className="color-pale-cerulean">
                 aux artistes des arts de la scène (théâtre, musique,
