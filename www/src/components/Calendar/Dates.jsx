@@ -91,6 +91,7 @@ const Dates = ({ month, year, events = [] }) => {
                 bottom: 0;
                 left: 0;
                 overflow: hidden;
+                overflow-y: scroll;
                 z-index: 1;
                 height: 100%;
               `}
