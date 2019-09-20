@@ -351,6 +351,32 @@ const ActivitesPage = ({ data }) => {
             est convié à une présentation informelle dévoilant le travail
             effectué par les participant·e·s.
           </p>
+
+          {creativeWorkshopFieldTrip.length > 0 && (
+            <section>
+              <VisuallyHidden>
+                <h3>Sorties d'ateliers de création à venir</h3>
+              </VisuallyHidden>
+              <ul
+                css={css`
+                  display: grid;
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                  grid-template-columns: repeat(
+                    auto-fill,
+                    minmax(290px, 480px)
+                  );
+                `}
+              >
+                {creativeWorkshopFieldTrip.map(event => (
+                  <li>
+                    <EventCard event={event} hiddenTitle hideDetail />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </section>
 
         <section id="session-improvisation-artere">
@@ -416,23 +442,81 @@ const ActivitesPage = ({ data }) => {
         <section id="lieux-communs">
           <h2>Lieux communs</h2>
 
-          <p>
-            L'Artère, Jérémie Aubry et Etienne Lambert convient le grand public
-            à une soirée où mots et musique se côtoient et s’entrelacent pour
-            permettre à chacun·e d’improviser ou d’être témoin des rencontres
-            qui se tissent tout au long de la soirée.
-          </p>
+          <div
+            css={css`
+              max-width: 50%;
+            `}
+          >
+            <p>
+              L'Artère, Jérémie Aubry et Etienne Lambert convient le grand
+              public à une soirée où mots et musique se côtoient et
+              s’entrelacent pour permettre à chacun·e d’improviser ou d’être
+              témoin des rencontres qui se tissent tout au long de la soirée.
+            </p>
 
-          <p>
-            Que vous soyez spectateur·rice ou acteur·rice, passif·ve ou
-            actif·ve, la table sera mise pour que vous puissiez donner libre
-            cours à vos élans créatifs! Nous acceptons la présence de tou·te·s
-            créateur·rice·s, peu importe la discipline.
-          </p>
+            <p>
+              Que vous soyez spectateur·rice ou acteur·rice, passif·ve ou
+              actif·ve, la table sera mise pour que vous puissiez donner libre
+              cours à vos élans créatifs! Nous acceptons la présence de tou·te·s
+              créateur·rice·s, peu importe la discipline.
+            </p>
+          </div>
+
+          {CommonPlaces.length > 0 && (
+            <section>
+              <VisuallyHidden>
+                <h3>Sorties d'ateliers de création à venir</h3>
+              </VisuallyHidden>
+              <ul
+                css={css`
+                  display: grid;
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                  grid-template-columns: repeat(
+                    auto-fill,
+                    minmax(290px, 480px)
+                  );
+                `}
+              >
+                {CommonPlaces.map(event => (
+                  <li>
+                    <EventCard event={event} hiddenTitle hideDetail />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </section>
 
         <section id="causeries">
           <h2>Causeries / 5 à 7</h2>
+
+          {talk.length > 0 && (
+            <section>
+              <VisuallyHidden>
+                <h3>Sorties d'ateliers de création à venir</h3>
+              </VisuallyHidden>
+              <ul
+                css={css`
+                  display: grid;
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+                  grid-template-columns: repeat(
+                    auto-fill,
+                    minmax(290px, 480px)
+                  );
+                `}
+              >
+                {talk.map(event => (
+                  <li>
+                    <EventCard event={event} hiddenTitle hideDetail />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </section>
       </article>
     </Layout>
