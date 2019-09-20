@@ -13,51 +13,18 @@ import Calendar from "../components/Calendar"
 import { between } from "polished"
 import mediaQuery from "../utils/media-query"
 import { colors } from "../styles/variables"
+import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 
-const getDayInt = day => {
-  switch (day.toLowerCase()) {
-    case "sunday":
-    case "dimanche":
-      return 0
-    case "monday":
-    case "lundi":
-      return 1
-    case "tuesday":
-    case "mardi":
-      return 2
-    case "wednesday":
-    case "mercredi":
-      return 3
-    case "thursday":
-    case "jeudi":
-      return 4
-    case "friday":
-    case "vendredi":
-      return 5
-    case "saturday":
-    case "samedi":
-      return 6
-    default:
-      return day
-  }
-}
+const now = new Date()
 
-const betweenDate = (from, to, day = []) => {
-  const dates = []
-  const currentDate = new Date(`${from}T00:00:00`)
-  const toDate = new Date(`${to}T00:00:00`)
+const filterIfStillAvailable = event => {
+  const oldest = event.date.reduce((acc, cur) =>
+    Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur
+  )
 
-  const dayInt = day.map(d => getDayInt(d))
-
-  while (currentDate <= toDate) {
-    if (day.length < 1 || dayInt.includes(currentDate.getDay())) {
-      dates.push(new Date(currentDate.toISOString()))
-    }
-
-    currentDate.setDate(currentDate.getDate() + 1)
-  }
-
-  return dates
+  return (
+    Date.parse(now.getFullYear(), now.getMonth(), 1) < Date.parse(oldest.to)
+  )
 }
 
 const ActivitesPage = ({ data }) => {
@@ -119,7 +86,10 @@ const ActivitesPage = ({ data }) => {
     const dates = cur.date
       .reduce((datesAcc, date) => {
         const { day = [] } = date
-        return [...datesAcc, ...betweenDate(date.from, date.to, day)]
+        return [
+          ...datesAcc,
+          ...getWeeklyDateBetweenDate(date.from, date.to, day),
+        ]
       }, [])
       .map(date => {
         return {
@@ -453,6 +423,7 @@ const ActivitesPage = ({ data }) => {
                   list-style: none;
                   margin: 0;
                   padding: 0;
+                  justify-content: space-between;
                   grid-template-columns: repeat(
                     auto-fill,
                     minmax(290px, 480px)
@@ -575,6 +546,7 @@ const ActivitesPage = ({ data }) => {
                   list-style: none;
                   margin: 0;
                   padding: 0;
+                  justify-content: space-between;
                   grid-template-columns: repeat(
                     auto-fill,
                     minmax(290px, 480px)
@@ -610,6 +582,7 @@ const ActivitesPage = ({ data }) => {
                   list-style: none;
                   margin: 0;
                   padding: 0;
+                  justify-content: space-between;
                   grid-template-columns: repeat(
                     auto-fill,
                     minmax(290px, 480px)
