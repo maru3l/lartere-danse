@@ -1,7 +1,7 @@
 // vendors
 import React from "react"
 import css from "@emotion/css"
-import { fonts, colors } from "../../styles/variables"
+import { colors } from "../../styles/variables"
 import { keyframes } from "@emotion/core"
 
 const getColorForAudience = audience => {
@@ -127,12 +127,17 @@ const Dates = ({ month, year, events = [] }) => {
             </div>
 
             <time
-              className="h2"
               css={css`
                 position: absolute;
+                display: flex;
+                justify-content: center;
+                width: 2ch;
                 color: #000;
                 margin-left: 0.25em;
-                font-family: ${fonts.accent};
+                font-size: ${94 / 32}em;
+
+                /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+                font-family: "Adieu";
               `}
               dateTime={`${year}-${month + 1}-${index + 1}`}
             >
