@@ -47,7 +47,7 @@ const EventCard = ({
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin: ${285 / 33}em 0;
+        margin: ${485 / 33}em 0;
       `}
       {...props}
     >
