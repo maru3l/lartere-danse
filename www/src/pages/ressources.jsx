@@ -10,6 +10,7 @@ import wrapper from "../utils/wrapper"
 import PortableText from "../components/PortableText/PortableText"
 import mediaQuery from "../utils/media-query"
 import { between } from "polished"
+import Seo from "../components/Seo"
 
 const RessourcesPage = ({ data }) => {
   const ressources = data.ressources.group || []
@@ -29,6 +30,7 @@ const RessourcesPage = ({ data }) => {
 
   return (
     <Layout themeColor="ORANGE">
+      <Seo title="Ressources" />
       <article
         css={css`
           ${wrapper.bolt()}

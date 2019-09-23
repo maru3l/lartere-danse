@@ -6,10 +6,12 @@ import css from "@emotion/css"
 import wrapper from "../utils/wrapper"
 import TextColumns from "../components/TextColumns/TextColumns"
 import { colors, transition } from "../styles/variables"
+import Seo from "../components/Seo"
 
 const premiereOvationPage = () => {
   return (
     <Layout>
+      <Seo title="Première ovation" />
       <article
         css={css`
           ${wrapper.bolt()}

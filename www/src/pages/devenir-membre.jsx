@@ -9,6 +9,7 @@ import Layout from "../components/Layout"
 import TextColumns from "../components/TextColumns/TextColumns"
 import wrapper from "../utils/wrapper"
 import PortableText from "../components/PortableText/PortableText"
+import SEO from "../components/Seo/Seo"
 
 const DevenirMembrePage = ({ data }) => {
   const honoraryMembers = (data.honoraryMembers.edges || []).map(
@@ -17,6 +18,7 @@ const DevenirMembrePage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Devenir membre" />
       <article
         css={css`
           ${wrapper.bolt()}

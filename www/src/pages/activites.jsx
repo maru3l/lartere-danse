@@ -14,6 +14,7 @@ import { between } from "polished"
 import mediaQuery from "../utils/media-query"
 import { colors } from "../styles/variables"
 import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
+import SEO from "../components/Seo/Seo"
 
 const now = new Date()
 
@@ -105,6 +106,7 @@ const ActivitesPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title="Activités" />
       <article
         css={css`
           ${wrapper.bolt()}

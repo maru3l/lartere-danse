@@ -12,6 +12,7 @@ import TeamGrid from "../components/TeamGrid/TeamGrid"
 import { colors } from "../styles/variables"
 import mediaQuery from "../utils/media-query"
 import PortableText from "../components/PortableText/PortableText"
+import SEO from "../components/Seo/Seo"
 
 const AProposPage = ({ data }) => {
   const imgAboutIntro = data.imgAboutIntro.childImageSharp.fluid
@@ -23,6 +24,7 @@ const AProposPage = ({ data }) => {
 
   return (
     <Layout themeColor="ORANGE">
+      <SEO title="À propos" />
       <article
         css={css`
           ${wrapper.bolt()}
