@@ -155,6 +155,10 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
             opacity: 0;
             pointer-events: none;
 
+            ::-webkit-scrollbar {
+              display: none;
+            }
+
             transition: opacity ${transition.speed.default}
               ${transition.curve.default};
 
@@ -246,6 +250,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                         transition: color ${transition.speed.default}
                           ${transition.curve.default};
 
+                        /* stylelint-disable-next-line */
                         :hover {
                           color: ${hoverColor};
                           transition: color ${transition.speed.default}
@@ -281,6 +286,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                   transition: fill ${transition.speed.default}
                     ${transition.curve.default};
 
+                  /* stylelint-disable-next-line */
                   :hover {
                     fill: ${hoverColor};
                   }
