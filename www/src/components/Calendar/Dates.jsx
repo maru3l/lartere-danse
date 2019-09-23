@@ -80,9 +80,9 @@ const Dates = ({ month, year, events = [] }) => {
             const today = new Date(year, month, index + 1, 0, 0, 0)
 
             return (
-              today.getDate() === event.date.getDate() &&
-              today.getMonth() === event.date.getMonth() &&
-              today.getFullYear() === event.date.getFullYear()
+              today.getUTCDate() === event.date.getUTCDate() &&
+              today.getUTCMonth() === event.date.getUTCMonth() &&
+              today.getUTCFullYear() === event.date.getUTCFullYear()
             )
           })
 
