@@ -1,5 +1,5 @@
 // vendors
-import React, { useState } from "react"
+import React from "react"
 import css from "@emotion/css"
 import { colors } from "../../styles/variables"
 import { keyframes } from "@emotion/core"
@@ -113,6 +113,11 @@ const Dates = ({ month, year, events = [] }) => {
                   overflow-y: scroll;
                   z-index: 1;
                   height: 100%;
+
+                  /* stylelint-disable-next-line */
+                  ::-webkit-scrollbar {
+                    display: none;
+                  }
                 `}
               >
                 <ul
