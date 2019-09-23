@@ -22,6 +22,12 @@ export default css`
     font-family: ${fonts.body};
     scroll-behavior: smooth;
     background-color: ${colors.background};
+
+    scroll-padding-top: 250px;
+
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
   }
 
   body {
