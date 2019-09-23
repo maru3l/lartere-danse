@@ -32,26 +32,31 @@ const SiteFooter = ({ themeColor }) => {
   `)
 
   let textColor = colors.Isabelline
+  let logoColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
 
   switch (themeColor) {
     case "ORANGE":
       textColor = colors.Isabelline
+      logoColor = colors.Isabelline
       hoverColor = colors.Jet
       break
 
     case "DARK":
       textColor = colors.PortlandOrange
+      logoColor = colors.Isabelline
       hoverColor = colors.Isabelline
       break
 
     case "LIGHT":
       textColor = colors.PortlandOrange
+      logoColor = colors.Jet
       hoverColor = colors.Jet
       break
 
     default:
       textColor = colors.PortlandOrange
+      logoColor = colors.Isabelline
       hoverColor = colors.Isabelline
       break
   }
@@ -229,7 +234,7 @@ const SiteFooter = ({ themeColor }) => {
           }
 
           svg {
-            fill: ${textColor};
+            fill: ${logoColor};
           }
         `}
       >
