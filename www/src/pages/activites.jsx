@@ -218,11 +218,29 @@ const ActivitesPage = ({ data }) => {
               padding: 0;
               margin: 0 0 5em 0;
 
+              li {
+                display: flex;
+              }
+
               li:before {
+                order: 0;
+                flex-basis: 48px;
+                flex-shrink: 0;
                 width: 48px;
                 height: 24px;
                 content: "";
                 display: inline-block;
+              }
+
+              li:after {
+                order: 1;
+                content: " = ";
+                display: inline-block;
+                padding: 0 0.5ch;
+              }
+
+              span {
+                order: 2;
               }
             `}
           >
@@ -234,7 +252,9 @@ const ActivitesPage = ({ data }) => {
               `}
             >
               {" "}
-              = Professionnel·le·s des arts de la danse et du mouvement
+              <span>
+                Professionnel·le·s des arts de la danse et du mouvement
+              </span>
             </li>
             <li
               css={css`
@@ -244,8 +264,10 @@ const ActivitesPage = ({ data }) => {
               `}
             >
               {" "}
-              = Artistes des arts de la scène (théâtre, musique, perfomance,
-              cinéma)
+              <span>
+                Artistes des arts de la scène (théâtre, musique, perfomance,
+                cinéma)
+              </span>
             </li>
             <li
               css={css`
@@ -255,8 +277,10 @@ const ActivitesPage = ({ data }) => {
               `}
             >
               {" "}
-              = Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
-              etc.)
+              <span>
+                Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
+                etc.)
+              </span>
             </li>
             <li
               css={css`
@@ -266,7 +290,7 @@ const ActivitesPage = ({ data }) => {
               `}
             >
               {" "}
-              = Grand public
+              <span>Grand public</span>
             </li>
           </ul>
 
