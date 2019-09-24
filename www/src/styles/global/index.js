@@ -23,8 +23,6 @@ export default css`
     scroll-behavior: smooth;
     background-color: ${colors.background};
 
-    scroll-padding-top: 250px;
-
     @media (prefers-reduced-motion: reduce) {
       scroll-behavior: auto;
     }
@@ -162,5 +160,14 @@ export default css`
     break-inside: avoid; /* Chrome, Safari */
     page-break-inside: avoid; /* Theoretically FF 20+ */
     display: table; /* Actually FF 20+ */
+  }
+
+  /* Fix for prevent section not going under sticky menu */
+  *[id]:before {
+    display: block;
+    content: " ";
+    margin-top: -250px;
+    height: 250px;
+    visibility: hidden;
   }
 `
