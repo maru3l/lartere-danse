@@ -1,11 +1,10 @@
 // vendors
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import { Match } from "@reach/router"
 import LogoLartere from "../../images/LogoLartere"
 import wrapper from "../../utils/wrapper"
-import mediaQuery from "../../utils/media-query"
 import { colors, transition, zIndices } from "../../styles/variables"
 import IconFacebook from "../../images/IconFacebook"
 import useScroll from "../../hooks/useScroll"
