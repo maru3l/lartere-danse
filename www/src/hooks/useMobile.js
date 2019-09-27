@@ -8,11 +8,20 @@ const windowWidth = () => {
 
 export default (breakpoint = 1024) => {
   const [isMobile, setIsMobile] = useState(windowWidth() < breakpoint)
+  let ticking = false
+  let lastKnownWindowWidth = 0
 
   const handleResize = () => {
-    const width = windowWidth()
+    lastKnownWindowWidth = windowWidth()
 
-    setIsMobile(width < breakpoint)
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        setIsMobile(lastKnownWindowWidth < breakpoint)
+        ticking = false
+      })
+
+      ticking = true
+    }
   }
 
   useEffect(() => {
