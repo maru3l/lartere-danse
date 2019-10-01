@@ -9,8 +9,11 @@ import { colors, transition, zIndices } from "../../styles/variables"
 import IconFacebook from "../../images/IconFacebook"
 import useScroll from "../../hooks/useScroll"
 import useMobile from "../../hooks/useMobile"
+import { between } from "polished"
+import mediaQuery from "../../utils/media-query"
 
 const breakpoint = 1024
+const viewBreak = 250
 
 const LogoComponent = ({ children, ...rests }) => (
   <Match path="/">
@@ -30,7 +33,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
   const [open, setOpen] = useState(false)
   const scroll = useScroll()
   const isMobile = useMobile(breakpoint)
-  const isOnTop = !(scroll.y > 250)
+  const isOnTop = !(scroll.y > viewBreak)
 
   let textColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
@@ -45,7 +48,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
 
     case "DARK":
       textColor = colors.Isabelline
-      hoverColor = colors.PortlandOrange
+      hoverColor = colors.pink
       background = colors.Jet
       break
 
@@ -85,7 +88,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
           width: 100vw;
           box-sizing: border-box;
           ${wrapper.bolt("padding")}
-          padding-top: 1em;
+          padding-top: 1rem;
           padding-bottom: 1em;
           top: 0;
           z-index: ${zIndices.sticky};
@@ -94,9 +97,13 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
           ${!isMobile &&
             isOnTop &&
             css`
-              padding-top: ${96 / 33}rem;
               display: flex;
               justify-content: space-between;
+            `}
+
+          ${!isMobile &&
+            css`
+              padding-top: ${96 / 33}rem;
             `}
         `}
       >
@@ -114,14 +121,6 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
               flex-grow: 1;
               font-size: inherit;
               transform-origin: top left;
-
-              transition: transform 1s ${transition.curve.default};
-
-              ${!isMobile &&
-                !isOnTop &&
-                css`
-                  transform: scale(0.75);
-                `}
             `}
           >
             <LogoLartere
@@ -165,7 +164,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
               css`
                 ${wrapper.bolt("padding")}
                 position: fixed;
-                display: none;
+                display: grid;
                 grid-template-rows: 1fr auto 1fr;
                 padding-top: 1em;
                 padding-bottom: 1em;
@@ -182,15 +181,25 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                   display: none;
                 }
 
-                transition: opacity ${transition.speed.default}
-                  ${transition.curve.default};
+                ${!isMobile &&
+                  css`
+                    padding-top: ${96 / 33}rem;
+                  `}
 
                 ${open &&
                   css`
                     display: grid;
                     opacity: 1;
                     pointer-events: auto;
+                    transition: opacity ${transition.speed.default}
+                      ${transition.curve.default};
                   `}
+              `}
+
+            ${isMobile &&
+              css`
+                transition: opacity ${transition.speed.default}
+                  ${transition.curve.default};
               `}
           `}
         >
@@ -270,6 +279,33 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                         grid-column: 1;
                       }
                     `}
+
+                    ${!isMobile &&
+                      !isOnTop &&
+                      css`
+                        font-weight: 900;
+                        margin-top: 0;
+                        font-size: ${between(
+                          "25px",
+                          "96px",
+                          "375px",
+                          "1920px"
+                        )};
+                        margin-bottom: ${between(
+                          "12.5px",
+                          "0px",
+                          "375px",
+                          "1920px"
+                        )};
+
+                        :last-child {
+                          margin-bottom: 0;
+                        }
+
+                        ${mediaQuery.greaterThen(1920)} {
+                          font-size: 96px;
+                        }
+                      `}
                 }
               `}
             >
