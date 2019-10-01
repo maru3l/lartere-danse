@@ -7,7 +7,9 @@ const windowWidth = () => {
 }
 
 export default (breakpoint = 1024) => {
-  const [isMobile, setIsMobile] = useState(windowWidth() < breakpoint)
+  const [isMobile, setIsMobile] = useState(
+    windowWidth() ? windowWidth() < breakpoint : null
+  )
   let ticking = false
   let lastKnownWindowWidth = 0
 
@@ -16,7 +18,9 @@ export default (breakpoint = 1024) => {
 
     if (!ticking) {
       window.requestAnimationFrame(function() {
-        setIsMobile(lastKnownWindowWidth < breakpoint)
+        setIsMobile(
+          lastKnownWindowWidth ? lastKnownWindowWidth < breakpoint : null
+        )
         ticking = false
       })
 

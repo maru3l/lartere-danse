@@ -32,8 +32,8 @@ const LogoComponent = ({ children, ...rests }) => (
 const SiteHeader = ({ themeColor = "DARK" }) => {
   const [open, setOpen] = useState(false)
   const scroll = useScroll()
-  const isMobile = useMobile(breakpoint)
-  const isOnTop = !(scroll.y > viewBreak)
+  const isMobile = useMobile(breakpoint) || false
+  const isOnTop = scroll ? !(scroll.y > viewBreak) : false
 
   let textColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
