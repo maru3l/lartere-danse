@@ -223,17 +223,14 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
           <div
             css={css`
               text-align: right;
+              grid-row: 1 / span 1;
 
-              ${(isMobile || !isOnTop) &&
-                css`
-                  grid-row: 1 / span 1;
-                `}
-
-              ${!isMobile &&
-                isOnTop &&
-                css`
-                  display: none;
-                `}
+              ${mediaQuery.greaterThen(breakpoint)} {
+                ${isOnTop &&
+                  css`
+                    display: none;
+                  `}
+              }
             `}
           >
             <button
