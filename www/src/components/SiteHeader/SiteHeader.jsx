@@ -35,6 +35,9 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
   const isMobile = useMobile(breakpoint) || false
   const isOnTop = scroll ? !(scroll.y > viewBreak) : false
 
+  console.log(`isOnTop: ${isOnTop}`)
+  console.log(`isMobile: ${isMobile}`)
+
   let textColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
   let background = colors.Jet
@@ -130,6 +133,10 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                 fill: ${textColor};
                 transition: fill ${transition.speed.default}
                   ${transition.curve.default};
+
+                ${mediaQuery.greaterThen(1024)} {
+                  width: ${between("400px", "876px", "1024px", "1920px")};
+                }
               `}
             />
           </LogoComponent>
@@ -161,53 +168,56 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
 
         <div
           css={css`
-            ${(isMobile || !isOnTop) &&
-              css`
-                ${wrapper.bolt("padding")}
-                position: fixed;
-                display: grid;
-                grid-template-rows: 1fr auto 1fr;
-                padding-top: 1em;
-                padding-bottom: 1em;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                overflow: scroll;
-                background-color: ${background};
-                opacity: 0;
-                pointer-events: none;
-
-                ::-webkit-scrollbar {
-                  display: none;
-                }
-
-                ${mediaQuery.greaterThen(breakpoint)} {
-                  /* padding-top: ${96 / 33}rem; */
-                  padding-top: ${123 / 33}rem;
-                }
-
-                ${open &&
-                  css`
-                    display: grid;
-                    opacity: 1;
-                    pointer-events: auto;
-                    transition: opacity ${transition.speed.default}
-                      ${transition.curve.default};
-                  `}
-              `}
+            ::-webkit-scrollbar {
+              display: none;
+            }
+            padding-top: 1em;
 
             ${mediaQuery.lessThen(breakpoint)} {
-              transition: opacity ${transition.speed.default}
-                ${transition.curve.default};
+              ${wrapper.bolt("padding")}
+              position: fixed;
+              display: grid;
+              grid-template-rows: 1fr auto 1fr;
+              padding-bottom: 1em;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              overflow: scroll;
+              background-color: ${background};
+              opacity: 0;
+              pointer-events: none;
             }
 
             ${mediaQuery.greaterThen(breakpoint)} {
-              ${isOnTop &&
+              padding-top: ${27 / 33}rem;
+              ${!isOnTop &&
                 css`
-                  padding-top: ${27 / 33}rem;
+                  padding-top: ${123 / 33}rem;
+                  ${wrapper.bolt("padding")}
+                  position: fixed;
+                  display: grid;
+                  grid-template-rows: 1fr auto 1fr;
+                  padding-bottom: 1em;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  overflow: scroll;
+                  background-color: ${background};
+                  opacity: 0;
+                  pointer-events: none;
                 `}
             }
+
+            ${open &&
+              css`
+                display: grid;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                transition: opacity ${transition.speed.default}
+                  ${transition.curve.default};
+              `}
           `}
         >
           <div
@@ -246,7 +256,12 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
             css={css`
               display: flex;
 
-              ${(isMobile || !isOnTop) &&
+              ${mediaQuery.lessThen(breakpoint)} {
+                grid-row: 2 / span 1;
+                flex-flow: column;
+              }
+
+              ${!isOnTop &&
                 css`
                   grid-row: 2 / span 1;
                   flex-flow: column;
