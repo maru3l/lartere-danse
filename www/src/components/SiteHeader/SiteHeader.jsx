@@ -32,7 +32,7 @@ const LogoComponent = ({ children, ...rests }) => (
 const SiteHeader = ({ themeColor = "DARK" }) => {
   const [open, setOpen] = useState(false)
   const scroll = useScroll()
-  const isMobile = useMobile(breakpoint) || false
+  const isMobile = useMobile(breakpoint)
   const isOnTop = !(scroll.y > viewBreak)
 
   let textColor = colors.Isabelline
@@ -94,17 +94,15 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
           z-index: ${zIndices.sticky};
           height: auto;
 
-          ${!isMobile &&
-            isOnTop &&
-            css`
-              display: flex;
-              justify-content: space-between;
-            `}
+          ${mediaQuery.greaterThen(breakpoint)} {
+            padding-top: ${96 / 33}rem;
 
-          ${!isMobile &&
-            css`
-              padding-top: ${96 / 33}rem;
-            `}
+            ${isOnTop &&
+              css`
+                display: flex;
+                justify-content: space-between;
+              `}
+          }
         `}
       >
         <div
@@ -147,16 +145,14 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
               cursor: pointer;
               color: ${textColor};
 
-              ${!isMobile &&
-                css`
-                  margin-top: ${27 / 33}rem;
-                `}
+              ${mediaQuery.greaterThen(breakpoint)} {
+                margin-top: ${27 / 33}rem;
 
-              ${!isMobile &&
-                isOnTop &&
-                css`
-                  display: none;
-                `}
+                ${isOnTop &&
+                  css`
+                    display: none;
+                  `}
+              }
             `}
           >
             Menu
@@ -186,11 +182,10 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                   display: none;
                 }
 
-                ${!isMobile &&
-                  css`
-                    /* padding-top: ${96 / 33}rem; */
-                    padding-top: ${123 / 33}rem;
-                  `}
+                ${mediaQuery.greaterThen(breakpoint)} {
+                  /* padding-top: ${96 / 33}rem; */
+                  padding-top: ${123 / 33}rem;
+                }
 
                 ${open &&
                   css`
@@ -202,20 +197,17 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                   `}
               `}
 
-            ${isMobile &&
-              css`
-                transition: opacity ${transition.speed.default}
-                  ${transition.curve.default};
-              `}
+            ${mediaQuery.lessThen(breakpoint)} {
+              transition: opacity ${transition.speed.default}
+                ${transition.curve.default};
+            }
 
-            ${!isMobile &&
-              isOnTop &&
-              css`
-                padding-top: ${27 / 33}rem;
-              `}
-
-
-
+            ${mediaQuery.greaterThen(breakpoint)} {
+              ${isOnTop &&
+                css`
+                  padding-top: ${27 / 33}rem;
+                `}
+            }
           `}
         >
           <div
@@ -267,14 +259,15 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                 margin: 0;
                 padding: 0;
 
-                ${!isMobile &&
-                  isOnTop &&
-                  css`
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    align-items: start;
-                    grid-auto-flow: column dense;
-                  `}
+                ${mediaQuery.greaterThen(breakpoint)} {
+                  ${isOnTop &&
+                    css`
+                      display: grid;
+                      grid-template-columns: repeat(2, 1fr);
+                      align-items: start;
+                      grid-auto-flow: column dense;
+                    `}
+                }
 
                 li {
                   ${(isMobile || !isOnTop) &&
@@ -284,19 +277,18 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                       margin: 0.5em 0;
                     `}
 
-                  ${!isMobile &&
-                    isOnTop &&
-                    css`
-                      grid-column: 2;
+                  ${mediaQuery.greaterThen(breakpoint)} {
+                    ${isOnTop &&
+                      css`
+                        grid-column: 2;
 
-                      &:nth-child(1),
-                      &:nth-child(2) {
-                        grid-column: 1;
-                      }
-                    `}
+                        &:nth-child(1),
+                        &:nth-child(2) {
+                          grid-column: 1;
+                        }
+                      `}
 
-                    ${!isMobile &&
-                      !isOnTop &&
+                    ${!isOnTop &&
                       css`
                         font-weight: 900;
                         margin-top: 0;
@@ -321,6 +313,7 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                           font-size: 96px;
                         }
                       `}
+                  }
                 }
               `}
             >
@@ -358,11 +351,12 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
 
             <div
               css={css`
-                ${!isMobile &&
-                  isOnTop &&
-                  css`
-                    margin-left: 1em;
-                  `}
+                ${mediaQuery.greaterThen(breakpoint)} {
+                  ${isOnTop &&
+                    css`
+                      margin-left: 1em;
+                    `}
+                }
               `}
             >
               <a href="https://www.facebook.com/artereQC">
