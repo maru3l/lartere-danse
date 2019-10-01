@@ -32,7 +32,7 @@ const LogoComponent = ({ children, ...rests }) => (
 const SiteHeader = ({ themeColor = "DARK" }) => {
   const [open, setOpen] = useState(false)
   const scroll = useScroll()
-  const isMobile = useMobile(breakpoint)
+  const isMobile = useMobile(breakpoint) || false
   const isOnTop = !(scroll.y > viewBreak)
 
   let textColor = colors.Isabelline
