@@ -148,6 +148,11 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
               color: ${textColor};
 
               ${!isMobile &&
+                css`
+                  margin-top: ${27 / 33}rem;
+                `}
+
+              ${!isMobile &&
                 isOnTop &&
                 css`
                   display: none;
@@ -183,7 +188,8 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
 
                 ${!isMobile &&
                   css`
-                    padding-top: ${96 / 33}rem;
+                    /* padding-top: ${96 / 33}rem; */
+                    padding-top: ${123 / 33}rem;
                   `}
 
                 ${open &&
@@ -201,6 +207,15 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                 transition: opacity ${transition.speed.default}
                   ${transition.curve.default};
               `}
+
+            ${!isMobile &&
+              isOnTop &&
+              css`
+                padding-top: ${27 / 33}rem;
+              `}
+
+
+
           `}
         >
           <div
