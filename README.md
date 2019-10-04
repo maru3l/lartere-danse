@@ -2,6 +2,8 @@
 
 _A website for ZIA._
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c83ae2a6-7399-4dc1-ab4b-8bdbec4f647c/deploy-status)](https://app.netlify.com/sites/larteredanse/deploys)
+
 ## What you have
 
 - A blazing fast website with [Gatsby.js](https://gatsbyjs.org)
