@@ -11,11 +11,11 @@ import event from './documents/event'
 import honoraryMember from './documents/honoraryMember'
 import partner from './documents/partner'
 import Ressources from './documents/ressources'
+import eventType from './documents/eventType'
 // import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
 import venue from './objects/venue'
-import eventType from './objects/eventType'
 import mainImage from './objects/mainImage'
 import richText from './objects/richText'
 import customTime from './objects/customTime'
@@ -24,6 +24,8 @@ import daily from './objects/recurrenceType/daily'
 import singleEvent from './objects/recurrenceType/single'
 import free from './objects/rate/free'
 import regularRate from './objects/rate/regularRate'
+import registrationLink from './objects/registrationType/registrationLink'
+import registrationEmail from './objects/registrationType/registrationEmail'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -40,13 +42,13 @@ export default createSchema({
     honoraryMember,
     partner,
     Ressources,
+    eventType,
     // winnerAwardOvation,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     customTime,
     daily,
-    eventType,
     free,
     mainImage,
     regularRate,
@@ -54,5 +56,7 @@ export default createSchema({
     singleEvent,
     venue,
     weekly,
+    registrationLink,
+    registrationEmail,
   ])
 })

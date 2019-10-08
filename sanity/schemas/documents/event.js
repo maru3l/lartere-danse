@@ -10,11 +10,6 @@ export default {
   ],
   fields: [
     {
-      title: 'Type d\'activité',
-      name: 'eventType',
-      type: 'eventType'
-    },
-    {
       title: "Titre",
       name: "title",
       type: "string"
@@ -25,6 +20,12 @@ export default {
       type: "richText"
     },
     {
+      title: 'Type d\'activité',
+      name: 'eventType',
+      type: 'reference',
+      to: [{ type: 'eventType'}]
+    },
+    {
       title: 'Public cible',
       name: 'targetAudience',
       type: 'array',
@@ -32,32 +33,19 @@ export default {
       options: {
         list: [
           {
-            title: "Professionnel·le·s des arts de la danse et du mouvement",
+            title: "Professionnel·le·s de l’art de la danse et du mouvement",
             value: "professionnel",
           },
           {
-            title: "Artistes des arts de la scène (théâtre, musique, perfomance, cinéma)",
-            value: "sceneArtist",
-          },
-          {
-            title: "Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse, etc.)",
+            title: "Bougeur·se·s expérimenté·e·s et artistes des arts de la scène (cirque • arts martiaux • théâtre • musique • etc.)",
             value: "artist",
           },
           {
-            title: "Grand public",
+            title: "Tout public",
             value: "generalPublic",
           },
         ],
       }
-    },
-    {
-      title: "Prix",
-      name: "rate",
-      type: 'array',
-      of: [
-        { type: 'regularRate' },
-        { type: 'free' },
-      ],
     },
     {
       title: "date",
@@ -86,28 +74,28 @@ export default {
       name: 'venue',
       type: 'venue'
     },
-    // prix
+    {
+      title: "Prix",
+      name: "rate",
+      type: 'array',
+      of: [
+        { type: 'regularRate' },
+        { type: 'free' },
+      ],
+    },
     {
       title: "Informations supplémentaires",
       name: "additionalInformation",
       type: "richText"
     },
     {
-      title: "Lien inscription",
-      name: "subscriptionLink",
-      type: "string"
-    },
-    {
-      title: "Artiste",
-      name: "artist",
-      type: "string",
-      fieldset: 'artist',
-    },
-    {
-      title: "Description",
-      name: "artistDescription",
-      type: "richText",
-      fieldset: 'artist',
+      title: "Inscription",
+      name: 'registration',
+      type: 'array',
+      of: [
+        { type: 'registrationLink' },
+        { type: 'registrationEmail' },
+      ],
     },
     {
       title: 'Slug',
