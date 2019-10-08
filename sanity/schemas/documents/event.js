@@ -98,6 +98,11 @@ export default {
       ],
     },
     {
+      title: 'Image à la une',
+      name: 'featuredImage',
+      type: 'mainImage'
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
