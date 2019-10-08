@@ -435,9 +435,13 @@ const AProposPage = ({ data }) => {
                   css={css`
                     color: ${colors.Jet};
                     margin: 0 0 0.5em;
+
+                    a {
+                      text-decoration: none;
+                    }
                   `}
                 >
-                  {partner.name}
+                  <a href={partner.url}>{partner.name}</a>
                 </p>
 
                 {partner._rawDescription && (
@@ -504,6 +508,7 @@ export const query = graphql`
         node {
           _rawDescription
           name
+          url
         }
       }
     }
