@@ -19,6 +19,7 @@ export default {
         list: [
           { title: getByTerm('day'), value: 'day' },
           { title: getByTerm('halfDay'), value: 'halfDay' },
+          { title: getByTerm('week'), value: 'week' },
         ]
       },
     },
