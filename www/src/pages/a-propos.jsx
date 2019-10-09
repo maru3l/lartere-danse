@@ -13,6 +13,7 @@ import { colors } from "../styles/variables"
 import mediaQuery from "../utils/media-query"
 import PortableText from "../components/PortableText/PortableText"
 import SEO from "../components/Seo/Seo"
+import { between } from "polished"
 
 const AProposPage = ({ data }) => {
   const imgAboutIntro = data.imgAboutIntro.childImageSharp.fluid
@@ -33,6 +34,56 @@ const AProposPage = ({ data }) => {
         <VisuallyHidden>
           <h1>À propos</h1>
         </VisuallyHidden>
+
+        <nav>
+          <ul
+            className="h2"
+            css={css`
+              max-width: 1340px;
+              list-style: none;
+              padding: 0;
+
+              li {
+                font-size: ${between("25px", "96px", "375px", "1920px")};
+                margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
+
+                :last-child {
+                  margin-bottom: 0;
+                }
+
+                ${mediaQuery.greaterThen(1920)} {
+                  font-size: 96px;
+                  margin-bottom: 0px;
+                }
+              }
+
+              a {
+                text-decoration: none;
+              }
+            `}
+          >
+            <li>
+              <a href="#vision">Vision • Mission • Mandat</a>
+            </li>
+            {/* <li>
+              <a href="#mission">Mission</a>
+            </li>
+            <li>
+              <a href="#mandats">Mandats</a>
+            </li> */}
+            <li>
+              <a href="#historique">Historique</a>
+            </li>
+            <li>
+              <a href="#equipe">Équipe</a>
+            </li>
+            <li>
+              <a href="#partenaires-collaborateurs">
+                Partenaires & collaborateurs
+              </a>
+            </li>
+          </ul>
+        </nav>
 
         <section id="vision">
           <h2 className="h3 color-black">Vision</h2>
@@ -71,7 +122,7 @@ const AProposPage = ({ data }) => {
         </picture>
 
         <section id="mission">
-          <h2 className="h3 color-black">Mission</h2>
+          <h2 className="h3">Mission</h2>
 
           <p className="h2">
             Contribuer au dévelop&shy;pement et à la valorisation de l’art de la
@@ -81,8 +132,8 @@ const AProposPage = ({ data }) => {
           </p>
         </section>
 
-        <section id="mandat" css={css``}>
-          <h2 className="h3 color-black">Mandats</h2>
+        <section id="mandats" className="">
+          <h2 className="h3 color-pink">Mandats</h2>
 
           <TextColumns
             className="h3 color-pink"
@@ -215,8 +266,8 @@ const AProposPage = ({ data }) => {
           />
         </picture>
 
-        <section id="historiques">
-          <h2 className="h3 color-black">Historiques</h2>
+        <section id="historique">
+          <h2 className="h3 color-black">Historique</h2>
 
           <TextColumns className="h3 color-black">
             <p>
@@ -385,7 +436,7 @@ const AProposPage = ({ data }) => {
         </section>
 
         <section id="partenaires-collaborateurs">
-          <h2 className="h3 color-black">Partenaires & collaborateurs</h2>
+          <h2 className="h3">Partenaires & collaborateurs</h2>
 
           <p className="h2">
             La vitalité et le dynamisme de L’Artère se forgent à travers une
@@ -409,6 +460,7 @@ const AProposPage = ({ data }) => {
               margin-top: ${100 / 55}em;
               margin-bottom: ${200 / 55}em;
 
+              /* stylelint-disable-next-line */
               ${mediaQuery.greaterThen(768)} {
                 columns: 2;
               }
