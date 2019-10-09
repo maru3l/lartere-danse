@@ -8,13 +8,13 @@ import Layout from "../components/Layout"
 import TextColumns from "../components/TextColumns/TextColumns"
 import wrapper from "../utils/wrapper"
 import { graphql } from "gatsby"
-import EventCard from "../components/EventCard/EventCard"
 import Calendar from "../components/Calendar"
 import { between } from "polished"
 import mediaQuery from "../utils/media-query"
 import { colors } from "../styles/variables"
 import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import SEO from "../components/Seo/Seo"
+import ActivitySection from "../views/ActivitySection"
 
 const now = new Date()
 
@@ -29,61 +29,23 @@ const filterIfStillAvailable = event => {
 }
 
 const ActivitesPage = ({ data }) => {
-  const intensiveCourses =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "intensiveCourses" === fieldValue
-      ) || []
-    ).nodes || []
+  console.log(data.activites.group)
 
-  const masterClasses =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "masterClasses" === fieldValue
-      ) || []
-    ).nodes || []
+  const activites = data.activites.group.reduce(
+    (acc, cur) => [...acc, ...cur.nodes],
+    []
+  )
 
-  const creativeWorkshops =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "creativeWorkshops" === fieldValue
-      ) || []
-    ).nodes || []
+  const activityTypes = (data.activityTypes.edges || []).map(({ node }) => node)
 
-  const creativeWorkshopFieldTrip =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "creativeWorkshopFieldTrip" === fieldValue
-      ) || []
-    ).nodes || []
+  const getActivitesByTypeSlug = slug => {
+    return (
+      (data.activites.group.find(({ fieldValue }) => slug === fieldValue) || [])
+        .nodes || []
+    )
+  }
 
-  const ImprovisationSession =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "ImprovisationSession" === fieldValue
-      ) || []
-    ).nodes || []
-
-  const CommonPlaces =
-    (
-      data.activites.group.find(
-        ({ fieldValue }) => "CommonPlaces" === fieldValue
-      ) || []
-    ).nodes || []
-
-  const talk =
-    (data.activites.group.find(({ fieldValue }) => "talk" === fieldValue) || [])
-      .nodes || []
-
-  const calendarEvents = [
-    ...intensiveCourses,
-    ...masterClasses,
-    ...creativeWorkshops,
-    ...creativeWorkshopFieldTrip,
-    ...ImprovisationSession,
-    ...CommonPlaces,
-    ...talk,
-  ].reduce((acc, cur) => {
+  const calendarEvents = activites.reduce((acc, cur) => {
     const dates = cur.date
       .reduce((datesAcc, date) => {
         const { day = [] } = date
@@ -143,31 +105,15 @@ const ActivitesPage = ({ data }) => {
               }
             `}
           >
-            <li>
-              <a href="#stages-intensifs">Stages intensifs</a>
-            </li>
-            <li>
-              <a href="#classes-de-maitres">Classes de maître</a>
-            </li>
-            <li>
-              <a href="#ateliers-de-creation">Ateliers de création</a>
-            </li>
-            <li>
-              <a href="#sorties-dateliers-de-creation">
-                Sorties d’atelier de création
-              </a>
-            </li>
-            <li>
-              <a href="#session-improvisation-artere">
-                Session d’improvisation de&nbsp;L’Artère (SIA)
-              </a>
-            </li>
-            <li>
-              <a href="#lieux-communs">Lieux communs</a>
-            </li>
-            <li>
-              <a href="#causeries">Causerie / 5 à 7</a>
-            </li>
+            {activityTypes.map(({ name, slug: { current }, alwaysOn }) => {
+              return (
+                (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
+                  <li>
+                    <a href={`#${current}`}>{name}</a>
+                  </li>
+                )
+              )
+            })}
           </ul>
         </nav>
 
@@ -192,13 +138,14 @@ const ActivitesPage = ({ data }) => {
 
           <div className="h3">
             <p>
-              Calendrier des activitées pour les{" "}
+              Calendrier des activités
+              {/* pour les{" "}
               <span className="color-orange">
                 professionnel·le·s des arts de la danse et du mouvement.
-              </span>
+              </span> */}
             </p>
 
-            <p>
+            {/* <p>
               Activités ouvertes aux{" "}
               <span className="color-canary">
                 bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
@@ -209,7 +156,7 @@ const ActivitesPage = ({ data }) => {
                 performance, cinéma),
               </span>{" "}
               <span className="color-grey">et au le grand public</span>.
-            </p>
+            </p> */}
           </div>
 
           <ul
@@ -265,8 +212,8 @@ const ActivitesPage = ({ data }) => {
             >
               {" "}
               <span>
-                Artistes des arts de la scène (théâtre, musique, perfomance,
-                cinéma)
+                Bougeur·se·s expérimenté·e·s et artistes des arts de la scène
+                (cirque • arts martiaux • théâtre • musique • etc.)
               </span>
             </li>
             <li
@@ -277,358 +224,38 @@ const ActivitesPage = ({ data }) => {
               `}
             >
               {" "}
-              <span>
-                Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse,
-                etc.)
-              </span>
-            </li>
-            <li
-              css={css`
-                :before {
-                  background-color: ${colors.grey};
-                }
-              `}
-            >
-              {" "}
-              <span>Grand public</span>
+              <span>Tout public</span>
             </li>
           </ul>
 
           <Calendar switcher events={calendarEvents} />
         </section>
 
-        <section id="stages-intensifs">
-          <h2>
-            Stages <br />
-            intensifs
-          </h2>
-
-          <TextColumns>
-            <p>
-              Dans son but d’offrir du perfect&shy;ionnement tout au long de
-              l’année, L’Artère a mis en place des stages et classes régulières
-              donnés par des professeur·e·s de Québec et d’ailleurs.
-              Dépendamment des activités, il est possible de s’inscrire à la
-              classe. Nous offrons également des stages avec des danseur·se·s
-              souhaitant parfaire leur enseignement.
-            </p>
-
-            <h3>Le saviez-vous?</h3>
-
-            <p>
-              Les interprètes admissibles peuvent obtenir un soutien financier
-              du Regroupement québécois de la danse s’ils·elles sont admis·es au{" "}
-              <a href="https://premiereovation.com/programmes-aide/danse-presentation.aspx">
-                Programme de soutien à l’entraînement
-              </a>
-              .
-            </p>
-          </TextColumns>
-
-          {intensiveCourses.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Stages intensifs à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-                  li:first-child article {
-                    margin-top: 0px;
-                  }
-                  li:last-child article {
-                    margin-bottom: 0px;
-                  }
-                `}
-              >
-                {intensiveCourses.map(event => (
-                  <li>
-                    <EventCard event={event} />
-                  </li>
-                ))}
-              </ul>
-            </section>
+        <div>
+          {activityTypes.map(
+            ({
+              name,
+              slug: { current },
+              alwaysOn,
+              _rawDescription,
+              display,
+              order,
+            }) => {
+              return (
+                (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
+                  <ActivitySection
+                    activities={getActivitesByTypeSlug(current)}
+                    description={_rawDescription}
+                    title={name}
+                    id={current}
+                    grid={display === "grid"}
+                    sortOrder={order}
+                  />
+                )
+              )
+            }
           )}
-        </section>
-
-        <section id="classes-de-maitres">
-          <h2>Classes de maîtres</h2>
-
-          {masterClasses.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Classes de maîtres à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-
-                  li:first-child article {
-                    margin-top: 0px;
-                  }
-                  li:last-child article {
-                    margin-bottom: 0px;
-                  }
-                `}
-              >
-                {masterClasses.map(event => (
-                  <li>
-                    <EventCard event={event} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
-
-        <section id="ateliers-de-creation">
-          <h2>
-            Ateliers de
-            <br />
-            création
-          </h2>
-
-          {creativeWorkshops.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Ateliers de création à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-
-                  li:first-child article {
-                    margin-top: 0px;
-                  }
-                  li:last-child article {
-                    margin-bottom: 0px;
-                  }
-                `}
-              >
-                {creativeWorkshops.map(event => (
-                  <li>
-                    <EventCard event={event} hiddenTitle />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
-
-        <section id="sorties-dateliers-de-creation">
-          <h2
-            css={css`
-              margin-bottom: 0;
-            `}
-          >
-            Sorties d'ateliers <br />
-            de création
-          </h2>
-
-          <p
-            css={css`
-              max-width: 960px;
-            `}
-          >
-            Comme suite des ateliers de création offerts par L’Artère, le public
-            est convié à une présentation informelle dévoilant le travail
-            effectué par les participant·e·s.
-          </p>
-
-          {creativeWorkshopFieldTrip.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Sorties d'ateliers de création à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  display: grid;
-                  list-style: none;
-                  margin: 0;
-                  padding: 0;
-                  justify-content: space-between;
-                  grid-template-columns: repeat(
-                    auto-fill,
-                    minmax(290px, 480px)
-                  );
-
-                  /* stylelint-disable-next-line no-descending-specificity */
-                  article {
-                    margin: 0;
-                  }
-                `}
-              >
-                {creativeWorkshopFieldTrip.map(event => (
-                  <li>
-                    <EventCard event={event} hiddenTitle hideDetail />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
-
-        <section id="session-improvisation-artere">
-          <h2>
-            Session d’impro&shy;visation <br />
-            de L'Artère (SIA)
-          </h2>
-
-          <blockquote
-            className="h3 color-orange"
-            css={css`
-              margin-left: 0;
-              max-width: 675px;
-            `}
-          >
-            <p
-              css={css`
-                :before {
-                  content: "«";
-                }
-                :after {
-                  content: "»";
-                }
-              `}
-            >
-              Our job is not to make art, our job is to create a space for art
-              to happen in.
-            </p>
-
-            <footer
-              css={css`
-                :before {
-                  content: "—";
-                  margin-right: 0.5ch;
-                }
-              `}
-            >
-              Ady Elzam / improvisateur invité à&nbsp;L’Artère
-            </footer>
-          </blockquote>
-
-          {ImprovisationSession.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Session d’improvisation de L'Artère à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  list-style: none;
-                  padding: 0;
-
-                  li:first-child article {
-                    margin-top: 0px;
-                  }
-                  li:last-child article {
-                    margin-bottom: 0px;
-                  }
-                `}
-              >
-                {ImprovisationSession.map(event => (
-                  <li>
-                    <EventCard event={event} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
-
-        <section id="lieux-communs">
-          <h2>Lieux communs</h2>
-
-          <div
-            css={css`
-              max-width: 960px;
-            `}
-          >
-            <p>
-              L'Artère, Jérémie Aubry et Etienne Lambert convient le grand
-              public à une soirée où mots et musique se côtoient et
-              s’entrelacent pour permettre à chacun·e d’improviser ou d’être
-              témoin des rencontres qui se tissent tout au long de la soirée.
-            </p>
-
-            <p>
-              Que vous soyez spectateur·rice ou acteur·rice, passif·ve ou
-              actif·ve, la table sera mise pour que vous puissiez donner libre
-              cours à vos élans créatifs! Nous acceptons la présence de tou·te·s
-              créateur·rice·s, peu importe la discipline.
-            </p>
-          </div>
-
-          {CommonPlaces.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Sorties d'ateliers de création à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  display: grid;
-                  list-style: none;
-                  margin: 0;
-                  padding: 0;
-                  justify-content: space-between;
-                  grid-template-columns: repeat(
-                    auto-fill,
-                    minmax(290px, 480px)
-                  );
-
-                  /* stylelint-disable-next-line no-descending-specificity */
-                  article {
-                    margin: 0;
-                  }
-                `}
-              >
-                {CommonPlaces.map(event => (
-                  <li>
-                    <EventCard event={event} hiddenTitle hideDetail />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
-
-        <section id="causeries">
-          <h2>Causeries / 5 à 7</h2>
-
-          {talk.length > 0 && (
-            <section>
-              <VisuallyHidden>
-                <h3>Sorties d'ateliers de création à venir</h3>
-              </VisuallyHidden>
-              <ul
-                css={css`
-                  display: grid;
-                  list-style: none;
-                  margin: 0;
-                  padding: 0;
-                  justify-content: space-between;
-                  grid-template-columns: repeat(
-                    auto-fill,
-                    minmax(290px, 480px)
-                  );
-
-                  /* stylelint-disable-next-line no-descending-specificity */
-                  article {
-                    margin: 0;
-                  }
-                `}
-              >
-                {talk.map(event => (
-                  <li>
-                    <EventCard event={event} hiddenTitle hideDetail />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-        </section>
+        </div>
       </article>
     </Layout>
   )
@@ -638,21 +265,50 @@ export default ActivitesPage
 
 export const query = graphql`
   query ActivitesPageQuery {
-    activites: allSanityEvent {
-      group(field: eventType) {
-        fieldValue
-        nodes {
-          artist
-          eventType
+    activityTypes: allSanityEventType(sort: { fields: order, order: ASC }) {
+      edges {
+        node {
+          name
+          order
+          alwaysOn
+          display
+          _rawDescription
           slug {
             current
           }
-          subscriptionLink
+        }
+      }
+    }
+
+    activites: allSanityEvent {
+      group(field: eventType___slug___current) {
+        fieldValue
+        totalCount
+        nodes {
+          eventType {
+            name
+            slug {
+              current
+            }
+            order
+          }
+          slug {
+            current
+          }
           targetAudience
           title
-          _rawArtistDescription
           _rawDescription
           _rawAdditionalInformation
+          featuredImage {
+            alt
+            asset {
+              fluid {
+                src
+                srcSet
+                srcSetWebp
+              }
+            }
+          }
           date {
             ... on SanityDaily {
               _type
@@ -712,6 +368,16 @@ export const query = graphql`
               amount
               by
               member
+            }
+          }
+          registration {
+            ... on SanityRegistrationEmail {
+              _type
+              email
+            }
+            ... on SanityRegistrationLink {
+              _type
+              url
             }
           }
         }
