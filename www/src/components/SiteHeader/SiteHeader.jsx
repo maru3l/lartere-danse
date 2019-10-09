@@ -35,9 +35,6 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
   const isMobile = useMobile(breakpoint) || false
   const isOnTop = scroll ? !(scroll.y > viewBreak) : false
 
-  console.log(`isOnTop: ${isOnTop}`)
-  console.log(`isMobile: ${isMobile}`)
-
   let textColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
   let background = colors.Jet
