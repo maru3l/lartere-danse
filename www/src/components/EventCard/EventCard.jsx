@@ -8,13 +8,7 @@ import Collapse from "../Collapse/Collapse"
 import { hideVisually } from "polished"
 import getByTerm from "../../../../utils/getByTerm"
 
-const EventCard = ({
-  event,
-  hiddenTitle = false,
-  title = null,
-  hideDetail = false,
-  ...props
-}) => {
+const EventCard = ({ event, small = false, ...props }) => {
   let fromDate = null
   let toDate = null
   let hours = []
@@ -62,16 +56,57 @@ const EventCard = ({
             max-width: 480px;
           `}
         >
-          <h1
-            className="p"
+          <picture
             css={css`
-              margin: 0;
+              width: 100%;
+              display: block;
+              overflow: hidden;
+              line-height: 0;
+              position: relative;
+              filter: grayscale();
+              /* background-color: ${colors.PortlandOrange}; */
+
+              ::before {
+                display: block;
+                padding-bottom: ${(104 / 202) * 100}%;
+                content: "";
+              }
+
+              > * {
+                position: absolute;
+                top: 0;
+                /* mix-blend-mode: multiply; */
+                right: 0;
+                bottom: 0;
+                left: 0;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+              }
             `}
           >
-            {event.title}
-          </h1>
+            {event.featuredImage && (
+              <>
+                <img
+                  src={event.featuredImage.asset.fluid.src}
+                  alt={event.featuredImage.alt}
+                />
+              </>
+            )}
+          </picture>
 
-          {event.targetAudience.length > 0 && (
+          {small && (
+            <h1
+              className="p"
+              css={css`
+                margin: 0;
+              `}
+            >
+              {event.title}
+            </h1>
+          )}
+
+          {/* {event.targetAudience.length > 0 && (
             <section>
               <VisuallyHidden>
                 <h2>Public cible</h2>
@@ -129,7 +164,7 @@ const EventCard = ({
                 )}
               </ul>
             </section>
-          )}
+          )} */}
 
           <section>
             <VisuallyHidden>
@@ -286,7 +321,7 @@ const EventCard = ({
           </section>
         </div>
 
-        {!hideDetail && (
+        {!small && (
           <div
             css={css`
               flex-grow: 999;
@@ -295,12 +330,8 @@ const EventCard = ({
               max-width: 1020px;
             `}
           >
-            <section
-              css={css`
-                ${hiddenTitle && hideVisually()}
-              `}
-            >
-              <p
+            <section>
+              <h1
                 aria-hidden="true"
                 role="presentation"
                 className="h2 color-orange"
@@ -308,38 +339,12 @@ const EventCard = ({
                   margin: 0 0 1rem;
                 `}
               >
-                {title ? title : event.title}
-              </p>
+                {event.title}
+              </h1>
 
               {event._rawDescription && (
                 <Collapse>
                   <PortableText blocks={event._rawDescription} />
-                </Collapse>
-              )}
-            </section>
-
-            <section
-              css={css`
-                margin-top: ${150 / 33}em;
-
-                ${hiddenTitle &&
-                  css`
-                    margin-top: 0;
-                  `}
-              `}
-            >
-              <p
-                className="h2 color-orange"
-                css={css`
-                  margin: 0 0 1rem;
-                `}
-              >
-                {event.artist}
-              </p>
-
-              {event._rawArtistDescription && (
-                <Collapse>
-                  <PortableText blocks={event._rawArtistDescription} />
                 </Collapse>
               )}
             </section>
