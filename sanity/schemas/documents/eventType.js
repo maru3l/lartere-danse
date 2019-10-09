@@ -9,12 +9,30 @@ export default {
       type: "string"
     },
     {
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
-      validation: Rule => Rule.required(),
+      title: "Description",
+      name: "description",
+      type: "richText"
+    },
+    {
+      title: "Toujour visible",
+      name: "alwaysOn",
+      type: "boolean"
+    },
+    {
+      title: 'Affichage',
+      name: 'display',
+      type: 'string',
       options: {
-        source: 'name',
+        list: [
+          {
+            title: "Liste",
+            value: "list",
+          },
+          {
+            title: "Grille",
+            value: "grid",
+          },
+        ],
       }
     },
     {
@@ -22,6 +40,15 @@ export default {
       name: "order",
       type: "number",
       validation: Rule => Rule.positive().integer()
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'name',
+      }
     },
   ]
 }
