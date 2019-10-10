@@ -5,8 +5,8 @@ import { colors } from "../../styles/variables"
 import VisuallyHidden from "@reach/visually-hidden"
 import PortableText from "../PortableText/PortableText"
 import Collapse from "../Collapse/Collapse"
-import { hideVisually } from "polished"
 import getByTerm from "../../../../utils/getByTerm"
+import Button from "../Button/Button"
 
 const EventCard = ({ event, small = false, ...props }) => {
   let fromDate = null
@@ -56,44 +56,46 @@ const EventCard = ({ event, small = false, ...props }) => {
             max-width: 480px;
           `}
         >
-          <picture
-            css={css`
-              width: 100%;
-              display: block;
-              overflow: hidden;
-              line-height: 0;
-              position: relative;
-              filter: grayscale();
-              /* background-color: ${colors.PortlandOrange}; */
-
-              ::before {
-                display: block;
-                padding-bottom: ${(104 / 202) * 100}%;
-                content: "";
-              }
-
-              > * {
-                position: absolute;
-                top: 0;
-                /* mix-blend-mode: multiply; */
-                right: 0;
-                bottom: 0;
-                left: 0;
-                object-fit: cover;
+          {!small && (
+            <picture
+              css={css`
                 width: 100%;
-                height: 100%;
-              }
-            `}
-          >
-            {event.featuredImage && (
-              <>
-                <img
-                  src={event.featuredImage.asset.fluid.src}
-                  alt={event.featuredImage.alt}
-                />
-              </>
-            )}
-          </picture>
+                display: block;
+                overflow: hidden;
+                line-height: 0;
+                position: relative;
+                background-color: ${colors.PortlandOrange};
+
+                ::before {
+                  display: block;
+                  padding-bottom: ${(104 / 202) * 100}%;
+                  content: "";
+                }
+
+                > * {
+                  filter: grayscale();
+                  position: absolute;
+                  top: 0;
+                  mix-blend-mode: multiply;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  object-fit: cover;
+                  width: 100%;
+                  height: 100%;
+                }
+              `}
+            >
+              {event.featuredImage && (
+                <>
+                  <img
+                    src={event.featuredImage.asset.fluid.src}
+                    alt={event.featuredImage.alt}
+                  />
+                </>
+              )}
+            </picture>
+          )}
 
           {small && (
             <h1
@@ -299,26 +301,49 @@ const EventCard = ({ event, small = false, ...props }) => {
             </section>
           )}
 
-          <section>
-            <VisuallyHidden>
-              <h2>Inscription</h2>
-            </VisuallyHidden>
+          {event.registration && (
+            <section>
+              <VisuallyHidden>
+                <h2>Inscription</h2>
+              </VisuallyHidden>
 
-            <p
-              css={css`
-                margin-top: 3em;
-              `}
-            >
-              <a
-                href="mailto:inscriptions@larteredanse.ca"
+              <p
                 css={css`
-                  color: ${colors.PortlandOrange};
+                  margin-top: 3em;
                 `}
               >
-                inscriptions@larteredanse.ca
-              </a>
-            </p>
-          </section>
+                {event.registration.map(el => {
+                  return (
+                    <>
+                      {el._type === "registrationEmail" && (
+                        <a
+                          href={`mailto:${el.email}`}
+                          css={css`
+                            color: ${colors.PortlandOrange};
+                          `}
+                        >
+                          {el.email}
+                        </a>
+                      )}
+
+                      {el._type === "registrationLink" && (
+                        <Button
+                          tag="a"
+                          href={el.url}
+                          secondary
+                          css={css`
+                            font-size: ${54 / 33}em;
+                          `}
+                        >
+                          Inscription
+                        </Button>
+                      )}
+                    </>
+                  )
+                })}
+              </p>
+            </section>
+          )}
         </div>
 
         {!small && (
