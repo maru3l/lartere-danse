@@ -98,7 +98,7 @@ const premiereOvationPage = () => {
             >
               Pour de plus amples renseignements,
               <br />
-              consulter{" "}
+              consultez{" "}
               <a href="https://premiereovation.com/">premiereovation.com</a> ou
               écrivez-nous à{" "}
               <a href="mailto:pod@larteredanse.ca">pod@larteredanse.ca</a>.
