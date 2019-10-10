@@ -2,6 +2,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { css } from "@emotion/core"
+import { transition, colors } from "../../styles/variables"
 
 const components = {
   link: Link,
@@ -10,7 +11,7 @@ const components = {
   button: ({ children, ...rest }) => <button {...rest}>{children}</button>,
 }
 
-const Button = ({ children, tag, to, ...rest }) => {
+const Button = ({ children, tag, to, secondary, ...rest }) => {
   const Tag = components[tag || "button"]
 
   const props = {
@@ -19,11 +20,34 @@ const Button = ({ children, tag, to, ...rest }) => {
     ...rest,
   }
 
-  const buttonStyles = css``
+  const secondaryStyle = css`
+    color: initial;
+    text-decoration: none;
+    background-image: linear-gradient(
+      120deg,
+      ${colors.PaleCerulean} 0%,
+      ${colors.PaleCerulean} 100%
+    );
+    background-size: 100% 80%;
+    background-position: 0 center;
+    background-repeat: no-repeat;
+
+    transition: background-image ${transition.speed.fast}
+      ${transition.curve.default};
+
+    :hover {
+      color: initial;
+      background-image: linear-gradient(
+        120deg,
+        ${colors.pink} 0%,
+        ${colors.pink} 100%
+      );
+    }
+  `
 
   const style = {
     "&&": {
-      ...buttonStyles,
+      ...(secondary ? secondaryStyle : {}),
     },
   }
 
