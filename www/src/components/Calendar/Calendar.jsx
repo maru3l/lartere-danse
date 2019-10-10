@@ -13,9 +13,32 @@ const SwitcherButton = styled.button`
   color: inherit;
 `
 
+const now = new Date()
+
+const dayOfTheWeek = [
+  "dimanche",
+  "lundi",
+  "mardi",
+  "mercredi",
+  "jeudi",
+  "vendredi",
+  "samedi",
+]
+
+const DayOfTheWeek = styled.div`
+  grid-row: 2 / span 1;
+  grid-column: ${props => props.position} / span 1;
+  text-align: left;
+  color: ${colors.grey};
+
+  ${mediaQuery.lessThen(1024)} {
+    display: none;
+  }
+`
+
 const Calendar = ({
-  month = 9,
-  year = 2019,
+  month = now.getMonth() + 1,
+  year = now.getFullYear(),
   switcher = false,
   events = [],
 }) => {
@@ -58,26 +81,47 @@ const Calendar = ({
 
         ${mediaQuery.greaterThen(1024)} {
           grid-template-columns: repeat(7, 1fr);
-          grid-auto-rows: 1fr;
+          grid-auto-rows: 0.5fr 0.5fr 1fr;
         }
       `}
     >
       <div
         css={css`
+          display: grid;
           grid-row: 1 / span 1;
           grid-column: 1 / span 3;
           text-align: center;
           color: ${colors.grey};
+          grid-template-columns: repeat(3, 1fr);
+
+          ${mediaQuery.greaterThen(1024)} {
+            grid-column: 1 / span 7;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: left;
+          }
         `}
       >
-        {switcher && (
-          <SwitcherButton onClick={decreaseMonth}>{"<"}</SwitcherButton>
-        )}
-        {date.toLocaleDateString("fr", { month: "long" })}
-        {switcher && (
-          <SwitcherButton onClick={increaseMonth}>{">"}</SwitcherButton>
-        )}
+        <div
+          css={css`
+            grid-column: 1 / span 3;
+            ${mediaQuery.greaterThen(1024)} {
+              grid-column: 2 / span 1;
+            }
+          `}
+        >
+          {switcher && (
+            <SwitcherButton onClick={decreaseMonth}>{"<"}</SwitcherButton>
+          )}
+          {date.toLocaleDateString("fr", { month: "long" })}
+          {switcher && (
+            <SwitcherButton onClick={increaseMonth}>{">"}</SwitcherButton>
+          )}
+        </div>
       </div>
+
+      {dayOfTheWeek.map((day, index) => (
+        <DayOfTheWeek position={index}>{day}</DayOfTheWeek>
+      ))}
 
       <Dates month={currentMonth - 1} year={currentYear} events={events} />
     </div>
