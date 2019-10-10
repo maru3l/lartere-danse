@@ -29,8 +29,6 @@ const filterIfStillAvailable = event => {
 }
 
 const ActivitesPage = ({ data }) => {
-  console.log(data.activites.group)
-
   const activites = data.activites.group.reduce(
     (acc, cur) => [...acc, ...cur.nodes],
     []
