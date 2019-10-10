@@ -120,7 +120,7 @@ const Calendar = ({
       </div>
 
       {dayOfTheWeek.map((day, index) => (
-        <DayOfTheWeek position={index}>{day}</DayOfTheWeek>
+        <DayOfTheWeek position={index + 1}>{day}</DayOfTheWeek>
       ))}
 
       <Dates month={currentMonth - 1} year={currentYear} events={events} />

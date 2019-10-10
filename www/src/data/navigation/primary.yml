@@ -7,9 +7,9 @@ items:
     link: /activites
   - title: Devenir membre
     link: /devenir-membre
-  # - title: Archives
-  #   link: /archives
-  - title: Ressources
-    link: /ressources
   - title: Première Ovation
     link: /premiere-ovation
+  - title: Ressources
+    link: /ressources
+  # - title: Archives
+  #   link: /archives

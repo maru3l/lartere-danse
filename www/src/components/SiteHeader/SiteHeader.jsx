@@ -29,7 +29,7 @@ const LogoComponent = ({ children, ...rests }) => (
   </Match>
 )
 
-const SiteHeader = ({ themeColor = "DARK" }) => {
+const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
   const [open, setOpen] = useState(false)
   const scroll = useScroll()
   const isMobile = useMobile(breakpoint) || false
@@ -292,7 +292,8 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                         grid-column: 2;
 
                         &:nth-child(1),
-                        &:nth-child(2) {
+                        &:nth-child(2),
+                        &:nth-child(3) {
                           grid-column: 1;
                         }
                       `}
@@ -356,6 +357,32 @@ const SiteHeader = ({ themeColor = "DARK" }) => {
                   </Match>
                 </li>
               ))}
+
+              <li>
+                <button
+                  onClick={() => onNewsletterOpen(true)}
+                  css={css`
+                    appearance: none;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    text-decoration: none;
+                    color: inherit;
+                    cursor: pointer;
+                    transition: color ${transition.speed.default}
+                      ${transition.curve.default};
+
+                    /* stylelint-disable-next-line */
+                    :hover {
+                      color: ${hoverColor};
+                      transition: color ${transition.speed.default}
+                        ${transition.curve.default};
+                    }
+                  `}
+                >
+                  Infolettre
+                </button>
+              </li>
             </ul>
 
             <div

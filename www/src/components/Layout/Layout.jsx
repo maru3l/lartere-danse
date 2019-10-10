@@ -1,35 +1,20 @@
 // vendors
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { Global, css } from "@emotion/core"
 
 // styles
 import "normalize.css"
 import globalStyle from "../../styles/global"
-import { colors, transition } from "../../styles/variables"
+import { transition } from "../../styles/variables"
+import themes from "../../styles/themes"
 import SiteHeader from "../SiteHeader"
 import SiteFooter from "../SiteFooter/SiteFooter"
+import Dialog from "../Dialog"
+import NewsletterForm from "../../views/NewsLetterForm"
 
 const Layout = ({ children, themeColor }) => {
-  let backgroundColor = colors.Jet
-
-  switch (themeColor) {
-    case "DARK":
-      backgroundColor = colors.Jet
-      break
-
-    case "ORANGE":
-      backgroundColor = colors.PortlandOrange
-      break
-
-    case "LIGHT":
-      backgroundColor = colors.Isabelline
-      break
-
-    default:
-      backgroundColor = colors.Jet
-      break
-  }
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
@@ -37,17 +22,23 @@ const Layout = ({ children, themeColor }) => {
       <Global
         styles={css`
           html {
-            background-color: ${backgroundColor};
+            background-color: ${themes[themeColor].backgroundColor};
             transition: background-color ${transition.speed.default}
               ${transition.curve.default};
           }
         `}
       />
-      <SiteHeader themeColor={themeColor} />
+      <SiteHeader themeColor={themeColor} onNewsletterOpen={setIsOpen} />
 
       <main>{children}</main>
 
       <SiteFooter themeColor={themeColor} />
+
+      <button onClick={() => setIsOpen(true)}>Modal</button>
+
+      <Dialog isOpen={isOpen} onClose={setIsOpen} themeColor={themeColor}>
+        <NewsletterForm />
+      </Dialog>
     </>
   )
 }
