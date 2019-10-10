@@ -7,6 +7,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
+    "@reach/dialog": "^0.2.9",
     "@reach/visually-hidden": "^0.1.4",
     "@sanity/block-content-to-react": "^2.0.7",
     "babel-plugin-styled-components": "^1.10.1",
@@ -80,7 +81,7 @@
   "scripts": {
     "build": "gatsby build",
     "build-storybook": "build-storybook",
-    "develop": "gatsby develop",
+    "develop": "gatsby develop -H 0.0.0.0",
     "format": "npm run format:code && npm run format:style",
     "format:code": "eslint --fix --ignore-path ./.gitignore --ignore-path ./.prettierignore --ext .js,.jsx .",
     "format:style": "stylelint './src/**/*.{js,jsx,css,scss}' --fix",
