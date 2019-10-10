@@ -20,9 +20,21 @@ const Button = ({ children, tag, to, secondary, ...rest }) => {
     ...rest,
   }
 
+  const primaryStyle = css`
+    color: ${colors.Isabelline};
+    background-color: ${colors.PortlandOrange};
+    appearance: none;
+    text-decoration: none;
+    border: none;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+  `
+
   const secondaryStyle = css`
     color: initial;
+    appearance: none;
     text-decoration: none;
+    border: none;
     background-image: linear-gradient(
       120deg,
       ${colors.PaleCerulean} 0%,
@@ -46,9 +58,8 @@ const Button = ({ children, tag, to, secondary, ...rest }) => {
   `
 
   const style = {
-    "&&": {
-      ...(secondary ? secondaryStyle : {}),
-    },
+    ...(!secondary ? primaryStyle : {}),
+    ...(secondary ? secondaryStyle : {}),
   }
 
   return (
