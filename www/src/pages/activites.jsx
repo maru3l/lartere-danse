@@ -47,6 +47,12 @@ const ActivitesPage = ({ data }) => {
   }
 
   const calendarEvents = activites.reduce((acc, cur) => {
+    const stillActive = dateStillAvailable(cur.date)
+
+    const slug = cur.slug ? cur.slug.current : ""
+
+    const link = stillActive ? `/activites#${slug}` : `/archives/${slug}`
+
     const dates = cur.date
       .reduce((datesAcc, date) => {
         const { day = [] } = date
@@ -57,7 +63,8 @@ const ActivitesPage = ({ data }) => {
       }, [])
       .map(date => {
         return {
-          slug: cur.slug ? cur.slug.current : "",
+          slug,
+          link,
           title: cur.title,
           date,
           targetAudience: cur.targetAudience,

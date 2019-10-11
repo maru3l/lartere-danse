@@ -13,6 +13,7 @@ import wrapper from "../utils/wrapper"
 import Calendar from "../components/Calendar"
 import { graphql } from "gatsby"
 import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
+import dateStillAvailable from "../utils/datesStillAvailable"
 
 const now = new Date()
 const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1)
@@ -31,6 +32,11 @@ const IndexPage = ({ data }) => {
       )
     })
     .reduce((acc, cur) => {
+      const stillActive = dateStillAvailable(cur.date)
+
+      const slug = cur.slug ? cur.slug.current : ""
+
+      const link = stillActive ? `/activites#${slug}` : `/archives/${slug}`
       const dates = cur.date
         .reduce((datesAcc, date) => {
           const { day = [] } = date
@@ -41,7 +47,8 @@ const IndexPage = ({ data }) => {
         }, [])
         .map(date => {
           return {
-            slug: cur.slug ? cur.slug.current : "",
+            link,
+            slug,
             title: cur.title,
             date,
             targetAudience: cur.targetAudience,

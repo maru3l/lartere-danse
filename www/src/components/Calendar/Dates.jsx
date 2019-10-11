@@ -57,7 +57,7 @@ const Event = ({ event }) => {
             color: ${colors.pink};
           }
         `}
-        to={`/activites#${event.slug}`}
+        to={event.link}
       >
         {event.title}
       </Link>
