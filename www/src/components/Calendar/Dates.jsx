@@ -91,8 +91,14 @@ const Dates = ({ month, year, events = [] }) => {
           return (
             <div
               css={css`
-                padding-bottom: 100%;
                 position: relative;
+                display: flex;
+
+                :before {
+                  padding-bottom: 100%;
+                  content: "";
+                  display: block;
+                }
 
                 ${index === 0 &&
                   css`
@@ -109,8 +115,6 @@ const Dates = ({ month, year, events = [] }) => {
                   right: 0;
                   bottom: 0;
                   left: 0;
-                  overflow: hidden;
-                  overflow-y: scroll;
                   z-index: 1;
                   height: 100%;
 
