@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const eventStillAvailable = require("./src/utils/datesStillAvailable")
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -14,6 +16,17 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             slug {
               current
+            }
+            date {
+              ... on SanityDaily {
+                to
+              }
+              ... on SanitySingleEvent {
+                to
+              }
+              ... on SanityWeekly {
+                to
+              }
             }
           }
         }
@@ -29,10 +42,12 @@ exports.createPages = async ({ graphql, actions }) => {
   events.forEach((edge, index) => {
     const path = `/archives/${edge.node.slug.current}`
 
-    createPage({
-      path,
-      component: require.resolve("./src/templates/Activity.jsx"),
-      context: { slug: edge.node.slug.current },
-    })
+    if (!eventStillAvailable(edge.node.date)) {
+      createPage({
+        path,
+        component: require.resolve("./src/templates/Activity.jsx"),
+        context: { slug: edge.node.slug.current },
+      })
+    }
   })
 }
