@@ -2,6 +2,7 @@
 import React from "react"
 import { css } from "@emotion/core"
 import Button from "../components/Button"
+import addToMailchimp from "gatsby-plugin-mailchimp"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 
 const NewsletterForm = () => {
@@ -39,14 +40,22 @@ const NewsletterForm = () => {
           }
           return errors
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2))
-            setSubmitting(false)
-          }, 400)
+        onSubmit={(values, actions) => {
+          addToMailchimp(values.email)
+            .then(data => {
+              actions.setSubmitting(false)
+              actions.setStatus(data)
+            })
+            .catch(() => {
+              actions.setSubmitting(false)
+              actions.setStatus({
+                result: "error",
+                msg: "Un problème est survenu, veuillez réessayer plus tard.",
+              })
+            })
         }}
       >
-        {() => (
+        {({ isSubmitting, status }) => (
           <Form
             css={css`
               flex-basis: 0;
@@ -79,16 +88,21 @@ const NewsletterForm = () => {
 
             {/* <ErrorMessage name="email" /> */}
 
-            <div>
-              <Button
-                type="submit"
-                css={css`
-                  text-transform: uppercase;
-                `}
-              >
-                S'abonner
-              </Button>
-            </div>
+            {status && <p>{status.msg}</p>}
+
+            {!(status && status.result === "succes") && (
+              <div>
+                <Button
+                  type="submit"
+                  css={css`
+                    text-transform: uppercase;
+                  `}
+                  disable={isSubmitting}
+                >
+                  S'abonner
+                </Button>
+              </div>
+            )}
           </Form>
         )}
       </Formik>

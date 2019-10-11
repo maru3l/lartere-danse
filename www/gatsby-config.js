@@ -9,6 +9,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        // TODO: add MC list endpoint
+        endpoint: "", // add your MC list endpoint here; see instructions below
+      },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
