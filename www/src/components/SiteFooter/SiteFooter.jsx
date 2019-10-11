@@ -166,7 +166,7 @@ const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
           ))}
           <li>
             <button
-              onClick={() => onNewsletterOpen()}
+              onClick={() => onNewsletterOpen(true)}
               css={css`
                 text-decoration: none;
                 appearance: none;

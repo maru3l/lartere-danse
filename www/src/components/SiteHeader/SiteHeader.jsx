@@ -12,6 +12,8 @@ import useMobile from "../../hooks/useMobile"
 import { between } from "polished"
 import mediaQuery from "../../utils/media-query"
 import IconInstagram from "../../images/IconInstagram"
+import { RemoveScroll } from "react-remove-scroll"
+import FocusLock from "react-focus-lock"
 
 const breakpoint = 1024
 const viewBreak = 250
@@ -128,8 +130,6 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
     []
   )
 
-  console.log(activityLinks)
-
   return (
     <>
       <header
@@ -213,7 +213,8 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           </button>
         </div>
 
-        <div
+        <RemoveScroll
+          enabled={open}
           css={css`
             ::-webkit-scrollbar {
               display: none;
@@ -267,300 +268,302 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
               `}
           `}
         >
-          <div
-            css={css`
-              text-align: right;
-              grid-row: 1 / span 1;
-
-              ${mediaQuery.greaterThen(breakpoint)} {
-                ${isOnTop &&
-                  css`
-                    display: none;
-                  `}
-              }
-            `}
-          >
-            <button
-              onClick={handleClick}
+          <FocusLock disabled={!open}>
+            <div
               css={css`
-                appearance: none;
-                background: none;
-                border: 0;
-                color: ${textColor};
-                margin: 0;
-                padding: 0;
-                cursor: pointer;
-              `}
-            >
-              Fermer
-            </button>
-          </div>
-
-          <nav
-            css={css`
-              display: flex;
-
-              ${mediaQuery.lessThen(breakpoint)} {
-                grid-row: 2 / span 1;
-                flex-flow: column;
-              }
-
-              ${!isOnTop &&
-                css`
-                  grid-row: 2 / span 1;
-                  flex-flow: column;
-                `}
-            `}
-          >
-            <ul
-              css={css`
-                &,
-                ul {
-                  list-style: none;
-                  margin: 0;
-                }
-                padding: 0;
+                text-align: right;
+                grid-row: 1 / span 1;
 
                 ${mediaQuery.greaterThen(breakpoint)} {
                   ${isOnTop &&
                     css`
-                      display: grid;
-                      grid-template-columns: repeat(2, 1fr);
-                      align-items: start;
-                      grid-auto-flow: column dense;
+                      display: none;
                     `}
                 }
+              `}
+            >
+              <button
+                onClick={handleClick}
+                css={css`
+                  appearance: none;
+                  background: none;
+                  border: 0;
+                  color: ${textColor};
+                  margin: 0;
+                  padding: 0;
+                  cursor: pointer;
+                `}
+              >
+                Fermer
+              </button>
+            </div>
 
-                li {
-                  ${(isMobile || !isOnTop) &&
-                    css`
-                      font-size: ${30 / 16}em;
-                      font-weight: 500;
-                      margin: 0.5em 0;
-                    `}
+            <nav
+              css={css`
+                display: flex;
+
+                ${mediaQuery.lessThen(breakpoint)} {
+                  grid-row: 2 / span 1;
+                  flex-flow: column;
+                }
+
+                ${!isOnTop &&
+                  css`
+                    grid-row: 2 / span 1;
+                    flex-flow: column;
+                  `}
+              `}
+            >
+              <ul
+                css={css`
+                  &,
+                  ul {
+                    list-style: none;
+                    margin: 0;
+                  }
+                  padding: 0;
 
                   ${mediaQuery.greaterThen(breakpoint)} {
                     ${isOnTop &&
                       css`
-                        grid-column: 2;
-
-                        &:nth-child(1),
-                        &:nth-child(2),
-                        &:nth-child(3) {
-                          grid-column: 1;
-                        }
-                      `}
-
-                    ${!isOnTop &&
-                      css`
-                        font-weight: 900;
-                        margin-top: 0;
-                        font-size: ${between(
-                          "25px",
-                          "96px",
-                          "375px",
-                          "1920px"
-                        )};
-                        margin-bottom: ${between(
-                          "12.5px",
-                          "0px",
-                          "375px",
-                          "1920px"
-                        )};
-
-                        :last-child {
-                          margin-bottom: 0;
-                        }
-
-                        ${mediaQuery.greaterThen(1920)} {
-                          font-size: 96px;
-                        }
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        align-items: start;
+                        grid-auto-flow: column dense;
                       `}
                   }
-                }
-              `}
-            >
-              {data.primary.items.map(item => (
-                <li>
-                  <Match path={item.link}>
-                    {props => (
-                      <>
-                        <Link
-                          to={item.link}
-                          css={css`
-                            text-decoration: none;
-                            transition: color ${transition.speed.default}
-                              ${transition.curve.default};
 
-                            /* stylelint-disable-next-line */
-                            :hover {
-                              color: ${hoverColor};
+                  li {
+                    ${(isMobile || !isOnTop) &&
+                      css`
+                        font-size: ${30 / 16}em;
+                        font-weight: 500;
+                        margin: 0.5em 0;
+                      `}
+
+                    ${mediaQuery.greaterThen(breakpoint)} {
+                      ${isOnTop &&
+                        css`
+                          grid-column: 2;
+
+                          &:nth-child(1),
+                          &:nth-child(2),
+                          &:nth-child(3) {
+                            grid-column: 1;
+                          }
+                        `}
+
+                      ${!isOnTop &&
+                        css`
+                          font-weight: 900;
+                          margin-top: 0;
+                          font-size: ${between(
+                            "25px",
+                            "96px",
+                            "375px",
+                            "1920px"
+                          )};
+                          margin-bottom: ${between(
+                            "12.5px",
+                            "0px",
+                            "375px",
+                            "1920px"
+                          )};
+
+                          :last-child {
+                            margin-bottom: 0;
+                          }
+
+                          ${mediaQuery.greaterThen(1920)} {
+                            font-size: 96px;
+                          }
+                        `}
+                    }
+                  }
+                `}
+              >
+                {data.primary.items.map(item => (
+                  <li>
+                    <Match path={item.link}>
+                      {props => (
+                        <>
+                          <Link
+                            to={item.link}
+                            css={css`
+                              text-decoration: none;
                               transition: color ${transition.speed.default}
                                 ${transition.curve.default};
-                            }
 
-                            ${props.match &&
-                              css`
+                              /* stylelint-disable-next-line */
+                              :hover {
                                 color: ${hoverColor};
+                                transition: color ${transition.speed.default}
+                                  ${transition.curve.default};
+                              }
+
+                              ${props.match &&
+                                css`
+                                  color: ${hoverColor};
+                                `}
+                            `}
+                          >
+                            {item.title}
+                          </Link>
+
+                          {item.subMenu && open && (
+                            <ul
+                              css={css`
+                                li {
+                                  font-size: 0.5em !important;
+                                }
                               `}
-                          `}
-                        >
-                          {item.title}
-                        </Link>
-
-                        {item.subMenu && open && (
-                          <ul
-                            css={css`
-                              li {
-                                font-size: 0.5em !important;
-                              }
-                            `}
-                          >
-                            {item.subMenu.map(subMenu => (
-                              <li>
-                                <Link
-                                  to={subMenu.link}
-                                  css={css`
-                                    text-decoration: none;
-                                    transition: color
-                                      ${transition.speed.default}
-                                      ${transition.curve.default};
-
-                                    /* stylelint-disable-next-line */
-                                    :hover {
-                                      color: ${hoverColor};
+                            >
+                              {item.subMenu.map(subMenu => (
+                                <li>
+                                  <Link
+                                    to={subMenu.link}
+                                    css={css`
+                                      text-decoration: none;
                                       transition: color
                                         ${transition.speed.default}
                                         ${transition.curve.default};
-                                    }
-                                  `}
-                                >
-                                  {subMenu.title}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
 
-                        {item.subMenuType === "activity" && open && (
-                          <ul
-                            css={css`
-                              li {
-                                font-size: 0.5em !important;
-                              }
-                            `}
-                          >
-                            {activityLinks.map(subMenu => (
-                              <li>
-                                <Link
-                                  to={subMenu.link}
-                                  css={css`
-                                    text-decoration: none;
-                                    transition: color
-                                      ${transition.speed.default}
-                                      ${transition.curve.default};
+                                      /* stylelint-disable-next-line */
+                                      :hover {
+                                        color: ${hoverColor};
+                                        transition: color
+                                          ${transition.speed.default}
+                                          ${transition.curve.default};
+                                      }
+                                    `}
+                                  >
+                                    {subMenu.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
 
-                                    /* stylelint-disable-next-line */
-                                    :hover {
-                                      color: ${hoverColor};
+                          {item.subMenuType === "activity" && open && (
+                            <ul
+                              css={css`
+                                li {
+                                  font-size: 0.5em !important;
+                                }
+                              `}
+                            >
+                              {activityLinks.map(subMenu => (
+                                <li>
+                                  <Link
+                                    to={subMenu.link}
+                                    css={css`
+                                      text-decoration: none;
                                       transition: color
                                         ${transition.speed.default}
                                         ${transition.curve.default};
-                                    }
-                                  `}
-                                >
-                                  {subMenu.title}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </>
-                    )}
-                  </Match>
-                </li>
-              ))}
 
-              <li>
-                <button
-                  onClick={() => onNewsletterOpen(true)}
-                  css={css`
-                    appearance: none;
-                    background: none;
-                    border: none;
-                    padding: 0;
-                    text-decoration: none;
-                    color: inherit;
-                    cursor: pointer;
-                    transition: color ${transition.speed.default}
-                      ${transition.curve.default};
+                                      /* stylelint-disable-next-line */
+                                      :hover {
+                                        color: ${hoverColor};
+                                        transition: color
+                                          ${transition.speed.default}
+                                          ${transition.curve.default};
+                                      }
+                                    `}
+                                  >
+                                    {subMenu.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </>
+                      )}
+                    </Match>
+                  </li>
+                ))}
 
-                    /* stylelint-disable-next-line */
-                    :hover {
-                      color: ${hoverColor};
+                <li>
+                  <button
+                    onClick={() => onNewsletterOpen(true)}
+                    css={css`
+                      appearance: none;
+                      background: none;
+                      border: none;
+                      padding: 0;
+                      text-decoration: none;
+                      color: inherit;
+                      cursor: pointer;
                       transition: color ${transition.speed.default}
                         ${transition.curve.default};
-                    }
-                  `}
-                >
-                  Infolettre
-                </button>
-              </li>
-            </ul>
 
-            <div
-              css={css`
-                ${mediaQuery.greaterThen(breakpoint)} {
-                  a {
-                    display: inline-block;
-                    margin-right: 0.5em;
-                  }
-
-                  ${isOnTop &&
-                    css`
-                      margin-left: 1em;
-
-                      a {
-                        display: block;
-                        margin-right: 0;
+                      /* stylelint-disable-next-line */
+                      :hover {
+                        color: ${hoverColor};
+                        transition: color ${transition.speed.default}
+                          ${transition.curve.default};
                       }
                     `}
-                }
-              `}
-            >
-              <a href="https://www.facebook.com/artereQC">
-                <IconFacebook
-                  css={css`
-                    fill: ${textColor};
-                    width: 1em;
-                    transition: fill ${transition.speed.default}
-                      ${transition.curve.default};
+                  >
+                    Infolettre
+                  </button>
+                </li>
+              </ul>
 
-                    /* stylelint-disable-next-line */
-                    :hover {
-                      fill: ${hoverColor};
+              <div
+                css={css`
+                  ${mediaQuery.greaterThen(breakpoint)} {
+                    a {
+                      display: inline-block;
+                      margin-right: 0.5em;
                     }
-                  `}
-                />
-              </a>
-              <a href="https://www.instagram.com/arteredanse/">
-                <IconInstagram
-                  css={css`
-                    fill: ${textColor};
-                    width: 1em;
-                    transition: fill ${transition.speed.default}
-                      ${transition.curve.default};
 
-                    /* stylelint-disable-next-line */
-                    :hover {
-                      fill: ${hoverColor};
-                    }
-                  `}
-                />
-              </a>
-            </div>
-          </nav>
-        </div>
+                    ${isOnTop &&
+                      css`
+                        margin-left: 1em;
+
+                        a {
+                          display: block;
+                          margin-right: 0;
+                        }
+                      `}
+                  }
+                `}
+              >
+                <a href="https://www.facebook.com/artereQC">
+                  <IconFacebook
+                    css={css`
+                      fill: ${textColor};
+                      width: 1em;
+                      transition: fill ${transition.speed.default}
+                        ${transition.curve.default};
+
+                      /* stylelint-disable-next-line */
+                      :hover {
+                        fill: ${hoverColor};
+                      }
+                    `}
+                  />
+                </a>
+                <a href="https://www.instagram.com/arteredanse/">
+                  <IconInstagram
+                    css={css`
+                      fill: ${textColor};
+                      width: 1em;
+                      transition: fill ${transition.speed.default}
+                        ${transition.curve.default};
+
+                      /* stylelint-disable-next-line */
+                      :hover {
+                        fill: ${hoverColor};
+                      }
+                    `}
+                  />
+                </a>
+              </div>
+            </nav>
+          </FocusLock>
+        </RemoveScroll>
       </header>
 
       <div

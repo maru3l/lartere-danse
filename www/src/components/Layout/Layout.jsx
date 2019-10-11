@@ -34,8 +34,6 @@ const Layout = ({ children, themeColor }) => {
 
       <SiteFooter themeColor={themeColor} onNewsletterOpen={setIsOpen} />
 
-      <button onClick={() => setIsOpen(true)}>Modal</button>
-
       <Dialog isOpen={isOpen} onClose={setIsOpen} themeColor={themeColor}>
         <NewsletterForm />
       </Dialog>
