@@ -218,14 +218,7 @@ const SiteFooter = ({ themeColor }) => {
           `}
         >
           <li>
-            <a href="mailto:direction@larteredanse.ca">
-              direction@larteredanse.ca
-            </a>
-          </li>
-          <li>
-            <a href="mailto:inscription@larteredanse.ca">
-              inscription@larteredanse.ca
-            </a>
+            <a href="mailto:info@larteredanse.ca">info@larteredanse.ca</a>
           </li>
         </ul>
       </div>
