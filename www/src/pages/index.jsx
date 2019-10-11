@@ -14,6 +14,7 @@ import Calendar from "../components/Calendar"
 import { graphql } from "gatsby"
 import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import dateStillAvailable from "../utils/datesStillAvailable"
+import EventTargetAudienceLegend from "../components/EventTargetAudienceLegend"
 
 const now = new Date()
 const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1)
@@ -179,83 +180,9 @@ const IndexPage = ({ data }) => {
           ${wrapper.bolt()}
         `}
       >
-        <div className="h3">
-          <p>
-            Calendrier des activitées pour les{" "}
-            <span className="color-orange">
-              professionnel·le·s des arts de la danse et du mouvement.
-            </span>
-          </p>
+        <p className="h3">Calendrier des activitées</p>
 
-          <p>
-            Activités ouvertes aux{" "}
-            <span className="color-canary">
-              bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse, etc.)
-            </span>{" "}
-            <span className="color-pale-cerulean">
-              aux artistes des arts de la scène (théâtre, musique, performance,
-              cinéma),
-            </span>{" "}
-            <span className="color-grey">et au le grand public</span>.
-          </p>
-        </div>
-
-        <ul
-          css={css`
-            list-style: none;
-            padding: 0;
-            margin: 0 0 5em 0;
-
-            li:before {
-              width: 48px;
-              height: 24px;
-              content: "";
-              display: inline-block;
-            }
-          `}
-        >
-          <li
-            css={css`
-              :before {
-                background-color: ${colors.PortlandOrange};
-              }
-            `}
-          >
-            {" "}
-            = Professionnel·le·s des arts de la danse et du mouvement
-          </li>
-          <li
-            css={css`
-              :before {
-                background-color: ${colors.PaleCerulean};
-              }
-            `}
-          >
-            {" "}
-            = Artistes des arts de la scène (théâtre, musique, perfomance,
-            cinéma)
-          </li>
-          <li
-            css={css`
-              :before {
-                background-color: ${colors.canary};
-              }
-            `}
-          >
-            {" "}
-            = Bougeur·se·s expérimenté·e·s (cirque, arts martiaux, danse, etc.)
-          </li>
-          <li
-            css={css`
-              :before {
-                background-color: ${colors.grey};
-              }
-            `}
-          >
-            {" "}
-            = Grand public
-          </li>
-        </ul>
+        <EventTargetAudienceLegend />
 
         <Calendar
           month={now.getUTCMonth() + 1}
