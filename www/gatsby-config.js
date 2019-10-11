@@ -13,7 +13,7 @@ module.exports = {
       resolve: "gatsby-plugin-mailchimp",
       options: {
         // TODO: add MC list endpoint
-        endpoint: "", // add your MC list endpoint here; see instructions below
+        endpoint: "1234567890", // add your MC list endpoint here; see instructions below
       },
     },
     "gatsby-plugin-react-helmet",
