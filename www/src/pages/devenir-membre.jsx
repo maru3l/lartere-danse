@@ -87,7 +87,7 @@ const DevenirMembrePage = ({ data }) => {
             <li>
               <p>
                 <a href="/formulaire-dadhesion-et-renouvellement-19-20.pdf">
-                  Le Formulaire adhesions et renouvellement
+                  Le Formulaire adhesion et renouvellement
                 </a>{" "}
                 2018-2019 rempli
               </p>
@@ -111,7 +111,7 @@ const DevenirMembrePage = ({ data }) => {
             `}
           >
             Votre statut devient effectif uniquement lorsque toutes ces
-            conditions sont remplies
+            conditions sont remplies.
           </p>
         </section>
 
@@ -160,12 +160,12 @@ const DevenirMembrePage = ({ data }) => {
               <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
                 Politique d’adhésion
               </a>{" "}
-              de L’Artère, mais se considérant comme un professionnel de la
-              danse, peut nous contacter par courriel à{" "}
-              <a href="inscriptions@larteredanse.ca">
+              de L’Artère, mais se considérant comme un·e professionnel·le de la
+              danse peut nous contacter par courriel à
+              <a href="mailto:inscriptions@larteredanse.ca">
                 inscriptions@larteredanse.ca
-              </a>{" "}
-              ou au 418-523-1777 poste 4.
+              </a>
+              .
             </p>
           </section>
 
@@ -185,8 +185,8 @@ const DevenirMembrePage = ({ data }) => {
               contexte professionnel et qui est reconnu·e par ses pairs, dont la
               pratique de son art est son activité principale. Il·Elle est
               rémunéré·e pour ses activités et répond aux conditions
-              d’admis&shy;sibilité prévues à l’article 1.2 du document de
-              politique d’adhésion 18-19.
+              d’admis­sibilité prévues à l’article 1.2 du document de politique
+              d’adhésion.
             </p>
 
             <h3>Associé·e</h3>
@@ -201,11 +201,11 @@ const DevenirMembrePage = ({ data }) => {
             <h3 className="color-orange">Important</h3>
 
             <p className="color-orange">
-              Pour chacun des statuts, les conditions d’admis&shy;sibilité, les
+              Pour chacun des statuts, les conditions d’admis&shy;­sibilité, les
               pièces justificatives à fournir ainsi que les privilèges sont
               spécifiés dans le document de{" "}
               <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
-                politique d’adhésion 18-19
+                politique d’adhésion
               </a>
               .
             </p>
