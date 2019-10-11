@@ -16,18 +16,6 @@ import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import SEO from "../components/Seo/Seo"
 import ActivitySection from "../views/ActivitySection"
 
-const now = new Date()
-
-const filterIfStillAvailable = event => {
-  const oldest = event.date.reduce((acc, cur) =>
-    Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur
-  )
-
-  return (
-    Date.parse(now.getFullYear(), now.getMonth(), 1) < Date.parse(oldest.to)
-  )
-}
-
 const ActivitesPage = ({ data }) => {
   const activites = data.activites.group.reduce(
     (acc, cur) => [...acc, ...cur.nodes],
