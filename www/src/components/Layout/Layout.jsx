@@ -11,7 +11,7 @@ import themes from "../../styles/themes"
 import SiteHeader from "../SiteHeader"
 import SiteFooter from "../SiteFooter/SiteFooter"
 import Dialog from "../Dialog"
-import NewsletterForm from "../../views/NewsLetterForm"
+import NewsletterForm from "../../views/NewsletterForm"
 
 const Layout = ({ children, themeColor }) => {
   const [isOpen, setIsOpen] = useState(false)
