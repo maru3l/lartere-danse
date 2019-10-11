@@ -16,6 +16,14 @@ import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import SEO from "../components/Seo/Seo"
 import ActivitySection from "../views/ActivitySection"
 
+import dateStillAvailable from "../utils/datesStillAvailable"
+
+const getClosestDate = (dates = []) => {
+  return dates.reduce((acc, cur) =>
+    Date.parse(acc.from) < Date.parse(cur.from) ? acc : cur
+  )
+}
+
 const ActivitesPage = ({ data }) => {
   const activites = data.activites.group.reduce(
     (acc, cur) => [...acc, ...cur.nodes],
@@ -29,6 +37,13 @@ const ActivitesPage = ({ data }) => {
       (data.activites.group.find(({ fieldValue }) => slug === fieldValue) || [])
         .nodes || []
     )
+      .filter(({ date }) => dateStillAvailable(date))
+      .sort((a, b) => {
+        const closestA = getClosestDate(a.date)
+        const closestB = getClosestDate(b.date)
+
+        return Date.parse(closestA.from) > Date.parse(closestB.from)
+      })
   }
 
   const calendarEvents = activites.reduce((acc, cur) => {
