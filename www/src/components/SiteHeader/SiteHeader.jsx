@@ -217,7 +217,6 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           enabled={open}
           css={css`
             ${mediaQuery.lessThen(breakpoint)} {
-              ${wrapper.bolt("padding")}
               position: fixed;
               top: 0;
               right: 0;
