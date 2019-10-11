@@ -18,6 +18,8 @@ const ActivityTemplate = ({ data }) => {
         event={data.event}
         css={css`
           ${wrapper.bolt()}
+          margin-top: 5rem;
+          margin-bottom: 5rem;
         `}
       />
     </Layout>

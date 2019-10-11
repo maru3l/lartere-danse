@@ -26,6 +26,10 @@ const Layout = ({ children, themeColor }) => {
             transition: background-color ${transition.speed.default}
               ${transition.curve.default};
           }
+
+          body {
+            color: ${themes[themeColor].color};
+          }
         `}
       />
       <SiteHeader themeColor={themeColor} onNewsletterOpen={setIsOpen} />

@@ -404,12 +404,13 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                               to={item.link}
                               css={css`
                                 text-decoration: none;
+                                color: ${textColor};
                                 transition: color ${transition.speed.default}
                                   ${transition.curve.default};
 
                                 /* stylelint-disable-next-line */
                                 :hover {
-                                  color: ${hoverColor};
+                                  color: inherit;
                                   transition: color ${transition.speed.default}
                                     ${transition.curve.default};
                                 }
@@ -437,13 +438,14 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                                       to={subMenu.link}
                                       css={css`
                                         text-decoration: none;
+                                        color: ${textColor};
                                         transition: color
                                           ${transition.speed.default}
                                           ${transition.curve.default};
 
                                         /* stylelint-disable-next-line */
                                         :hover {
-                                          color: ${hoverColor};
+                                          color: inherit;
                                           transition: color
                                             ${transition.speed.default}
                                             ${transition.curve.default};
@@ -471,13 +473,14 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                                       to={subMenu.link}
                                       css={css`
                                         text-decoration: none;
+                                        color: ${textColor};
                                         transition: color
                                           ${transition.speed.default}
                                           ${transition.curve.default};
 
                                         /* stylelint-disable-next-line */
                                         :hover {
-                                          color: ${hoverColor};
+                                          color: inherit;
                                           transition: color
                                             ${transition.speed.default}
                                             ${transition.curve.default};
@@ -505,7 +508,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                         border: none;
                         padding: 0;
                         text-decoration: none;
-                        color: inherit;
+                        color: ${textColor};
                         cursor: pointer;
                         transition: color ${transition.speed.default}
                           ${transition.curve.default};
