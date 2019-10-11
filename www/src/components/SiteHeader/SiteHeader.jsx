@@ -11,6 +11,7 @@ import useScroll from "../../hooks/useScroll"
 import useMobile from "../../hooks/useMobile"
 import { between } from "polished"
 import mediaQuery from "../../utils/media-query"
+import IconInstagram from "../../images/IconInstagram"
 
 const breakpoint = 1024
 const viewBreak = 250
@@ -388,15 +389,40 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
             <div
               css={css`
                 ${mediaQuery.greaterThen(breakpoint)} {
+                  a {
+                    display: inline-block;
+                    margin-right: 0.5em;
+                  }
+
                   ${isOnTop &&
                     css`
                       margin-left: 1em;
+
+                      a {
+                        display: block;
+                        margin-right: 0;
+                      }
                     `}
                 }
               `}
             >
               <a href="https://www.facebook.com/artereQC">
                 <IconFacebook
+                  css={css`
+                    fill: ${textColor};
+                    width: 1em;
+                    transition: fill ${transition.speed.default}
+                      ${transition.curve.default};
+
+                    /* stylelint-disable-next-line */
+                    :hover {
+                      fill: ${hoverColor};
+                    }
+                  `}
+                />
+              </a>
+              <a href="https://www.instagram.com/arteredanse/">
+                <IconInstagram
                   css={css`
                     fill: ${textColor};
                     width: 1em;

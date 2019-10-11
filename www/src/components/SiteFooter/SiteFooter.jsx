@@ -16,6 +16,7 @@ import LogoEDQ from "../../images/LogoEDQ"
 import LogoRotonde from "../../images/LogoRotonde"
 import LogoConseilDeLaCulture from "../../images/LogoConseilDeLaCulture"
 import logoRQD from "../../images/logo-RQD.png"
+import IconInstagram from "../../images/IconInstagram"
 
 const breakpoint = 1024
 
@@ -86,10 +87,28 @@ const SiteFooter = ({ themeColor }) => {
         <div
           css={css`
             margin-right: 1em;
+
+            a {
+              display: block;
+            }
           `}
         >
           <a href="https://www.facebook.com/artereQC">
             <IconFacebook
+              css={css`
+                fill: ${textColor};
+                width: 1em;
+                transition: fill ${transition.speed.default}
+                  ${transition.curve.default};
+
+                :hover {
+                  fill: ${hoverColor};
+                }
+              `}
+            />
+          </a>
+          <a href="https://www.instagram.com/arteredanse/">
+            <IconInstagram
               css={css`
                 fill: ${textColor};
                 width: 1em;
