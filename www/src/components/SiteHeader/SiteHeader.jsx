@@ -231,7 +231,6 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
               right: 0;
               bottom: 0;
               left: 0;
-              overflow: scroll;
               background-color: ${background};
               opacity: 0;
               pointer-events: none;
