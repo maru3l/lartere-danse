@@ -20,7 +20,7 @@ import IconInstagram from "../../images/IconInstagram"
 
 const breakpoint = 1024
 
-const SiteFooter = ({ themeColor }) => {
+const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
   const navigation = useStaticQuery(graphql`
     query {
       primary: navigationYaml(key: { eq: "primary" }) {
@@ -136,7 +136,8 @@ const SiteFooter = ({ themeColor }) => {
               grid-column: 2;
 
               &:nth-child(1),
-              &:nth-child(2) {
+              &:nth-child(2),
+              &:nth-child(3) {
                 grid-column: 1;
               }
             }
@@ -163,6 +164,30 @@ const SiteFooter = ({ themeColor }) => {
               </Link>
             </li>
           ))}
+          <li>
+            <button
+              onClick={() => onNewsletterOpen()}
+              css={css`
+                text-decoration: none;
+                appearance: none;
+                border: none;
+                background: none;
+                padding: 0;
+                cursor: pointer;
+                color: ${textColor};
+                transition: color ${transition.speed.default}
+                  ${transition.curve.default};
+
+                :hover {
+                  color: ${hoverColor};
+                  transition: color ${transition.speed.default}
+                    ${transition.curve.default};
+                }
+              `}
+            >
+              infolettre
+            </button>
+          </li>
         </ul>
       </nav>
 

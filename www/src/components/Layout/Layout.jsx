@@ -32,7 +32,7 @@ const Layout = ({ children, themeColor }) => {
 
       <main>{children}</main>
 
-      <SiteFooter themeColor={themeColor} />
+      <SiteFooter themeColor={themeColor} onNewsletterOpen={setIsOpen} />
 
       <button onClick={() => setIsOpen(true)}>Modal</button>
 
