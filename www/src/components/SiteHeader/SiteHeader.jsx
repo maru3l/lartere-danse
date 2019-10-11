@@ -66,12 +66,34 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
       break
   }
 
-  const navigation = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     query {
       primary: navigationYaml(key: { eq: "primary" }) {
         items {
           title
           link
+          subMenu {
+            title
+            link
+          }
+          subMenuType
+        }
+      }
+      activityTypes: allSanityEventType(sort: { fields: order, order: ASC }) {
+        edges {
+          node {
+            name
+            alwaysOn
+            slug {
+              current
+            }
+          }
+        }
+      }
+      activitiesGroup: allSanityEvent {
+        group(field: eventType___slug___current) {
+          fieldValue
+          totalCount
         }
       }
     }
@@ -80,6 +102,33 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
   const handleClick = () => {
     setOpen(!open)
   }
+
+  const activityLinks = data.activityTypes.edges.reduce(
+    (
+      acc,
+      {
+        node: {
+          name: title,
+          alwaysOn,
+          slug: { current: slug },
+        },
+      }
+    ) => {
+      if (
+        !alwaysOn &&
+        !data.activitiesGroup.group.find(
+          ({ fieldValue }) => fieldValue === slug
+        )
+      ) {
+        return acc
+      }
+
+      return [...acc, { title, link: `/activites#${slug}` }]
+    },
+    []
+  )
+
+  console.log(activityLinks)
 
   return (
     <>
@@ -265,8 +314,11 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           >
             <ul
               css={css`
-                list-style: none;
-                margin: 0;
+                &,
+                ul {
+                  list-style: none;
+                  margin: 0;
+                }
                 padding: 0;
 
                 ${mediaQuery.greaterThen(breakpoint)} {
@@ -328,32 +380,102 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                 }
               `}
             >
-              {navigation.primary.items.map(({ title, link }) => (
+              {data.primary.items.map(item => (
                 <li>
-                  <Match path={link}>
+                  <Match path={item.link}>
                     {props => (
-                      <Link
-                        to={link}
-                        css={css`
-                          text-decoration: none;
-                          transition: color ${transition.speed.default}
-                            ${transition.curve.default};
-
-                          /* stylelint-disable-next-line */
-                          :hover {
-                            color: ${hoverColor};
+                      <>
+                        <Link
+                          to={item.link}
+                          css={css`
+                            text-decoration: none;
                             transition: color ${transition.speed.default}
                               ${transition.curve.default};
-                          }
 
-                          ${props.match &&
-                            css`
+                            /* stylelint-disable-next-line */
+                            :hover {
                               color: ${hoverColor};
+                              transition: color ${transition.speed.default}
+                                ${transition.curve.default};
+                            }
+
+                            ${props.match &&
+                              css`
+                                color: ${hoverColor};
+                              `}
+                          `}
+                        >
+                          {item.title}
+                        </Link>
+
+                        {item.subMenu && open && (
+                          <ul
+                            css={css`
+                              li {
+                                font-size: 0.5em !important;
+                              }
                             `}
-                        `}
-                      >
-                        {title}
-                      </Link>
+                          >
+                            {item.subMenu.map(subMenu => (
+                              <li>
+                                <Link
+                                  to={subMenu.link}
+                                  css={css`
+                                    text-decoration: none;
+                                    transition: color
+                                      ${transition.speed.default}
+                                      ${transition.curve.default};
+
+                                    /* stylelint-disable-next-line */
+                                    :hover {
+                                      color: ${hoverColor};
+                                      transition: color
+                                        ${transition.speed.default}
+                                        ${transition.curve.default};
+                                    }
+                                  `}
+                                >
+                                  {subMenu.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {item.subMenuType === "activity" && open && (
+                          <ul
+                            css={css`
+                              li {
+                                font-size: 0.5em !important;
+                              }
+                            `}
+                          >
+                            {activityLinks.map(subMenu => (
+                              <li>
+                                <Link
+                                  to={subMenu.link}
+                                  css={css`
+                                    text-decoration: none;
+                                    transition: color
+                                      ${transition.speed.default}
+                                      ${transition.curve.default};
+
+                                    /* stylelint-disable-next-line */
+                                    :hover {
+                                      color: ${hoverColor};
+                                      transition: color
+                                        ${transition.speed.default}
+                                        ${transition.curve.default};
+                                    }
+                                  `}
+                                >
+                                  {subMenu.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </>
                     )}
                   </Match>
                 </li>

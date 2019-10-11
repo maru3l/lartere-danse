@@ -3,8 +3,18 @@ key: primary
 items:
   - title: À propos
     link: /a-propos
+    subMenu:
+      - title: Vision • Mission • Mandat
+        link: /a-propos#vision
+      - title: Historique
+        link: /a-propos#historique
+      - title: Équipe
+        link: /a-propos#equipe
+      - title: Partenaires et collaborateurs
+        link: /a-propos#partenaires-collaborateurs
   - title: Activités
     link: /activites
+    subMenuType: activity
   - title: Devenir membre
     link: /devenir-membre
   - title: Première Ovation
