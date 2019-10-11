@@ -114,6 +114,10 @@ const RessourcesPage = ({ data }) => {
                 list-style: none;
                 padding: 0;
 
+                a {
+                  text-decoration: none;
+                }
+
                 > li p {
                   margin: 0;
 
@@ -139,7 +143,7 @@ const RessourcesPage = ({ data }) => {
               <ul>
                 {organisation.map(({ name, url, _rawDescription = null }) => (
                   <li>
-                    <p>{name}</p>
+                    <p>{url ? <a href={url}>{name}</a> : name}</p>
 
                     {_rawDescription && (
                       <div>
@@ -159,7 +163,7 @@ const RessourcesPage = ({ data }) => {
               <ul>
                 {other.map(({ name, url, _rawDescription = null }) => (
                   <li>
-                    <p>{name}</p>
+                    <p>{url ? <a href={url}>{name}</a> : name}</p>
 
                     {_rawDescription && (
                       <div>
