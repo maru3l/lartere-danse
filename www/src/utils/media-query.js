@@ -1,32 +1,11 @@
-// vendors
-import { css } from "@emotion/core"
+export const lessThen = breakpoint =>
+  `@media (max-width: ${breakpoint - 0.02}px)`
 
-const lessThen = breakpoint => (...args) => {
-  return css`
-    @media (max-width: ${breakpoint - 0.02}px) {
-      ${css(...args)}
-    }
-  `
-}
+export const between = (firstBreakpoint, secondBreakpoint) =>
+  `@media (min-width: ${firstBreakpoint}px) and (max-width: ${secondBreakpoint -
+    0.02}px)`
 
-const between = (firstBreakpoint, secondBreakpoint) => (...args) => {
-  return css`
-    @media (
-      min-width: ${firstBreakpoint}px and
-      max-width: ${secondBreakpoint - 0.02}px
-    ) {
-      ${css(...args)}
-    }
-  `
-}
-
-const greaterThen = breakpoint => (...args) => {
-  return css`
-    @media (min-width: ${breakpoint}px) {
-      ${css(...args)}
-    }
-  `
-}
+export const greaterThen = breakpoint => `@media (min-width: ${breakpoint}px)`
 
 export default {
   lessThen,

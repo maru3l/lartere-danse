@@ -1,9 +1,25 @@
 title: Primary navigation
 key: primary
 items:
-  - title: Items 1
-    link: item-1
-  - title: Items 2
-    link: item-2
-  - title: Items 3
-    link: item-3
+  - title: À propos
+    link: /a-propos
+    subMenu:
+      - title: Vision • Mission • Mandat
+        link: /a-propos#vision
+      - title: Historique
+        link: /a-propos#historique
+      - title: Équipe
+        link: /a-propos#equipe
+      - title: Partenaires et collaborateurs
+        link: /a-propos#partenaires-collaborateurs
+  - title: Activités
+    link: /activites
+    subMenuType: activity
+  - title: Devenir membre
+    link: /devenir-membre
+  - title: Première Ovation
+    link: /premiere-ovation
+  - title: Ressources
+    link: /ressources
+  - title: Archives
+    link: /archives

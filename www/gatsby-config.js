@@ -9,6 +9,14 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-emotion",
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        // TODO: add MC list endpoint
+        endpoint:
+          "https://marcantoineruel.us3.list-manage.com/subscribe/post?u=329a899656c80c1ba8f1b2872&amp;id=2b3b1d8573", // add your MC list endpoint here; see instructions below
+      },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
@@ -27,15 +35,16 @@ module.exports = {
         path: `${__dirname}/src/data/`,
       },
     },
-    // {
-    //   resolve: "gatsby-source-sanity",
-    //   options: {
-    //     projectId: process.env.SANITY_PROJECT_ID,
-    //     dataset: process.env.SANITY_DATASET,
-    //     token: process.env.SANITY_DEPLOY_STUDIO_TOKEN,
-    //     overlayDrafts: false,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+        token: process.env.SANITY_DEPLOY_STUDIO_TOKEN,
+        overlayDrafts: process.env.NODE_ENV === "development",
+        watchMode: process.env.NODE_ENV === "development",
+      },
+    },
     "gatsby-transformer-sharp",
     "gatsby-transformer-yaml",
   ],
