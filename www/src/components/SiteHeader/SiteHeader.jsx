@@ -410,7 +410,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
                                 /* stylelint-disable-next-line */
                                 :hover {
-                                  color: inherit;
+                                  color: ${hoverColor};
                                   transition: color ${transition.speed.default}
                                     ${transition.curve.default};
                                 }
@@ -445,7 +445,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
                                         /* stylelint-disable-next-line */
                                         :hover {
-                                          color: inherit;
+                                          color: ${hoverColor};
                                           transition: color
                                             ${transition.speed.default}
                                             ${transition.curve.default};
@@ -480,7 +480,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
                                         /* stylelint-disable-next-line */
                                         :hover {
-                                          color: inherit;
+                                          color: ${hoverColor};
                                           transition: color
                                             ${transition.speed.default}
                                             ${transition.curve.default};
