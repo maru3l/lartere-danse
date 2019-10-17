@@ -6,31 +6,17 @@ export default {
     {
       title: "Formulaire d’adhésion",
       name: "membershipForm",
-      type: "file",
-      fields: [
-        {
-          name: 'title',
-          type: 'string',
-          title: 'Titre'
-        },
-        {
-          name: 'year',
-          type: 'string',
-          title: 'Année'
-        }
-      ]
+      type: "fileObject"
     },
     {
       title: "Politique d’adhésion",
       name: "membershipPolicy",
-      type: "file",
-      fields: [
-        {
-          name: 'title',
-          type: 'string',
-          title: 'Titre'
-        }
-      ]
+      type: "fileObject",
+    },
+    {
+      name: 'membershipYear',
+      type: 'string',
+      title: "Année d'inscription"
     }
   ]
 }

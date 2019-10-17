@@ -5,7 +5,9 @@ const hiddenDocTypes = listItem => ![
   "event",
   "siteSetting",
   "benefit",
-  "benefitType"
+  "benefitType",
+  "ressource",
+  "ressourceType",
 ].includes(listItem.getId())
 
 export default () =>
@@ -50,6 +52,22 @@ export default () =>
                 .menuItems(S.documentTypeList('benefit').getMenuItems())
                 .filter('_type == $type && benefitType._ref == $categoryId')
                 .params({ type: 'benefit', categoryId })}
+              )
+        ),
+      S.listItem()
+        .title("Ressources")
+        .child(
+          S.documentList()
+            .title("Types de ressource")
+            .menuItems(S.documentTypeList("ressourceType").getMenuItems())
+            .filter('_type == $type && !defined(parents)')
+            .params({ type: 'ressourceType' })
+            .child(categoryId => {
+              return S.documentList()
+                .title('Ressources')
+                .menuItems(S.documentTypeList('ressource').getMenuItems())
+                .filter('_type == $type && ressourceType._ref == $categoryId')
+                .params({ type: 'ressource', categoryId })}
               )
         ),
       ...S.documentTypeListItems()

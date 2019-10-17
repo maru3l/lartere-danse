@@ -19,17 +19,10 @@ export default {
       type: "url"
     },
     {
-      title: "Catégorie",
-      name: "type",
-      type: "string",
-      options: {
-        list: [
-          { title: 'Compagnies et collectifs de la Ville de Québec', value: 'localCompagniesAndCollectifs' },
-          { title: 'Organismes spécialisés', value: 'organisation' },
-          { title: 'Ressources autres', value: 'other' },
-        ], // <-- predefined values
-        layout: 'radio' // <-- defaults to 'dropdown'
-      }
+      title: "Type de ressource",
+      name: "ressourceType",
+      type: 'reference',
+      to: [{ type: 'ressourceType' }]
     },
     {
       title: "Position [ordre]",

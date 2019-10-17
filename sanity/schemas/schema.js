@@ -10,7 +10,8 @@ import equipe from './documents/equipe'
 import event from './documents/event'
 import honoraryMember from './documents/honoraryMember'
 import partner from './documents/partner'
-import ressources from './documents/ressources'
+import ressource from './documents/ressource'
+import ressourceType from './documents/ressourceType'
 import eventType from './documents/eventType'
 import siteSetting from './documents/siteSetting'
 import benefit from './documents/benefit'
@@ -29,6 +30,7 @@ import free from './objects/rate/free'
 import regularRate from './objects/rate/regularRate'
 import registrationLink from './objects/registrationType/registrationLink'
 import registrationEmail from './objects/registrationType/registrationEmail'
+import fileObject from './objects/fileObject'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -47,7 +49,8 @@ export default createSchema({
     eventType,
     honoraryMember,
     partner,
-    ressources,
+    ressource,
+    ressourceType,
     siteSetting,
     // winnerAwardOvation,
 
@@ -55,14 +58,15 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     customTime,
     daily,
+    fileObject,
     free,
     mainImage,
+    registrationLink,
+    registrationEmail,
     regularRate,
     richText,
     singleEvent,
     venue,
     weekly,
-    registrationLink,
-    registrationEmail,
   ])
 })
