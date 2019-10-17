@@ -12,6 +12,7 @@ import honoraryMember from './documents/honoraryMember'
 import partner from './documents/partner'
 import Ressources from './documents/ressources'
 import eventType from './documents/eventType'
+import siteSetting from './documents/siteSetting'
 // import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
@@ -43,6 +44,7 @@ export default createSchema({
     partner,
     Ressources,
     eventType,
+    siteSetting,
     // winnerAwardOvation,
 
     // When added to this list, object types can be used as

@@ -2,15 +2,22 @@ import S from "@sanity/desk-tool/structure-builder";
 
 const hiddenDocTypes = listItem => ![
   "eventType",
-  "event"
+  "event",
+  "siteSetting"
 ].includes(listItem.getId())
 
 export default () =>
   S.list()
     .title("Content")
     .items([
-      // S.listItem()
-      //   .title('config'),
+      S.listItem()
+        .title('Configurations')
+        .child(
+          S.editor()
+            .id('setting')
+            .schemaType("siteSetting")
+            .documentId("global-config")
+        ),
       S.listItem()
         .title("Activités")
         .child(
