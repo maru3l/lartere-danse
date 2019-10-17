@@ -21,10 +21,6 @@ const RessourcesPage = ({ data }) => {
 
   const featuredRessourceTypes = [ressourceTypes.shift()]
 
-  console.log(featuredRessourceTypes)
-
-  console.log(ressourceTypes)
-
   const getRessourcesById = id => {
     const ressourcesGroup = ressources.find(
       ({ fieldValue }) => fieldValue === id
