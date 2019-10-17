@@ -15,18 +15,25 @@ import Seo from "../components/Seo"
 const RessourcesPage = ({ data }) => {
   const ressources = data.ressources.group || []
 
-  const getRessourcesByType = type =>
-    ressources
-      .find(({ fieldValue }) => fieldValue === type)
-      .edges.map(({ node }) => node)
-
-  const localCompagniesAndCollectifs = getRessourcesByType(
-    "localCompagniesAndCollectifs"
+  const ressourceTypes = (data.allSanityRessourceType.edges || []).map(
+    ({ node }) => node
   )
 
-  const organisation = getRessourcesByType("organisation")
+  const featuredRessourceTypes = [ressourceTypes.shift()]
 
-  const other = getRessourcesByType("other")
+  console.log(featuredRessourceTypes)
+
+  console.log(ressourceTypes)
+
+  const getRessourcesById = id => {
+    const ressourcesGroup = ressources.find(
+      ({ fieldValue }) => fieldValue === id
+    )
+
+    if (!ressourcesGroup) return []
+
+    return ressourcesGroup.edges.map(({ node }) => node)
+  }
 
   return (
     <Layout themeColor="ORANGE">
@@ -40,62 +47,69 @@ const RessourcesPage = ({ data }) => {
           <h1>Ressoruces</h1>
         </VisuallyHidden>
 
-        {localCompagniesAndCollectifs.length > 0 && (
-          <section id="compagnies-collectifs">
-            <h2
-              className="h3"
-              css={css`
-                max-width: 630px;
-              `}
-            >
-              Compagnies et collectifs de la Ville de Québec
-            </h2>
+        {featuredRessourceTypes.map(
+          ({ _id, name, slug: { current: slug } }) => (
+            <section id={slug}>
+              <h2
+                className="h3"
+                css={css`
+                  max-width: 630px;
+                `}
+              >
+                {name}
+              </h2>
 
-            <ul
-              className="h1"
-              css={css`
-                list-style: none;
-                padding: 0;
-                margin: 0;
-
-                li {
-                  margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
-
-                  :last-child {
-                    margin-bottom: 0;
-                  }
-
-                  ${mediaQuery.greaterThen(1920)} {
-                    margin-bottom: 0px;
-                  }
-                }
-
-                a {
-                  text-decoration: none;
-
-                  :hover {
-                    color: ${colors.text};
-                  }
-                }
-
-                p {
+              <ul
+                className="h1"
+                css={css`
+                  list-style: none;
+                  padding: 0;
                   margin: 0;
-                }
 
-                p,
-                a {
-                  color: ${colors.pink};
-                }
-              `}
-            >
-              {localCompagniesAndCollectifs.map(({ name, url }) => (
-                <li>
-                  {url && <a href={url}>{name}</a>}
-                  {!url && <p>{name}</p>}
-                </li>
-              ))}
-            </ul>
-          </section>
+                  li {
+                    margin-bottom: ${between(
+                      "12.5px",
+                      "0px",
+                      "375px",
+                      "1920px"
+                    )};
+
+                    :last-child {
+                      margin-bottom: 0;
+                    }
+
+                    ${mediaQuery.greaterThen(1920)} {
+                      margin-bottom: 0px;
+                    }
+                  }
+
+                  a {
+                    text-decoration: none;
+
+                    :hover {
+                      color: ${colors.text};
+                    }
+                  }
+
+                  p {
+                    margin: 0;
+                  }
+
+                  p,
+                  a {
+                    color: ${colors.pink};
+                  }
+                `}
+              >
+                {getRessourcesById(_id).map(({ name, url }) => (
+                  <li>
+                    {url && <a href={url}>{name}</a>}
+                    {!url && <p>{name}</p>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
         )}
 
         <div
@@ -133,48 +147,27 @@ const RessourcesPage = ({ data }) => {
             }
           `}
         >
-          {organisation.length > 0 && (
-            <section id="organismes-specialises">
-              <h2 className="h3 color-black">
-                Organismes <br />
-                spécialisés
-              </h2>
+          {ressourceTypes.map(({ _id, name, slug: { current: slug } }) => (
+            <section id={slug}>
+              <h2 className="h3 color-black">{name}</h2>
 
               <ul>
-                {organisation.map(({ name, url, _rawDescription = null }) => (
-                  <li>
-                    <p>{url ? <a href={url}>{name}</a> : name}</p>
+                {getRessourcesById(_id).map(
+                  ({ name, url, _rawDescription = null }) => (
+                    <li>
+                      <p>{url ? <a href={url}>{name}</a> : name}</p>
 
-                    {_rawDescription && (
-                      <div>
-                        <PortableText blocks={_rawDescription} />
-                      </div>
-                    )}
-                  </li>
-                ))}
+                      {_rawDescription && (
+                        <div>
+                          <PortableText blocks={_rawDescription} />
+                        </div>
+                      )}
+                    </li>
+                  )
+                )}
               </ul>
             </section>
-          )}
-
-          {other.length > 0 && (
-            <section id="ressources">
-              <h2 className="h3 color-black">Ressources</h2>
-
-              <ul>
-                {other.map(({ name, url, _rawDescription = null }) => (
-                  <li>
-                    <p>{url ? <a href={url}>{name}</a> : name}</p>
-
-                    {_rawDescription && (
-                      <div>
-                        <PortableText blocks={_rawDescription} />
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          ))}
         </div>
       </article>
     </Layout>
@@ -186,13 +179,25 @@ export default RessourcesPage
 export const query = graphql`
   query RessourcesPageQuery {
     ressources: allSanityRessource(sort: { fields: sort, order: ASC }) {
-      group(field: type) {
+      group(field: ressourceType____id) {
         fieldValue
         edges {
           node {
-            name
             url
+            sort
+            name
             _rawDescription
+          }
+        }
+      }
+    }
+    allSanityRessourceType(sort: { fields: sortOrder, order: ASC }) {
+      edges {
+        node {
+          name
+          _id
+          slug {
+            current
           }
         }
       }
