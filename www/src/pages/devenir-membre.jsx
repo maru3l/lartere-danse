@@ -16,6 +16,20 @@ const DevenirMembrePage = ({ data }) => {
     ({ node }) => node
   )
 
+  const siteConfiguration = data.siteConfiguration
+
+  const benefitsByType = data.benefits.group
+
+  const { benefitTypes } = data
+
+  const getBenefitByTypeId = id => {
+    const benefits = benefitsByType.find(({ fieldValue }) => fieldValue === id)
+
+    if (!benefits) return []
+
+    return benefits.edges.map(({ node }) => node)
+  }
+
   return (
     <Layout>
       <SEO title="Devenir membre" />
@@ -86,10 +100,10 @@ const DevenirMembrePage = ({ data }) => {
 
             <li>
               <p>
-                <a href="/formulaire-dadhesion-et-renouvellement-19-20.pdf">
-                  Le Formulaire adhesion et renouvellement
+                <a href={siteConfiguration.membershipForm.file.asset.url}>
+                  {siteConfiguration.membershipForm.title}
                 </a>{" "}
-                2018-2019 rempli
+                rempli
               </p>
             </li>
 
@@ -157,11 +171,11 @@ const DevenirMembrePage = ({ data }) => {
 
             <p className="color-orange">
               Toute personne ne répondant pas à tous les critères de la{" "}
-              <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
+              <a href={siteConfiguration.membershipPolicy.file.asset.url}>
                 Politique d’adhésion
               </a>{" "}
               de L’Artère, mais se considérant comme un·e professionnel·le de la
-              danse peut nous contacter par courriel à
+              danse peut nous contacter par courriel à{" "}
               <a href="mailto:inscriptions@larteredanse.ca">
                 inscriptions@larteredanse.ca
               </a>
@@ -204,7 +218,7 @@ const DevenirMembrePage = ({ data }) => {
               Pour chacun des statuts, les conditions d’admis&shy;­sibilité, les
               pièces justificatives à fournir ainsi que les privilèges sont
               spécifiés dans le document de{" "}
-              <a href="/politique-d-adhésion-adoptee-2-avril-2018.pdf">
+              <a href={siteConfiguration.membershipPolicy.file.asset.url}>
                 politique d’adhésion
               </a>
               .
@@ -231,27 +245,42 @@ const DevenirMembrePage = ({ data }) => {
                 Avantages d'entraînement pour tou·te·s les membres de L’Artère :
               </p>
 
-              <p>
-                Bénéficier des tarifs préférentiels des membres pour les classes
-                et les stages de perfect&shy;ionnement de L’Artère.
-              </p>
-
-              <p>
-                Développer votre réseau et échanger entre collègues lors de nos
-                différentes activités.
-              </p>
+              <ul
+                css={css`
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                `}
+              >
+                {getBenefitByTypeId("49ba3926-a3e2-48c3-a7d4-7087203ff30d").map(
+                  benefit => (
+                    <li>
+                      <PortableText blocks={benefit._rawDescription} />
+                    </li>
+                  )
+                )}
+              </ul>
             </div>
 
-            <div>
-              <p className="color-orange">Ressources de santé :</p>
+            {benefitTypes.edges.map(({ node }) => (
+              <div id={node.slug.current}>
+                <p className="color-orange">{node.name} :</p>
 
-              <p>
-                Bénéficier des soins de santé à la Clinique PCN à un coût
-                moindre. Chaque membre en règle de L’Artère peut recevoir un
-                traitement par un·e physiothérapeute avec un rabais de 5$ sur
-                l’évaluation et les traitements suivants.
-              </p>
-            </div>
+                <ul
+                  css={css`
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                  `}
+                >
+                  {getBenefitByTypeId(node._id).map(benefit => (
+                    <li>
+                      <PortableText blocks={benefit._rawDescription} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -322,6 +351,48 @@ export const query = graphql`
           _rawDescription
           name
           year
+        }
+      }
+    }
+    siteConfiguration: sanitySiteSetting {
+      membershipForm {
+        file {
+          asset {
+            url
+          }
+        }
+        title
+      }
+      membershipPolicy {
+        file {
+          asset {
+            url
+          }
+        }
+        title
+      }
+    }
+    benefits: allSanityBenefit(sort: { fields: sortOrder, order: ASC }) {
+      group(field: benefitType____id) {
+        fieldValue
+        edges {
+          node {
+            _rawDescription
+          }
+        }
+      }
+    }
+    benefitTypes: allSanityBenefitType(
+      sort: { fields: sortOrder, order: ASC }
+      filter: { _id: { ne: "49ba3926-a3e2-48c3-a7d4-7087203ff30d" } }
+    ) {
+      edges {
+        node {
+          _id
+          name
+          slug {
+            current
+          }
         }
       }
     }
