@@ -3,7 +3,9 @@ import S from "@sanity/desk-tool/structure-builder";
 const hiddenDocTypes = listItem => ![
   "eventType",
   "event",
-  "siteSetting"
+  "siteSetting",
+  "benefit",
+  "benefitType"
 ].includes(listItem.getId())
 
 export default () =>
@@ -32,6 +34,22 @@ export default () =>
                 .menuItems(S.documentTypeList('event').getMenuItems())
                 .filter('_type == $type && eventType._ref == $categoryId')
                 .params({ type: 'event', categoryId })}
+              )
+        ),
+      S.listItem()
+        .title("Avantages")
+        .child(
+          S.documentList()
+            .title("Types d'avantage")
+            .menuItems(S.documentTypeList("benefitType").getMenuItems())
+            .filter('_type == $type && !defined(parents)')
+            .params({ type: 'benefitType' })
+            .child(categoryId => {
+              return S.documentList()
+                .title('Avantages')
+                .menuItems(S.documentTypeList('benefit').getMenuItems())
+                .filter('_type == $type && benefitType._ref == $categoryId')
+                .params({ type: 'benefit', categoryId })}
               )
         ),
       ...S.documentTypeListItems()

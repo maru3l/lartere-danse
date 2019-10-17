@@ -10,9 +10,11 @@ import equipe from './documents/equipe'
 import event from './documents/event'
 import honoraryMember from './documents/honoraryMember'
 import partner from './documents/partner'
-import Ressources from './documents/ressources'
+import ressources from './documents/ressources'
 import eventType from './documents/eventType'
 import siteSetting from './documents/siteSetting'
+import benefit from './documents/benefit'
+import benefitType from './documents/benefitType'
 // import winnerAwardOvation from './documents/winnerAwardOvation'
 
 // Object types
@@ -37,13 +39,15 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    benefit,
+    benefitType,
     board,
     equipe,
     event,
+    eventType,
     honoraryMember,
     partner,
-    Ressources,
-    eventType,
+    ressources,
     siteSetting,
     // winnerAwardOvation,
 
