@@ -15,12 +15,63 @@ export default () =>
     .title("Content")
     .items([
       S.listItem()
-        .title('Configurations')
+        .title('Configurations - old')
         .child(
           S.editor()
             .id('setting')
             .schemaType("siteSetting")
             .documentId("global-config")
+        ),
+      S.listItem()
+        .title('Configurations')
+        .child(
+          S.list()
+            .title('Configurations')
+            .items([
+              S.listItem()
+                .title('Documents')
+                .child(
+                  S.editor()
+                    .id('setting')
+                    .schemaType("siteSetting")
+                    .documentId("global-config")
+                ),
+              S.listItem()
+                .title('Catégories')
+                .child(
+                  S.list()
+                    .title('Catégories')
+                    .items([
+                      S.listItem()
+                        .title("Catégories d'activité")
+                        .child(
+                          S.documentList()
+                            .title("Catégories d'activité")
+                            .menuItems(S.documentTypeList("eventType").getMenuItems())
+                            .filter('_type == $type && !defined(parents)')
+                            .params({ type: 'eventType' })
+                        ),
+                      S.listItem()
+                        .title("Types d'avantage")
+                        .child(
+                          S.documentList()
+                            .title("Types d'avantage")
+                            .menuItems(S.documentTypeList("benefitType").getMenuItems())
+                            .filter('_type == $type && !defined(parents)')
+                            .params({ type: 'benefitType' })
+                        ),
+                      S.listItem()
+                        .title("Types de ressource")
+                        .child(
+                          S.documentList()
+                            .title("Types de ressource")
+                            .menuItems(S.documentTypeList("ressourceType").getMenuItems())
+                            .filter('_type == $type && !defined(parents)')
+                            .params({ type: 'ressourceType' })
+                        ),
+                    ])
+                ),
+            ])
         ),
       S.listItem()
         .title("Activités")
