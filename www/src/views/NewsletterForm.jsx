@@ -24,7 +24,7 @@ const NewsletterForm = () => {
       >
         Oui, j’aimerais <br />
         m’abonner <br />à l’infolettre <br />
-        de l’Artère.
+        de L’Artère.
       </p>
 
       <Formik

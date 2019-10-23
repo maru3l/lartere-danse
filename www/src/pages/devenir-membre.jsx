@@ -184,7 +184,7 @@ const DevenirMembrePage = ({ data }) => {
           </section>
 
           <section id="status-de-membres" className="prevent-column-break">
-            <h2>Status de membres</h2>
+            <h2>Statuts de membres</h2>
 
             <h3
               css={css`

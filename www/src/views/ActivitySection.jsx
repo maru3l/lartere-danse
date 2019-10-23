@@ -171,7 +171,7 @@ const SessionImprovisationActivitySection = ({
       `}
     >
       <h2>
-        SIA / Session d’impro&shy;visation <br />
+        SIA ╱ Session d’impro&shy;visation <br />
         de L'Artère
       </h2>
 
