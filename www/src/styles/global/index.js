@@ -157,9 +157,22 @@ export default css`
   }
 
   .prevent-column-break {
+    /* margin: 0; */
     break-inside: avoid; /* Chrome, Safari */
-    page-break-inside: avoid; /* Theoretically FF 20+ */
-    display: table; /* Actually FF 20+ */
+    /* Theoretically FF 20+ */
+    page-break-inside: avoid;
+    /* Actually FF 20+ */
+    display: inline-block;
+    vertical-align: top;
+
+    & + & {
+      :before {
+        margin-top: initial;
+        height: initial;
+        content: initial;
+        display: initial;
+      }
+    }
   }
 
   /* Fix for prevent section not going under sticky menu */
