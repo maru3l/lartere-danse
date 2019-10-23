@@ -33,7 +33,7 @@ const RessourcesPage = ({ data }) => {
 
   return (
     <Layout themeColor="ORANGE">
-      <Seo title="Ressources" />
+      <Seo title="Ressources" description="Plusieurs ressources sont mises à votre disposition afin de répondre à vos besoins en matière d’art de la danse et du mouvement. L’Artère les rassemble ici." />
       <article
         css={css`
           ${wrapper.bolt()}

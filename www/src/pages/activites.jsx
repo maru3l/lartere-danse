@@ -77,7 +77,7 @@ const ActivitesPage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Activités" />
+      <SEO title="Activités" description="Consultez le calendrier complet des activités de L’Artère, art de la danse et du mouvement : Stages intensifs, Classes de maître, Ateliers de création, Sorties d’ateliers, SIA ╱ Session d’improvisation de L’Artère, Lieux communs, Causeries ╱ 5 à 7." />
       <article
         css={css`
           ${wrapper.bolt()}

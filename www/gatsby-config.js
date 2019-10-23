@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: "L'Artère, art de la danse et du mouvement",
     description:
-      "L’Artère est un organisme à but non lucratif œuvrant à faire rayonner l’art de la danse contemporaine professionnelle sur le territoire de la Capitale-Nationale.",
+      "L’Artère est un organisme à but non lucratif œuvrant à faire rayonner l’art de la danse et du mouvement sur le territoire de la Capitale-Nationale.",
     siteUrl: "https://www.larteredanse.ca/",
   },
   plugins: [

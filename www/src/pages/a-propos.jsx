@@ -25,7 +25,7 @@ const AProposPage = ({ data }) => {
 
   return (
     <Layout themeColor="ORANGE">
-      <SEO title="À propos" />
+      <SEO title="À propos" description="L’Artère est un catalyseur de rencontres humaines et artistiques, donnant lieu à des expéri­men­ta­tions et des réflexions, dans un but d’actua­lisa­tion perm­anente de la discipline de l’art de la danse et du mouvement." />
       <article
         css={css`
           ${wrapper.bolt()}
