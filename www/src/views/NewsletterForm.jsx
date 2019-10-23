@@ -4,8 +4,12 @@ import { css } from "@emotion/core"
 import Button from "../components/Button"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { Formik, Form, Field, ErrorMessage } from "formik"
+import { colors } from "../styles/variables"
 
-const NewsletterForm = () => {
+const NewsletterForm = ({ themeColor }) => {
+  console.log(themeColor)
+  const buttonColor =
+    themeColor === "ORANGE" ? colors.PortlandOrange : colors.Jet
   return (
     <div
       css={css`
@@ -96,6 +100,10 @@ const NewsletterForm = () => {
                   type="submit"
                   css={css`
                     text-transform: uppercase;
+
+                    && {
+                      background-color: ${buttonColor} !important;
+                    }
                   `}
                   disable={isSubmitting}
                 >

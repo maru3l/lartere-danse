@@ -39,7 +39,7 @@ const Layout = ({ children, themeColor }) => {
       <SiteFooter themeColor={themeColor} onNewsletterOpen={setIsOpen} />
 
       <Dialog isOpen={isOpen} onClose={setIsOpen} themeColor={themeColor}>
-        <NewsletterForm />
+        <NewsletterForm themeColor={themeColor} />
       </Dialog>
     </>
   )
