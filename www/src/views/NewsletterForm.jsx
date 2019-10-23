@@ -92,7 +92,7 @@ const NewsletterForm = ({ themeColor }) => {
 
             {/* <ErrorMessage name="email" /> */}
 
-            {status && <p>{status.msg}</p>}
+            {status && <p dangerouslySetInnerHTML={{ __html: status.msg }} />}
 
             {!(status && status.result === "succes") && (
               <div>
