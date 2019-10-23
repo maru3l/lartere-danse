@@ -12,7 +12,10 @@ import EventCard from "../components/EventCard/EventCard"
 const ActivityTemplate = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Activités" />
+      <SEO
+        title={data.event.seo.description.title}
+        description={data.event.seo.description}
+      />
 
       <EventCard
         event={data.event}
@@ -34,6 +37,10 @@ export const query = graphql`
       title
       slug {
         current
+      }
+      seo {
+        title: seo_title
+        description: meta_description
       }
       _rawDescription
       featuredImage {
