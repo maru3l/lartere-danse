@@ -343,6 +343,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                           grid-template-columns: repeat(2, 1fr);
                           align-items: start;
                           grid-auto-flow: column dense;
+                          grid-column-gap: 1em;
                         `}
                     }
 
