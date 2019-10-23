@@ -111,5 +111,16 @@ export default {
         source: 'title',
       }
     },
+    {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo-tools',
+      options: {
+        baseUrl: 'https://www.larteredanse.ca/archives/',
+        slug: (doc) => doc.slug.current,
+        content: (doc) => doc.description,
+        title: (doc) => doc.title,
+      }
+    }
   ]
 }

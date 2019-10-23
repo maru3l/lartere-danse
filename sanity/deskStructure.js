@@ -15,14 +15,6 @@ export default () =>
     .title("Content")
     .items([
       S.listItem()
-        .title('Configurations - old')
-        .child(
-          S.editor()
-            .id('setting')
-            .schemaType("siteSetting")
-            .documentId("global-config")
-        ),
-      S.listItem()
         .title('Configurations')
         .child(
           S.list()

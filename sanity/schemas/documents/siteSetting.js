@@ -12,11 +12,6 @@ export default {
       title: "Politique d’adhésion",
       name: "membershipPolicy",
       type: "fileObject",
-    },
-    {
-      name: 'membershipYear',
-      type: 'string',
-      title: "Année d'inscription"
     }
   ]
 }
