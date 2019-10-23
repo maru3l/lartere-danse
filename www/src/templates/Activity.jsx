@@ -13,7 +13,7 @@ const ActivityTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={data.event.seo.description.title}
+        title={data.event.seo.title}
         description={data.event.seo.description}
       />
 
