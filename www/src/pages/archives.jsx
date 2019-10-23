@@ -81,7 +81,10 @@ const ArchivesPage = ({ data }) => {
 
   return (
     <Layout themeColor="LIGHT">
-      <SEO title="Archives" description="Pour parcourir les archives des activités et des artistes ayant été de passage à L’Artère, art de la danse et du mouvement." />
+      <SEO
+        title="Archives"
+        description="Pour parcourir les archives des activités et des artistes ayant été de passage à L’Artère, art de la danse et du mouvement."
+      />
       <div
         css={css`
           ${wrapper.bolt()};

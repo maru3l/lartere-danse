@@ -32,7 +32,10 @@ const DevenirMembrePage = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Devenir membre" description="Devenez membre de L’Artère pour bénéficier de tarifs préférentiels sur nos activités tout en contribuant au foisonnement de la communauté de la danse et du mouvement à Québec!" />
+      <SEO
+        title="Devenir membre"
+        description="Devenez membre de L’Artère pour bénéficier de tarifs préférentiels sur nos activités tout en contribuant au foisonnement de la communauté de la danse et du mouvement à Québec!"
+      />
       <article
         css={css`
           ${wrapper.bolt()}

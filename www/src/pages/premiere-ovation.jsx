@@ -12,7 +12,10 @@ import Button from "../components/Button/Button"
 const premiereOvationPage = () => {
   return (
     <Layout>
-      <Seo title="Première ovation" description="L’Artère est gestionnaire de la mesure Première Ovation — Danse, qui soutient le dévelop­pement des artistes, des collectifs et des compagnies de la relève de la ville de Québec pour faciliter leur intégration au milieu professionnel de la danse." />
+      <Seo
+        title="Première ovation"
+        description="L’Artère est gestionnaire de la mesure Première Ovation — Danse, qui soutient le dévelop­pement des artistes, des collectifs et des compagnies de la relève de la ville de Québec pour faciliter leur intégration au milieu professionnel de la danse."
+      />
       <article
         css={css`
           ${wrapper.bolt()}
