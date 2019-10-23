@@ -12,9 +12,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
-        // TODO: add MC list endpoint
         endpoint:
-          "https://marcantoineruel.us3.list-manage.com/subscribe/post?u=329a899656c80c1ba8f1b2872&amp;id=2b3b1d8573", // add your MC list endpoint here; see instructions below
+          "https://larteredanse.us11.list-manage.com/subscribe/post?u=3d9bd0e34ba208932b292d16d&amp;id=1fcd38e5d2",
       },
     },
     "gatsby-plugin-react-helmet",
