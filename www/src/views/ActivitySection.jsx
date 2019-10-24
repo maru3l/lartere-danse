@@ -185,10 +185,10 @@ const SessionImprovisationActivitySection = ({
         <p
           css={css`
             :before {
-              content: "«";
+              content: "❝";
             }
             :after {
-              content: "»";
+              content: "❞";
             }
           `}
         >
