@@ -9,6 +9,7 @@ import { css } from "@emotion/core"
 import datesStillAvailable from "../utils/datesStillAvailable"
 import wrapper from "../utils/wrapper"
 import { colors } from "../styles/variables"
+import mediaQuery from "../utils/media-query"
 
 const ArchiveCard = ({ title, picture, slug, ...props }) => (
   <div
@@ -119,6 +120,127 @@ const ArchivesPage = ({ data }) => {
               }
             />
           ))}
+        </div>
+
+        <div>
+          <p className="h2">2012-2019</p>
+
+          <ul
+            css={css`
+              list-style: none;
+              padding: 0;
+              columns: 1;
+
+              ${mediaQuery.greaterThen(650)} {
+                columns: 2;
+              }
+
+              ${mediaQuery.greaterThen(1560)} {
+                columns: 3;
+              }
+
+              li {
+                margin: 0.5em 0;
+              }
+            `}
+          >
+            <li>Yvann Alexandre</li>
+            <li>Pauline Almeida | Danse-théâtre | Portugal</li>
+            <li>Daina Ashbee</li>
+            <li>Lillian Barbeito | Countertechnique</li>
+            <li>Aïcha Bastien N’Diaye</li>
+            <li>Eric Beauchesne</li>
+            <li>Marie-Lorraine Bérubé | Feldenkrais</li>
+            <li>Sarah Bild</li>
+            <li>Peter Bingham | Contact Improvisation</li>
+            <li>Marc Boivin</li>
+            <li>Stéphanie Brochard</li>
+            <li>Nicolas Cantin</li>
+            <li>Ginelle Chagnon</li>
+            <li>Maryse Damecour</li>
+            <li>Antoine Defoort (causerie)</li>
+            <li>Mélanie Demers</li>
+            <li>Johanne Dor</li>
+            <li>Olivier de Sagazan</li>
+            <li>Ady Elzam</li>
+            <li>Lisi Estaras | Ballet C de la B</li>
+            <li>Frey Faust | Axis Syllabus</li>
+            <li>Erin Flyn</li>
+            <li>Marie Claire Forté</li>
+            <li>Annie Gagnon (Mtl) | Gi gong</li>
+            <li>Dana Gingras | gyro</li>
+            <li>Frédérick Gravel</li>
+            <li>Caroline Gravel | Conférence</li>
+            <li>
+              Jonathan Guillemette | Hip hop pour danseur·se·s contemporain·e·s
+            </li>
+            <li>Bruno Guillore | Hofesh Schechter Company</li>
+            <li>Sara Hanley</li>
+            <li>Steve Hamel</li>
+            <li>Benjamin Hatcher</li>
+            <li>Keith Hennessy</li>
+            <li>Emmanuelle Huynh</li>
+            <li>Louise Michel Jackson</li>
+            <li>Peter Jasko | Les SlovaKs</li>
+            <li>Emmanuel Jouthe | Danse Carpe Diem</li>
+            <li>Kelly Keenan | Axis Syllabus</li>
+            <li>Hanna Kiel</li>
+            <li>Martin Kilvady | Les SlovaKs</li>
+            <li>Tom Koch | Technique Alexander</li>
+            <li>Hillel Kogan</li>
+            <li>Alanna Kraaijeveld</li>
+            <li>Benoît Lachambre</li>
+            <li>Anton Lachky</li>
+            <li>Sylvain Lafortune | Portés</li>
+            <li>Alan Lake</li>
+            <li>Louise Lecavalier</li>
+            <li>Emmanuelle LePhan</li>
+            <li>Liquid Loft | Vienne</li>
+            <li>Jason Martin</li>
+            <li>Katrina McPherson</li>
+            <li>Baris Mihci | Axis Syllabus</li>
+            <li>Mathilde Monnier</li>
+            <li>Mikaël Xystra Montminy</li>
+            <li>Line Nault</li>
+            <li>Brice Noeser</li>
+            <li>John Ottman</li>
+            <li>Jocelyn Paradis</li>
+            <li>Noa Paran (Batsheva dance company)</li>
+            <li>Diego Pinon</li>
+            <li>Anne Plamondon</li>
+            <li>Dominique Porte</li>
+            <li>Jacques Poulin-Denis | Grand Poney</li>
+            <li>Lina Rabin</li>
+            <li>David Rancourt</li>
+            <li>Isabel Rocamora | vidéo danse</li>
+            <li>RootlessRoot (Grèce)</li>
+            <li>Manuel Roque</li>
+            <li>Dorotea Saykaly | Marie Chouinard</li>
+            <li>Diogo Sausa et Merel Lammers | Cie Hofesh Shechter</li>
+            <li>Yael Schnell | Cie Sasha Waltz</li>
+            <li>Elk Schrœder</li>
+            <li>Ami Shulman</li>
+            <li>Kirstie Simson</li>
+            <li>Charles Slender-White | Countertechnique</li>
+            <li>Matthew Smith</li>
+            <li>Ted Stoffer | Belgique</li>
+            <li>Heidi Strauss</li>
+            <li>Lila-Mae Talbot</li>
+            <li>Mariko Tanabe</li>
+            <li>Laura Toma</li>
+            <li>Tiffany Tregarthen</li>
+            <li>Antoine Turmine – Gigue Contemporaine</li>
+            <li>Ann Van den Broek | WArd/waRD</li>
+            <li>James Viveiros – Technique GAGA</li>
+            <li>Ahslea Watkin</li>
+            <li>Sarah Wendt</li>
+            <li>Wen Wei Wang</li>
+            <li>Tom Weksler</li>
+            <li>Nina Wollny | Countertechnique</li>
+            <li>Jamie Wright</li>
+            <li>David Zambrano | Flying Low</li>
+            <li>605 Collective | Vancouver</li>
+          </ul>
         </div>
       </div>
     </Layout>
