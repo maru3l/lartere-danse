@@ -241,7 +241,7 @@ const SessionImprovisationActivitySection = ({
           ]}
         >
           {activities.map(event => (
-            <li>
+            <li key={event.slug.current}>
               <EventCard event={event} small={grid} />
             </li>
           ))}
