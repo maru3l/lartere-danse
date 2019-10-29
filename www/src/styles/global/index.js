@@ -6,6 +6,15 @@ import { between } from "polished"
 import { colors, fonts, lineHeights, transition } from "../variables"
 import mediaQuery from "../../utils/media-query"
 
+export const linkStyle = css`
+  transition: color ${transition.speed.fast} ${transition.curve.default};
+  color: inherit;
+
+  :hover {
+    color: ${colors.pink};
+  }
+`
+
 export default css`
   :root {
     --font-size: ${between("16px", "30px", "375px", "1920px")};
@@ -65,12 +74,7 @@ export default css`
     padding: 0;
 
     a {
-      transition: color ${transition.speed.fast} ${transition.curve.default};
-      color: inherit;
-
-      :hover {
-        color: ${colors.pink};
-      }
+      ${linkStyle};
     }
   }
 
@@ -80,13 +84,8 @@ export default css`
 
   li {
     a {
-      transition: color ${transition.speed.fast} ${transition.curve.default};
-      color: inherit;
+      ${linkStyle}
       break-inside: avoid !important;
-
-      :hover {
-        color: ${colors.pink};
-      }
     }
   }
 

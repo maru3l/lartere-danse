@@ -7,6 +7,7 @@ import PortableText from "../PortableText/PortableText"
 import Collapse from "../Collapse/Collapse"
 import getByTerm from "../../../../utils/getByTerm"
 import Button from "../Button/Button"
+import { linkStyle } from "../../styles/global"
 
 const EventCard = ({ event, small = false, ...props }) => {
   let fromDate = null
@@ -353,6 +354,17 @@ const EventCard = ({ event, small = false, ...props }) => {
               flex-basis: 0;
               min-width: 50%;
               max-width: 1020px;
+
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                a {
+                  ${linkStyle};
+                }
+              }
             `}
           >
             <section>
