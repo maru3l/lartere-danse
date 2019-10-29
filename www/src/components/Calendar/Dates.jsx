@@ -10,12 +10,10 @@ const getColorForAudience = audience => {
   switch (audience) {
     case "professionnel":
       return colors.PortlandOrange
-    case "sceneArtist":
-      return colors.canary
     case "artist":
       return colors.PaleCerulean
     case "generalPublic":
-      return colors.grey
+      return colors.canary
     default:
       return "#fff"
   }

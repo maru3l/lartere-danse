@@ -11,7 +11,6 @@ import { graphql } from "gatsby"
 import Calendar from "../components/Calendar"
 import { between } from "polished"
 import mediaQuery from "../utils/media-query"
-import { colors } from "../styles/variables"
 import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import SEO from "../components/Seo/Seo"
 import ActivitySection from "../views/ActivitySection"
@@ -72,6 +71,14 @@ const ActivitesPage = ({ data }) => {
         }
       })
 
+    // if (cur.eventType.name === "Stages intensifs") {
+    //   console.log(dates.length === 0)
+    //   // console.log(cur.eventType.name === "Stages intensifs")
+    // }
+
+    if (dates.length === 0) {
+      console.log(cur.date)
+    }
     return [...acc, ...dates]
   }, [])
 
