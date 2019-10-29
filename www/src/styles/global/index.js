@@ -162,7 +162,7 @@ export default css`
     /* Theoretically FF 20+ */
     page-break-inside: avoid;
     /* Actually FF 20+ */
-    display: inline-block;
+    display: table;
     vertical-align: top;
 
     & + & {
