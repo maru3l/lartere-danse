@@ -8,6 +8,7 @@ module.exports = {
     siteUrl: "https://www.larteredanse.ca/",
   },
   plugins: [
+    "gatsby-plugin-remove-serviceworker",
     "gatsby-plugin-emotion",
     {
       resolve: "gatsby-plugin-mailchimp",
