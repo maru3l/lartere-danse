@@ -210,7 +210,7 @@ const ArchivesPage = ({ data }) => {
             <li>Anne Plamondon</li>
             <li>Dominique Porte</li>
             <li>Jacques Poulin-Denis | Grand Poney</li>
-            <li>Lina Rabin</li>
+            <li>Linda Rabin</li>
             <li>David Rancourt</li>
             <li>Isabel Rocamora | vidéo danse</li>
             <li>RootlessRoot (Grèce)</li>
