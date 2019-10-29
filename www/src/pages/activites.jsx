@@ -42,7 +42,7 @@ const ActivitesPage = ({ data }) => {
         const closestA = getClosestDate(a.date)
         const closestB = getClosestDate(b.date)
 
-        return Date.parse(closestA.from) > Date.parse(closestB.from)
+        return Date.parse(closestA.from) - Date.parse(closestB.from)
       })
   }
 
@@ -202,6 +202,7 @@ const ActivitesPage = ({ data }) => {
                     id={current}
                     grid={display === "grid"}
                     sortOrder={order}
+                    key={current}
                   />
                 )
               )
