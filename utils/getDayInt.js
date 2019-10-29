@@ -22,6 +22,6 @@ export default (day) => {
     case "samedi":
       return 6
     default:
-      return day
+      return Number(day)
   }
 }
