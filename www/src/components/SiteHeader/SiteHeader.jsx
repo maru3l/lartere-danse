@@ -16,7 +16,7 @@ import { RemoveScroll } from "react-remove-scroll"
 import FocusLock from "react-focus-lock"
 
 const breakpoint = 1024
-const viewBreak = 250
+const viewBreak = 300
 
 const LogoComponent = ({ children, ...rests }) => (
   <Match path="/">
@@ -32,11 +32,16 @@ const LogoComponent = ({ children, ...rests }) => (
   </Match>
 )
 
+let prevScrollPos = 0
+
 const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
-  const [open, setOpen] = useState(false)
   const scroll = useScroll()
+  const [open, setOpen] = useState(false)
+  // const [prevScrollPos, setPrevScrollPos] = useState(scroll.y || 0)
   const isMobile = useMobile(breakpoint) || false
   const isOnTop = scroll ? !(scroll.y > viewBreak) : false
+  const visible = prevScrollPos > scroll.y || scroll.y < 200
+  prevScrollPos = scroll.y
 
   let textColor = colors.Isabelline
   let hoverColor = colors.PortlandOrange
@@ -134,8 +139,8 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
     <>
       <header
         css={css`
-          position: fixed;
-          width: 100vw;
+          /* position: fixed; */
+          /* width: 100vw; */
           box-sizing: border-box;
           ${wrapper.bolt("padding")}
           padding-top: 1rem;
@@ -143,6 +148,16 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           top: 0;
           z-index: ${zIndices.sticky};
           height: auto;
+          opacity: 0;
+          transition: opacity ${transition.speed.fast}
+            ${transition.curve.default};
+
+          position: sticky;
+
+          ${(visible || open) &&
+            css`
+              opacity: 1;
+            `}
 
           ${mediaQuery.greaterThen(breakpoint)} {
             padding-top: ${96 / 33}rem;
@@ -584,11 +599,11 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
         </RemoveScroll>
       </header>
 
-      <div
+      {/* <div
         css={css`
           height: 250px;
         `}
-      />
+      /> */}
     </>
   )
 }
