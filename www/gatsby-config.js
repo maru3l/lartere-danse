@@ -17,6 +17,12 @@ module.exports = {
           "https://larteredanse.us11.list-manage.com/subscribe/post?u=3d9bd0e34ba208932b292d16d&amp;id=1fcd38e5d2",
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-39075416-1",
+      },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
