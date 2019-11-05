@@ -17,5 +17,14 @@ export const onRenderBody = ({ setHeadComponents }) => {
       crossOrigin="true"
     />,
     <link key="2" href="/fonts/SuisseIntl/SuisseIntl.css" rel="stylesheet" />,
+    <link
+      key="3"
+      rel="preload"
+      href="/fonts/Adieu/Adieu-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossOrigin="true"
+    />,
+    <link key="4" href="/fonts/Adieu/Adieu.css" rel="stylesheet" />,
   ])
 }

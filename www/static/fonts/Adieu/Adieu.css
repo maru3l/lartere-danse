@@ -1,0 +1,7 @@
+
+@font-face {
+    font-family:"Adieu";
+    src:url("Adieu-Regular.woff2") format("woff2"),url("Adieu-Regular.woff") format("woff"),url("Adieu-Regular.otf") format("opentype");
+    font-style:normal;
+    font-weight:400;
+}
