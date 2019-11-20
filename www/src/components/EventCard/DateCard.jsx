@@ -14,14 +14,8 @@ const getNewestDate = dates =>
   )
 
 const DateCard = ({ date }) => {
-  let fromDate = null
-  let toDate = null
-  let hours = []
-
-  console.log(date)
-
-  fromDate = new Date(`${date.from}T00:00:00`)
-  toDate = new Date(`${date.to}T00:00:00`)
+  const fromDate = new Date(`${date.from}T00:00:00`)
+  const toDate = new Date(`${date.to}T00:00:00`)
 
   // hours = date.reduce((acc, { fromTime, toTime }) => {
   //   const found = acc.find(
