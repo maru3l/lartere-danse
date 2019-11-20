@@ -218,7 +218,7 @@ const ArchivesPage = ({ data }) => {
             <li>Dorotea Saykaly | Marie Chouinard</li>
             <li>Diogo Sausa et Merel Lammers | Cie Hofesh Shechter</li>
             <li>Yael Schnell | Cie Sasha Waltz</li>
-            <li>Elk Schrœder</li>
+            <li>Elke Schrœder</li>
             <li>Ami Shulman</li>
             <li>Kirstie Simson</li>
             <li>Charles Slender-White | Countertechnique</li>
