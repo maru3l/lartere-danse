@@ -149,6 +149,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           z-index: ${zIndices.sticky};
           height: auto;
           opacity: 0;
+          pointer-events: none;
           transition: opacity ${transition.speed.fast}
             ${transition.curve.default};
 
@@ -157,6 +158,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           ${(visible || open) &&
             css`
               opacity: 1;
+              pointer-events: auto;
             `}
 
           ${mediaQuery.greaterThen(breakpoint)} {
@@ -220,6 +222,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                 ${isOnTop &&
                   css`
                     display: none;
+                    pointer-events: none;
                   `}
               }
             `}
@@ -306,6 +309,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                     ${isOnTop &&
                       css`
                         display: none;
+                        pointer-events: none;
                       `}
                   }
                 `}

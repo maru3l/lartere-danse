@@ -76,12 +76,12 @@ const Calendar = ({
 
         ${mediaQuery.lessThen(1024)} {
           grid-template-columns: repeat(3, 1fr);
-          grid-auto-rows: auto 1fr;
+          grid-auto-rows: auto;
         }
 
         ${mediaQuery.greaterThen(1024)} {
           grid-template-columns: repeat(7, 1fr);
-          grid-auto-rows: 0.5fr 0.5fr 1fr;
+          grid-auto-rows: repeat(2, 0.5fr) repeat(auto);
         }
       `}
     >
