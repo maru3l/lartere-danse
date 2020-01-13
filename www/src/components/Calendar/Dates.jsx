@@ -108,8 +108,8 @@ const Dates = ({ month, year, events = [] }) => {
             >
               <div
                 css={css`
-                  position: absolute;
-                  top: 0;
+                  /* position: absolute; */
+                  top: 2em;
                   right: 0;
                   bottom: 0;
                   left: 0;
@@ -125,13 +125,14 @@ const Dates = ({ month, year, events = [] }) => {
                 <ul
                   css={css`
                     min-height: 100%;
-                    display: flex;
+                    /* display: flex;
                     flex-flow: column;
-                    justify-content: center;
+                    justify-content: center; */
                     font-size: ${27 / 33}em;
                     list-style: none;
                     margin: 0;
                     padding: 0;
+                    margin-top: 3em;
                     margin-right: 1em;
                   `}
                 >
