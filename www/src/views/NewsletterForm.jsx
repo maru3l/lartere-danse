@@ -45,7 +45,10 @@ const NewsletterForm = ({ themeColor }) => {
           return errors
         }}
         onSubmit={(values, actions) => {
-          addToMailchimp(values.email)
+          addToMailchimp(values.email, {
+            FNAME: values.firstName,
+            LNAME: values.lastName,
+          })
             .then(data => {
               actions.setSubmitting(false)
               actions.setStatus(data)
@@ -67,6 +70,52 @@ const NewsletterForm = ({ themeColor }) => {
               min-width: 50%;
             `}
           >
+            <label htmlFor="firstName">
+              <Field
+                type="text"
+                name="firstName"
+                id="firstName"
+                css={css`
+                  width: 100%;
+                  line-height: 50px;
+                  font-size: ${36 / 33}em;
+                `}
+              />
+
+              <span
+                css={css`
+                  display: block;
+                  font-size: ${24 / 33}em;
+                  margin-bottom: 1em;
+                `}
+              >
+                votre prénom
+              </span>
+            </label>
+
+            <label htmlFor="lastName">
+              <Field
+                type="text"
+                name="lastName"
+                id="lastName"
+                css={css`
+                  width: 100%;
+                  line-height: 50px;
+                  font-size: ${36 / 33}em;
+                `}
+              />
+
+              <span
+                css={css`
+                  display: block;
+                  font-size: ${24 / 33}em;
+                  margin-bottom: 1em;
+                `}
+              >
+                votre nom
+              </span>
+            </label>
+
             <label htmlFor="email">
               <Field
                 type="email"
