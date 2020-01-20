@@ -72,8 +72,8 @@ const TeamMemberCard = ({ name, role, email = [], portrait }) => {
             />
           )}
 
-          {portrait && portrait.asset.fluid.srcSet && (
-            <source
+          {portrait && portrait.asset.fluid.src && (
+            <img
               sizes="
                 (min-width: 653px) 46vw,
                 (min-width: 994px) 30vw,
@@ -82,11 +82,9 @@ const TeamMemberCard = ({ name, role, email = [], portrait }) => {
                 94vw
               "
               srcset={portrait.asset.fluid.srcSet}
+              src={portrait.asset.fluid.src}
+              alt={portrait.asset.alt}
             />
-          )}
-
-          {portrait && portrait.asset.fluid.src && (
-            <img src={portrait.asset.fluid.src} alt={portrait.asset.alt} />
           )}
         </picture>
       </div>
