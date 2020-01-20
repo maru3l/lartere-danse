@@ -57,11 +57,43 @@ const ArchiveCard = ({ title, picture, slug, ...props }) => (
             object-fit: cover;
             width: 100%;
             height: 100%;
+            ${picture &&
+              picture.hotspot &&
+              css`
+                object-position: ${picture.hotspot.x * 100}%
+                  ${picture.hotspot.y * 100}%;
+              `}
           }
         `}
       >
-        <source sizes="" srcset={picture.srcSetWebp} type="image/webp" />
-        <img srcset={picture.srcSet} src={picture.src} alt={picture.alt} />
+        {picture.srcSetWebp && (
+          <source
+            sizes="
+            (min-width: 653px) 46vw,
+            (min-width: 994px) 30vw,
+            (min-width: 1348px) 23vw,
+            (min-width: 1920px) 478px,
+            94vw
+          "
+            srcset={picture.srcSetWebp}
+            type="image/webp"
+          />
+        )}
+
+        {picture.src && (
+          <img
+            sizes="
+            (min-width: 653px) 46vw,
+            (min-width: 994px) 30vw,
+            (min-width: 1348px) 23vw,
+            (min-width: 1920px) 478px,
+            94vw
+          "
+            srcset={picture.srcSet}
+            src={picture.src}
+            alt={picture.alt}
+          />
+        )}
       </picture>
       <div
         css={css`
@@ -115,6 +147,7 @@ const ArchivesPage = ({ data }) => {
                   ? {
                       ...node.featuredImage.asset.fluid,
                       alt: node.featuredImage.alt,
+                      hotspot: node.featuredImage.hotspot || null,
                     }
                   : {}
               }
@@ -260,13 +293,17 @@ export const query = graphql`
           title
           featuredImage {
             asset {
-              fluid {
+              fluid(maxWidth: 610) {
                 src
                 srcSet
                 srcSetWebp
               }
             }
             alt
+            hotspot {
+              x
+              y
+            }
           }
           date {
             ... on SanityDaily {

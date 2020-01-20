@@ -60,16 +60,32 @@ const EventCard = ({ event, small = false, ...props }) => {
                   object-fit: cover;
                   width: 100%;
                   height: 100%;
+
+                  ${event.featuredImage &&
+                    event.featuredImage.hotspot &&
+                    css`
+                      object-position: ${event.featuredImage.hotspot.x * 100}%
+                        ${event.featuredImage.hotspot.y * 100}%;
+                    `}
                 }
               `}
             >
-              {event.featuredImage && (
-                <>
-                  <img
-                    src={event.featuredImage.asset.fluid.src}
-                    alt={event.featuredImage.alt}
+              {event.featuredImage &&
+                event.featuredImage.asset.fluid.srcSetWebp && (
+                  <source
+                    sizes="(min-width: 514px) 480px, 94vw"
+                    srcset={event.featuredImage.asset.fluid.srcSetWebp}
+                    type="image/webp"
                   />
-                </>
+                )}
+
+              {event.featuredImage && (
+                <img
+                  sizes="(min-width: 514px) 480px, 94vw"
+                  srcset={event.featuredImage.asset.fluid.srcSet}
+                  src={event.featuredImage.asset.fluid.src}
+                  alt={event.featuredImage.alt}
+                />
               )}
             </picture>
           )}

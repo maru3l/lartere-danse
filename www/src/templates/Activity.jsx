@@ -46,11 +46,15 @@ export const query = graphql`
       featuredImage {
         alt
         asset {
-          fluid {
+          fluid(maxWidth: 480) {
             src
             srcSet
             srcSetWebp
           }
+        }
+        hotspot {
+          x
+          y
         }
       }
       date {
