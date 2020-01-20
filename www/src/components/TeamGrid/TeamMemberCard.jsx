@@ -3,7 +3,7 @@ import React from "react"
 import css from "@emotion/css"
 import { transition, colors } from "../../styles/variables"
 
-const TeamMemberCard = ({ name, role, email = [] }) => {
+const TeamMemberCard = ({ name, role, email = [], portrait }) => {
   return (
     <div
       css={css`
@@ -45,12 +45,49 @@ const TeamMemberCard = ({ name, role, email = [] }) => {
               object-fit: cover;
               width: 100%;
               height: 100%;
+              filter: grayscale();
+              mix-blend-mode: multiply;
+              ${portrait &&
+                portrait.hotspot &&
+                css`
+                  object-position: ${portrait.hotspot.x * 100}%
+                    ${portrait.hotspot.y * 100}%;
+                `}
             }
           }
         `}
       >
         <picture>
-          <img src="https://picsum.photos/1275/789" alt="" />
+          {portrait && portrait.asset.fluid.srcSetWebp && (
+            <source
+              sizes="
+                (min-width: 653px) 46vw,
+                (min-width: 994px) 30vw,
+                (min-width: 1348px) 23vw,
+                (min-width: 1920px) 478px,
+                94vw
+              "
+              srcset={portrait.asset.fluid.srcSetWebp}
+              type="image/webp"
+            />
+          )}
+
+          {portrait && portrait.asset.fluid.srcSet && (
+            <source
+              sizes="
+                (min-width: 653px) 46vw,
+                (min-width: 994px) 30vw,
+                (min-width: 1348px) 23vw,
+                (min-width: 1920px) 478px,
+                94vw
+              "
+              srcset={portrait.asset.fluid.srcSet}
+            />
+          )}
+
+          {portrait && portrait.asset.fluid.src && (
+            <img src={portrait.asset.fluid.src} alt={portrait.asset.alt} />
+          )}
         </picture>
       </div>
 

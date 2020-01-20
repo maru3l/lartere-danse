@@ -573,6 +573,20 @@ export const query = graphql`
         node {
           name
           role
+          portrait {
+            alt
+            asset {
+              fluid(maxWidth: 610) {
+                src
+                srcSet
+                srcSetWebp
+              }
+            }
+            hotspot {
+              x
+              y
+            }
+          }
         }
       }
     }
@@ -583,6 +597,20 @@ export const query = graphql`
           name
           role
           email
+          portrait {
+            alt
+            asset {
+              fluid(maxWidth: 610) {
+                src
+                srcSet
+                srcSetWebp
+              }
+            }
+            hotspot {
+              x
+              y
+            }
+          }
         }
       }
     }
