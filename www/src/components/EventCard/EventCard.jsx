@@ -61,7 +61,8 @@ const EventCard = ({ event, small = false, ...props }) => {
                   width: 100%;
                   height: 100%;
 
-                  ${event.featuredImage.hotspot &&
+                  ${event.featuredImage &&
+                    event.featuredImage.hotspot &&
                     css`
                       object-position: ${event.featuredImage.hotspot.x * 100}%
                         ${event.featuredImage.hotspot.y * 100}%;
