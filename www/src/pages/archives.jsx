@@ -57,7 +57,8 @@ const ArchiveCard = ({ title, picture, slug, ...props }) => (
             object-fit: cover;
             width: 100%;
             height: 100%;
-            ${picture.hotspot &&
+            ${picture &&
+              picture.hotspot &&
               css`
                 object-position: ${picture.hotspot.x * 100}%
                   ${picture.hotspot.y * 100}%;
