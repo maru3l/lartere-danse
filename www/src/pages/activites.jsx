@@ -77,7 +77,7 @@ const ActivitesPage = ({ data }) => {
     // }
 
     if (dates.length === 0) {
-      console.log(cur.date)
+      // console.log(cur.date)
     }
     return [...acc, ...dates]
   }, [])

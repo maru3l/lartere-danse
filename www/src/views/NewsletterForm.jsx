@@ -3,11 +3,10 @@ import React from "react"
 import { css } from "@emotion/core"
 import Button from "../components/Button"
 import addToMailchimp from "gatsby-plugin-mailchimp"
-import { Formik, Form, Field, ErrorMessage } from "formik"
+import { Formik, Form, Field } from "formik"
 import { colors } from "../styles/variables"
 
 const NewsletterForm = ({ themeColor }) => {
-  console.log(themeColor)
   const buttonColor =
     themeColor === "ORANGE" ? colors.PortlandOrange : colors.Jet
   return (
