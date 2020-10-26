@@ -68,19 +68,6 @@ const DevenirMembrePage = ({ data }) => {
             S'inscrire
           </h2>
 
-          <p
-            css={css`
-              max-width: 720px;
-            `}
-          >
-            Vous devez nous faire parvenir <br />
-            par la poste, en main propre ou par courriel à{" "}
-            <a href="mailto:inscriptions@larteredanse.ca">
-              inscriptions@larteredanse.ca
-            </a>{" "}
-            :
-          </p>
-
           <ol
             css={css`
               display: grid;
