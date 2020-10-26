@@ -68,23 +68,11 @@ const DevenirMembrePage = ({ data }) => {
             S'inscrire
           </h2>
 
-          <p
-            css={css`
-              max-width: 720px;
-            `}
-          >
-            Vous devez nous faire parvenir <br />
-            par la poste, en main propre ou par courriel à{" "}
-            <a href="mailto:inscriptions@larteredanse.ca">
-              inscriptions@larteredanse.ca
-            </a>{" "}
-            :
-          </p>
-
-          <ul
+          <ol
             css={css`
               display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              grid-gap: 2.5em;
               list-style: none;
               padding: 0;
 
@@ -94,32 +82,68 @@ const DevenirMembrePage = ({ data }) => {
             `}
           >
             <li>
+              <p
+                css={css`
+                  font-size: 4em;
+                `}
+              >
+                1.
+              </p>
+
               <p>
-                Votre <br />
-                curriculum <br />
-                vitae à jour
+                Identifier sa catégorie de membre en consultant notre{" "}
+                <a
+                  href={siteConfiguration.membershipPolicy.file.asset.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Politique d’adhésion
+                </a>
+                .
               </p>
             </li>
 
             <li>
+              <p
+                css={css`
+                  font-size: 4em;
+                `}
+              >
+                2.
+              </p>
+
               <p>
-                <a href={siteConfiguration.membershipForm.file.asset.url}>
-                  {siteConfiguration.membershipForm.title}
-                </a>{" "}
-                rempli
+                Compléter le formulaire d'adhésion et le paiement de sa
+                cotisation{" "}
+                <a
+                  href={siteConfiguration.membershipFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ici
+                </a>
+                .
               </p>
             </li>
 
             <li>
+              <p
+                css={css`
+                  font-size: 4em;
+                `}
+              >
+                3.
+              </p>
+
               <p>
-                Le montant de <br />
-                la cotisation en <br />
-                espèces ou <br />
-                en chèque&nbsp;
-                <sup>(au&nbsp;nom&nbsp;de&nbsp;L’Artère)</sup>
+                Envoyer son curriculum vitæ à jour à l'adresse{" "}
+                <a href="mailto:inscriptions@larteredanse.ca">
+                  inscriptions@larteredanse.ca
+                </a>
+                .
               </p>
             </li>
-          </ul>
+          </ol>
 
           <p
             className="color-orange"
@@ -374,6 +398,7 @@ export const query = graphql`
         }
         title
       }
+      membershipFormUrl
     }
     benefits: allSanityBenefit(sort: { fields: sortOrder, order: ASC }) {
       group(field: benefitType____id) {

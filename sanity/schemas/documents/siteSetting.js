@@ -12,6 +12,11 @@ export default {
       title: "Politique d’adhésion",
       name: "membershipPolicy",
       type: "fileObject",
+    },
+    {
+      title: "Lien vers Formulaire d’adhésion",
+      name: "membershipFormUrl",
+      type: "url"
     }
   ]
 }
