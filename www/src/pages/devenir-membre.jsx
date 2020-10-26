@@ -382,14 +382,6 @@ export const query = graphql`
       }
     }
     siteConfiguration: sanitySiteSetting {
-      membershipForm {
-        file {
-          asset {
-            url
-          }
-        }
-        title
-      }
       membershipPolicy {
         file {
           asset {
