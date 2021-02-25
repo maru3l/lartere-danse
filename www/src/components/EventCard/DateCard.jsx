@@ -14,15 +14,11 @@ const getNewestDate = dates =>
   )
 
 const DateCard = ({ date }) => {
-  const fromDate = new Date(`${date.from}T00:00:00`)
-  const toDate = new Date(`${date.to}T00:00:00`)
-
-  // hours = date.reduce((acc, { fromTime, toTime }) => {
-  //   const found = acc.find(
-  //     ({ fromTime: from, toTime: to }) => fromTime === from && toTime === to
-  //   )
-  //   return found ? acc : [...acc, { fromTime, toTime }]
-  // }, [])
+  console.log(date.from)
+  const [fromYear, fromMonth, fromDate] = date.from.split("-")
+  const [toYear, toMonth, toDate] = date.to.split("-")
+  const fromDateObj = new Date(fromYear, fromMonth - 1, fromDate)
+  const toDateObj = new Date(toYear, toMonth - 1, toDate)
 
   return (
     <li>
@@ -43,14 +39,15 @@ const DateCard = ({ date }) => {
           margin-bottom: 0;
         `}
       >
-        {fromDate.getDate()}{" "}
-        {fromDate.getMonth() !== toDate.getMonth() &&
-          fromDate.toLocaleDateString("fr", { month: "long" })}{" "}
-        {fromDate.getYear() !== toDate.getYear() && fromDate.getFullYear()}{" "}
-        {fromDate.getTime() !== toDate.getTime() && <>au</>}{" "}
-        {fromDate.getTime() !== toDate.getTime() && toDate.getDate()}{" "}
-        {toDate.toLocaleDateString("fr", { month: "long" })}{" "}
-        {toDate.getFullYear()}
+        {fromDateObj.getDate()}{" "}
+        {fromDateObj.getMonth() !== toDateObj.getMonth() &&
+          fromDateObj.toLocaleDateString("fr", { month: "long" })}{" "}
+        {fromDateObj.getYear() !== toDateObj.getYear() &&
+          fromDateObj.getFullYear()}{" "}
+        {fromDateObj.getTime() !== toDateObj.getTime() && <>au</>}{" "}
+        {fromDateObj.getTime() !== toDateObj.getTime() && toDateObj.getDate()}{" "}
+        {toDateObj.toLocaleDateString("fr", { month: "long" })}{" "}
+        {toDateObj.getFullYear()}
       </p>
 
       {date.fromTime && date.toTime && (
