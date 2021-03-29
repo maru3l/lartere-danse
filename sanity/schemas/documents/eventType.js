@@ -2,6 +2,7 @@ export default {
   title: "Type d'activité",
   name: "eventType",
   type: "document",
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       title: "Nom",

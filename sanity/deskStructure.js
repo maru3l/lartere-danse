@@ -37,82 +37,55 @@ export default () =>
                       S.listItem()
                         .title("Catégories d'activité")
                         .child(
-                          S.documentList()
-                            .title("Catégories d'activité")
-                            .menuItems(S.documentTypeList("eventType").getMenuItems())
-                            .filter('_type == $type && !defined(parents)')
-                            .params({ type: 'eventType' })
+                          S.documentTypeList('eventType')
                         ),
                       S.listItem()
                         .title("Types d'avantage")
                         .child(
-                          S.documentList()
-                            .title("Types d'avantage")
-                            .menuItems(S.documentTypeList("benefitType").getMenuItems())
-                            .filter('_type == $type && !defined(parents)')
-                            .params({ type: 'benefitType' })
+                          S.documentTypeList('benefitType')
                         ),
                       S.listItem()
                         .title("Types de ressource")
                         .child(
-                          S.documentList()
-                            .title("Types de ressource")
-                            .menuItems(S.documentTypeList("ressourceType").getMenuItems())
-                            .filter('_type == $type && !defined(parents)')
-                            .params({ type: 'ressourceType' })
+                          S.documentTypeList('ressourceType')
                         ),
                     ])
                 ),
             ])
         ),
+        S.listItem()
+      .title('Activités')
+      .child(
+        S.documentTypeList('eventType')
+          .title('Catégories d\'activité')
+          .child(categoryId =>
+            S.documentList()
+              .title('Activités')
+              .filter('_type == "event" && $categoryId == eventType._ref')
+              .params({ categoryId })
+          )),
       S.listItem()
-        .title("Activités")
-        .child(
-          S.documentList()
-            .title("Catégories d'activité")
-            .menuItems(S.documentTypeList("eventType").getMenuItems())
-            .filter('_type == $type && !defined(parents)')
-            .params({ type: 'eventType' })
-            .child(categoryId => {
-              return S.documentList()
-                .title('Activités')
-                .menuItems(S.documentTypeList('event').getMenuItems())
-                .filter('_type == $type && eventType._ref == $categoryId')
-                .params({ type: 'event', categoryId })}
-              )
-        ),
+      .title('Avantages')
+      .child(
+        S.documentTypeList('benefitType')
+          .title('Types d\'avantage')
+          .child(categoryId =>
+            S.documentList()
+              .title('Avantages')
+              .filter('_type == "benefit" && $categoryId == benefitType._ref')
+              .params({ categoryId })
+          )),
       S.listItem()
-        .title("Avantages")
+        .title('Ressources')
         .child(
-          S.documentList()
-            .title("Types d'avantage")
-            .menuItems(S.documentTypeList("benefitType").getMenuItems())
-            .filter('_type == $type && !defined(parents)')
-            .params({ type: 'benefitType' })
-            .child(categoryId => {
-              return S.documentList()
-                .title('Avantages')
-                .menuItems(S.documentTypeList('benefit').getMenuItems())
-                .filter('_type == $type && benefitType._ref == $categoryId')
-                .params({ type: 'benefit', categoryId })}
-              )
-        ),
-      S.listItem()
-        .title("Ressources")
-        .child(
-          S.documentList()
-            .title("Types de ressource")
-            .menuItems(S.documentTypeList("ressourceType").getMenuItems())
-            .filter('_type == $type && !defined(parents)')
-            .params({ type: 'ressourceType' })
-            .child(categoryId => {
-              return S.documentList()
+          S.documentTypeList('ressourceType')
+            .title('Types de ressource')
+            .child(categoryId =>
+              S.documentList()
                 .title('Ressources')
-                .menuItems(S.documentTypeList('ressource').getMenuItems())
-                .filter('_type == $type && ressourceType._ref == $categoryId')
-                .params({ type: 'ressource', categoryId })}
-              )
-        ),
+                .filter('_type == "ressource" && $categoryId == ressourceType._ref')
+                .params({ categoryId })
+            )),
       ...S.documentTypeListItems()
         .filter(hiddenDocTypes)
     ]);

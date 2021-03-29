@@ -51,6 +51,7 @@ export default {
       title: "date",
       name: 'date',
       type: 'array',
+      validation: Rule => Rule.required(),
       of: [
         {
           title: "Session unique",

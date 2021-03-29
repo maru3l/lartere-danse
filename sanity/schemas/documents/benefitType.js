@@ -2,6 +2,7 @@ export default {
   title: "Types Avantage",
   name: "benefitType",
   type: "document",
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       title: "Nom",
