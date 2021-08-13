@@ -1,111 +1,108 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo/Seo"
 import { graphql, Link } from "gatsby"
 import VisuallyHidden from "@reach/visually-hidden"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 
 import datesStillAvailable from "../utils/datesStillAvailable"
 import wrapper from "../utils/wrapper"
 import { colors } from "../styles/variables"
 import mediaQuery from "../utils/media-query"
+import { getSrc, getSrcSet } from "gatsby-plugin-image"
 
-const ArchiveCard = ({ title, picture, slug, ...props }) => (
-  <div
-    css={css`
-      width: 100%;
-      display: block;
-      position: relative;
-    `}
-    {...props}
-  >
-    <Link
-      to={`/archives/${slug}`}
+const ArchiveCard = ({ title, picture, slug, ...props }) => {
+  console.log(picture)
+  const src = getSrc(picture.asset)
+  const srcSet = getSrcSet(picture.asset)
+
+  console.log(src)
+
+  return (
+    <div
       css={css`
-        text-decoration: none;
-        color: inherit;
-
-        :hover {
-          color: ${colors.PortlandOrange};
-        }
+        width: 100%;
+        display: block;
+        position: relative;
       `}
+      {...props}
     >
-      <picture
+      <Link
+        to={`/archives/${slug}`}
         css={css`
-          width: 100%;
-          display: block;
-          overflow: hidden;
-          line-height: 0;
-          position: relative;
-          background-color: ${colors.Isabelline};
+          text-decoration: none;
+          color: inherit;
 
-          ::before {
-            display: block;
-            padding-bottom: ${(86 / 140) * 100}%;
-            content: "";
+          :hover {
+            color: ${colors.PortlandOrange};
           }
-
-          > * {
-            filter: grayscale();
-            position: absolute;
-            mix-blend-mode: multiply;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            object-fit: cover;
+        `}
+      >
+        <picture
+          css={css`
             width: 100%;
-            height: 100%;
-            ${picture &&
+            display: block;
+            overflow: hidden;
+            line-height: 0;
+            position: relative;
+            background-color: ${colors.Isabelline};
+
+            ::before {
+              display: block;
+              padding-bottom: ${(86 / 140) * 100}%;
+              content: "";
+            }
+
+            > * {
+              filter: grayscale();
+              position: absolute;
+              mix-blend-mode: multiply;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              object-fit: cover;
+              width: 100%;
+              height: 100%;
+              ${picture &&
               picture.hotspot &&
               css`
                 object-position: ${picture.hotspot.x * 100}%
                   ${picture.hotspot.y * 100}%;
               `}
-          }
-        `}
-      >
-        {picture.srcSetWebp && (
-          <source
-            sizes="
+            }
+          `}
+        >
+          {picture && (
+            <img
+              sizes="
             (min-width: 653px) 46vw,
             (min-width: 994px) 30vw,
             (min-width: 1348px) 23vw,
             (min-width: 1920px) 478px,
             94vw
           "
-            srcset={picture.srcSetWebp}
-            type="image/webp"
-          />
-        )}
-
-        {picture.src && (
-          <img
-            sizes="
-            (min-width: 653px) 46vw,
-            (min-width: 994px) 30vw,
-            (min-width: 1348px) 23vw,
-            (min-width: 1920px) 478px,
-            94vw
-          "
-            srcset={picture.srcSet}
-            src={picture.src}
-            alt={picture.alt}
-          />
-        )}
-      </picture>
-      <div
-        css={css`
-          font-size: 100%;
-          margin: 1rem 0;
-        `}
-      >
-        {title}
-      </div>
-    </Link>
-  </div>
-)
+              srcset={srcSet}
+              src={src}
+              alt={picture.alt}
+            />
+          )}
+        </picture>
+        <div
+          css={css`
+            font-size: 100%;
+            margin: 1rem 0;
+          `}
+        >
+          {title}
+        </div>
+      </Link>
+    </div>
+  )
+}
 
 const ArchivesPage = ({ data }) => {
   const events = (data.events.edges || [])
@@ -120,7 +117,7 @@ const ArchivesPage = ({ data }) => {
       />
       <div
         css={css`
-          ${wrapper.bolt()};
+          ${wrapper.bolt()}
           margin-top: 5rem;
           margin-bottom: 5rem;
         `}
@@ -132,20 +129,28 @@ const ArchivesPage = ({ data }) => {
         <div
           css={css`
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 1rem;
+            grid-gap: ${(30 / 1920) * 100}vw;
+
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+            ${mediaQuery.greaterThen(1650)} {
+              grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            }
+            ${mediaQuery.greaterThen(1920)} {
+              grid-gap: 30px;
+            }
           `}
         >
           <div />
 
-          {events.map(node => (
+          {events.map((node) => (
             <ArchiveCard
               title={node.title}
               slug={node.slug.current}
               picture={
                 node.featuredImage
                   ? {
-                      ...node.featuredImage.asset.fluid,
+                      asset: node.featuredImage.asset,
                       alt: node.featuredImage.alt,
                       hotspot: node.featuredImage.hotspot || null,
                     }
@@ -293,11 +298,7 @@ export const query = graphql`
           title
           featuredImage {
             asset {
-              fluid(maxWidth: 610) {
-                src
-                srcSet
-                srcSetWebp
-              }
+              gatsbyImageData(width: 480)
             }
             alt
             hotspot {

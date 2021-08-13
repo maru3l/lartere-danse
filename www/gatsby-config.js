@@ -26,6 +26,7 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-image",
     // "gatsby-plugin-subfont",
     {
       resolve: "gatsby-source-filesystem",

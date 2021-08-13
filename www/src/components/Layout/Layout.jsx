@@ -1,7 +1,7 @@
 // vendors
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { Global, css } from "@emotion/core"
+import { Global, css } from "@emotion/react"
 
 // styles
 import "normalize.css"

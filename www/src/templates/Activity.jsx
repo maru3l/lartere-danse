@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 
 // components
 import Layout from "../components/Layout"
@@ -46,11 +48,7 @@ export const query = graphql`
       featuredImage {
         alt
         asset {
-          fluid(maxWidth: 480) {
-            src
-            srcSet
-            srcSetWebp
-          }
+          gatsbyImageData(width: 480)
         }
         hotspot {
           x

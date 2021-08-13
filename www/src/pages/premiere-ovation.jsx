@@ -1,8 +1,10 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import Layout from "../components/Layout"
 import VisuallyHidden from "@reach/visually-hidden"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import wrapper from "../utils/wrapper"
 import TextColumns from "../components/TextColumns/TextColumns"
 import { colors, transition } from "../styles/variables"

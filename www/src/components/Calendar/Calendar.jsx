@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React, { useState } from "react"
 import Dates from "./Dates"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { colors } from "../../styles/variables"
 import mediaQuery from "../../utils/media-query"
@@ -27,7 +29,7 @@ const dayOfTheWeek = [
 
 const DayOfTheWeek = styled.div`
   grid-row: 2 / span 1;
-  grid-column: ${props => props.position} / span 1;
+  grid-column: ${(props) => props.position} / span 1;
   text-align: left;
   color: ${colors.grey};
 

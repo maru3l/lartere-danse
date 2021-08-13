@@ -1,7 +1,7 @@
 // vendors
 import React from "react"
 
-const LogoConseilDeLaCulture = props => (
+const LogoConseilDeLaCulture = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.17 157.5" {...props}>
     <g>
       <polygon points="51.44 42.23 74.03 55.27 74.03 29.19 51.44 42.23" />

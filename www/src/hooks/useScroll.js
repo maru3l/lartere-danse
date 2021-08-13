@@ -22,7 +22,7 @@ export default () => {
     last_known_scroll_position = { x: scrollX(), y: scrollY() }
 
     if (!ticking) {
-      window.requestAnimationFrame(function() {
+      window.requestAnimationFrame(function () {
         setSrcoll(last_known_scroll_position)
         ticking = false
       })

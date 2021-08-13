@@ -1,16 +1,24 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import dayToConditionalString from "../../../../utils/dayToConditionalString"
 
-const getOldestDate = dates =>
+const getOldestDate = (dates) =>
   new Date(
-    Math.min.apply(null, dates.map(({ from }) => new Date(`${from}T00:00:00`)))
+    Math.min.apply(
+      null,
+      dates.map(({ from }) => new Date(`${from}T00:00:00`))
+    )
   )
 
-const getNewestDate = dates =>
+const getNewestDate = (dates) =>
   new Date(
-    Math.min.apply(null, dates.map(({ to }) => new Date(`${to}T00:00:00`)))
+    Math.min.apply(
+      null,
+      dates.map(({ to }) => new Date(`${to}T00:00:00`))
+    )
   )
 
 const DateCard = ({ date }) => {

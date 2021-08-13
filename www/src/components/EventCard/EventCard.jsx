@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import { colors } from "../../styles/variables"
 import VisuallyHidden from "@reach/visually-hidden"
 import PortableText from "../PortableText/PortableText"
@@ -9,8 +11,11 @@ import getByTerm from "../../../../utils/getByTerm"
 import Button from "../Button/Button"
 import { linkStyle } from "../../styles/global"
 import DateCard from "./DateCard"
+import { getSrc, getSrcSet } from "gatsby-plugin-image"
 
 const EventCard = ({ event, small = false, ...props }) => {
+  const src = getSrc(event.featuredImage.asset)
+  const srcSet = getSrcSet(event.featuredImage.asset)
   return (
     <article
       id={event.slug.current}
@@ -62,28 +67,19 @@ const EventCard = ({ event, small = false, ...props }) => {
                   height: 100%;
 
                   ${event.featuredImage &&
-                    event.featuredImage.hotspot &&
-                    css`
-                      object-position: ${event.featuredImage.hotspot.x * 100}%
-                        ${event.featuredImage.hotspot.y * 100}%;
-                    `}
+                  event.featuredImage.hotspot &&
+                  css`
+                    object-position: ${event.featuredImage.hotspot.x * 100}%
+                      ${event.featuredImage.hotspot.y * 100}%;
+                  `}
                 }
               `}
             >
-              {event.featuredImage &&
-                event.featuredImage.asset.fluid.srcSetWebp && (
-                  <source
-                    sizes="(min-width: 514px) 480px, 94vw"
-                    srcset={event.featuredImage.asset.fluid.srcSetWebp}
-                    type="image/webp"
-                  />
-                )}
-
               {event.featuredImage && (
                 <img
                   sizes="(min-width: 514px) 480px, 94vw"
-                  srcset={event.featuredImage.asset.fluid.srcSet}
-                  src={event.featuredImage.asset.fluid.src}
+                  srcset={srcSet}
+                  src={src}
                   alt={event.featuredImage.alt}
                 />
               )}
@@ -113,7 +109,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                   padding: 0;
                 `}
               >
-                {event.date.map(date => (
+                {event.date.map((date) => (
                   <DateCard date={date} />
                 ))}
               </ul>
@@ -164,7 +160,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                   padding: 0;
                 `}
               >
-                {event.rate.map(rate => (
+                {event.rate.map((rate) => (
                   <li>
                     {rate._type === "regularRate" && (
                       <>
@@ -213,7 +209,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                   margin-top: 3em;
                 `}
               >
-                {event.registration.map(el => {
+                {event.registration.map((el) => {
                   return (
                     <>
                       {el._type === "registrationEmail" && (
@@ -262,7 +258,7 @@ const EventCard = ({ event, small = false, ...props }) => {
               h5,
               h6 {
                 a {
-                  ${linkStyle};
+                  ${linkStyle}
                 }
               }
             `}

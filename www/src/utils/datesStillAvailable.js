@@ -1,6 +1,6 @@
 const now = new Date()
 
-module.exports = dates => {
+module.exports = (dates) => {
   const oldest = dates.reduce((acc, cur) => {
     const dateToEvaluateAcc = acc.to || acc.from
     const dateToEvaluateCur = cur.to || cur.from

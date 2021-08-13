@@ -1,9 +1,15 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import { transition, colors } from "../../styles/variables"
+import { getSrc, getSrcSet } from "gatsby-plugin-image"
 
 const TeamMemberCard = ({ name, role, email = [], portrait }) => {
+  const src = getSrc(portrait.asset)
+  const srcSet = getSrcSet(portrait.asset)
+
   return (
     <div
       css={css`
@@ -48,44 +54,22 @@ const TeamMemberCard = ({ name, role, email = [], portrait }) => {
               filter: grayscale();
               mix-blend-mode: multiply;
               ${portrait &&
-                portrait.hotspot &&
-                css`
-                  object-position: ${portrait.hotspot.x * 100}%
-                    ${portrait.hotspot.y * 100}%;
-                `}
+              portrait.hotspot &&
+              css`
+                object-position: ${portrait.hotspot.x * 100}%
+                  ${portrait.hotspot.y * 100}%;
+              `}
             }
           }
         `}
       >
         <picture>
-          {portrait && portrait.asset.fluid.srcSetWebp && (
-            <source
-              sizes="
-                (min-width: 653px) 46vw,
-                (min-width: 994px) 30vw,
-                (min-width: 1348px) 23vw,
-                (min-width: 1920px) 478px,
-                94vw
-              "
-              srcset={portrait.asset.fluid.srcSetWebp}
-              type="image/webp"
-            />
-          )}
-
-          {portrait && portrait.asset.fluid.src && (
-            <img
-              sizes="
-                (min-width: 653px) 46vw,
-                (min-width: 994px) 30vw,
-                (min-width: 1348px) 23vw,
-                (min-width: 1920px) 478px,
-                94vw
-              "
-              srcset={portrait.asset.fluid.srcSet}
-              src={portrait.asset.fluid.src}
-              alt={portrait.asset.alt}
-            />
-          )}
+          <img
+            sizes="(min-width: 653px) 46vw, (min-width: 994px) 30vw, (min-width: 1348px) 23vw, (min-width: 1920px) 478px, 94vw"
+            srcset={srcSet}
+            src={src}
+            alt={portrait.asset.alt || ""}
+          />
         </picture>
       </div>
 
@@ -110,7 +94,7 @@ const TeamMemberCard = ({ name, role, email = [], portrait }) => {
               padding: 0;
             `}
           >
-            {email.map(address => (
+            {email.map((address) => (
               <li>
                 <a
                   href={`mailto:${address}`}

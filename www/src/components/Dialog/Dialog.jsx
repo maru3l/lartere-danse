@@ -1,10 +1,12 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import { DialogOverlay, DialogContent } from "@reach/dialog"
 import "@reach/dialog/styles.css"
 import VisuallyHidden from "@reach/visually-hidden"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import { zIndices } from "../../styles/variables"
 import themes from "../../styles/themes"
 

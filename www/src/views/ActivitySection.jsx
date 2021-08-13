@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import EventCard from "../components/EventCard/EventCard"
 import PortableText from "../components/PortableText/PortableText"
 import TextColumns from "../components/TextColumns/TextColumns"
@@ -63,7 +65,7 @@ const DefaultActivitySection = ({
                 `,
           ]}
         >
-          {activities.map(event => (
+          {activities.map((event) => (
             <li>
               <EventCard event={event} small={grid} />
             </li>
@@ -146,7 +148,7 @@ const StageIntensifsActivitySection = ({
                 `,
           ]}
         >
-          {activities.map(event => (
+          {activities.map((event) => (
             <li>
               <EventCard event={event} small={grid} />
             </li>
@@ -240,7 +242,7 @@ const SessionImprovisationActivitySection = ({
                 `,
           ]}
         >
-          {activities.map(event => (
+          {activities.map((event) => (
             <li key={event.slug.current}>
               <EventCard event={event} small={grid} />
             </li>

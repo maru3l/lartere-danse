@@ -1,12 +1,14 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import { colors } from "../../styles/variables"
-import { keyframes } from "@emotion/core"
+import { keyframes } from "@emotion/react"
 import useMobile from "../../hooks/useMobile"
 import { Link } from "gatsby"
 
-const getColorForAudience = audience => {
+const getColorForAudience = (audience) => {
   switch (audience) {
     case "professionnel":
       return colors.PortlandOrange
@@ -30,11 +32,11 @@ const Event = ({ event }) => {
         }
 
         ${index === 0 &&
-          css`
-            100% {
-              color: ${getColorForAudience(audience)};
-            }
-          `}
+        css`
+          100% {
+            color: ${getColorForAudience(audience)};
+          }
+        `}
       `
     )}
   `
@@ -74,7 +76,7 @@ const Dates = ({ month, year, events = [] }) => {
       {Array(daysInMonth)
         .fill()
         .map((val, index) => {
-          const todayEvents = events.filter(event => {
+          const todayEvents = events.filter((event) => {
             const today = new Date(year, month, index + 1, 0, 0, 0)
 
             return (
@@ -99,11 +101,9 @@ const Dates = ({ month, year, events = [] }) => {
                 }
 
                 ${index === 0 &&
-                  css`
-                    grid-column: ${!isMobile
-                      ? firstDayInMonthPosition + 1
-                      : "1"};
-                  `}
+                css`
+                  grid-column: ${!isMobile ? firstDayInMonthPosition + 1 : "1"};
+                `}
               `}
             >
               <div
@@ -136,7 +136,7 @@ const Dates = ({ month, year, events = [] }) => {
                     margin-right: 1em;
                   `}
                 >
-                  {todayEvents.map(event => (
+                  {todayEvents.map((event) => (
                     <Event event={event} />
                   ))}
                 </ul>

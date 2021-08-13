@@ -4,6 +4,12 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+// import { GraphQLInt, GraphQLString } from "gatsby/graphql"
+
+// const grahqlType = require("gatsby/graphql")
+
+// const { createRemoteFileNode } = require("gatsby-source-filesystem")
+
 const eventStillAvailable = require("./src/utils/datesStillAvailable")
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -51,3 +57,59 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 }
+
+// exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+//   if (type.name === `SanityImageAsset`) {
+//     return {
+//       localFile: {
+//         type: `File`,
+//         args: {
+//           width: {
+//             type: grahqlType.GraphQLInt,
+//           },
+//           // format: {
+//           //   type: ImageFormatType,
+//           // },
+//           height: {
+//             type: grahqlType.GraphQLInt,
+//           },
+//           fit: {
+//             type: grahqlType.GraphQLString,
+//             defaultValue: "crop",
+//           },
+//         },
+//       },
+//     }
+//   }
+
+//   // by default return empty object
+//   return {}
+// }
+
+// exports.createResolvers = ({
+//   actions: { createNode },
+//   cache,
+//   createNodeId,
+//   createResolvers,
+//   store,
+// }) => {
+//   const resolvers = {
+//     SanityImageAsset: {
+//       localFile: {
+//         resolve: (source, { width, height, fit }) => {
+//           const url = `${source.url}?fit=${fit}${width ? `&w=${width}` : ""}${
+//             height ? `&h=${height}` : ""
+//           }`
+//           return createRemoteFileNode({
+//             url,
+//             store,
+//             cache,
+//             createNode,
+//             createNodeId,
+//           })
+//         },
+//       },
+//     },
+//   }
+//   createResolvers(resolvers)
+// }

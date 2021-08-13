@@ -17,7 +17,7 @@ export default (breakpoint = 1024) => {
     lastKnownWindowWidth = windowWidth()
 
     if (!ticking) {
-      window.requestAnimationFrame(function() {
+      window.requestAnimationFrame(function () {
         setIsMobile(
           lastKnownWindowWidth ? lastKnownWindowWidth < breakpoint : null
         )

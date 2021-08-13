@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import VisuallyHidden from "@reach/visually-hidden"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import { graphql } from "gatsby"
 
 // components
@@ -22,7 +24,7 @@ const DevenirMembrePage = ({ data }) => {
 
   const { benefitTypes } = data
 
-  const getBenefitByTypeId = id => {
+  const getBenefitByTypeId = (id) => {
     const benefits = benefitsByType.find(({ fieldValue }) => fieldValue === id)
 
     if (!benefits) return []
@@ -280,7 +282,7 @@ const DevenirMembrePage = ({ data }) => {
                 `}
               >
                 {getBenefitByTypeId("49ba3926-a3e2-48c3-a7d4-7087203ff30d").map(
-                  benefit => (
+                  (benefit) => (
                     <li>
                       <PortableText blocks={benefit._rawDescription} />
                     </li>
@@ -300,7 +302,7 @@ const DevenirMembrePage = ({ data }) => {
                     margin: 0;
                   `}
                 >
-                  {getBenefitByTypeId(node._id).map(benefit => (
+                  {getBenefitByTypeId(node._id).map((benefit) => (
                     <li>
                       <PortableText blocks={benefit._rawDescription} />
                     </li>
@@ -347,7 +349,7 @@ const DevenirMembrePage = ({ data }) => {
                   padding: 0;
                 `}
               >
-                {honoraryMembers.map(honoraryMember => (
+                {honoraryMembers.map((honoraryMember) => (
                   <li
                     className="h2 color-orange"
                     css={css`

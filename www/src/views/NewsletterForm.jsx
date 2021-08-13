@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import Button from "../components/Button"
 import addToMailchimp from "gatsby-plugin-mailchimp"
 import { Formik, Form, Field } from "formik"
@@ -32,7 +34,7 @@ const NewsletterForm = ({ themeColor }) => {
 
       <Formik
         initialValues={{ email: "" }}
-        validate={values => {
+        validate={(values) => {
           let errors = {}
           if (!values.email) {
             errors.email = "Adresse courriel invalide"
@@ -48,7 +50,7 @@ const NewsletterForm = ({ themeColor }) => {
             FNAME: values.firstName,
             LNAME: values.lastName,
           })
-            .then(data => {
+            .then((data) => {
               actions.setSubmitting(false)
               actions.setStatus(data)
             })

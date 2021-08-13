@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import VisuallyHidden from "@reach/visually-hidden"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 
 // components
 import Layout from "../components/Layout"
@@ -32,7 +34,7 @@ const ActivitesPage = ({ data }) => {
 
   const activityTypes = (data.activityTypes.edges || []).map(({ node }) => node)
 
-  const getActivitesByTypeSlug = slug => {
+  const getActivitesByTypeSlug = (slug) => {
     return (
       (data.activites.group.find(({ fieldValue }) => slug === fieldValue) || [])
         .nodes || []
@@ -61,7 +63,7 @@ const ActivitesPage = ({ data }) => {
           ...getWeeklyDateBetweenDate(date.from, date.to, day),
         ]
       }, [])
-      .map(date => {
+      .map((date) => {
         return {
           slug,
           link,
@@ -255,11 +257,8 @@ export const query = graphql`
           featuredImage {
             alt
             asset {
-              fluid(maxWidth: 480) {
-                src
-                srcSet
-                srcSetWebp
-              }
+              url
+              gatsbyImageData(width: 480)
             }
             hotspot {
               x

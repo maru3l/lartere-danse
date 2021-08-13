@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 
 // components
 import TeamMemberCard from "./TeamMemberCard"
@@ -26,7 +28,7 @@ const TeamGrid = ({ members, ...props }) => {
       `}
       {...props}
     >
-      {members.map(member => (
+      {members.map((member) => (
         <li>
           <TeamMemberCard {...member} />
         </li>

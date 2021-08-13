@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import VisuallyHidden from "@reach/visually-hidden"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
@@ -21,7 +23,7 @@ const RessourcesPage = ({ data }) => {
 
   const featuredRessourceTypes = [ressourceTypes.shift()]
 
-  const getRessourcesById = id => {
+  const getRessourcesById = (id) => {
     const ressourcesGroup = ressources.find(
       ({ fieldValue }) => fieldValue === id
     )

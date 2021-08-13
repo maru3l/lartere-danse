@@ -1,6 +1,8 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React, { useState } from "react"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 import { colors, transition } from "../../styles/variables"
 
 const Collapse = ({ children }) => {

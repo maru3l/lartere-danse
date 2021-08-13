@@ -1,5 +1,5 @@
 // vendors
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import { between } from "polished"
 
 // style varaibles
@@ -74,7 +74,7 @@ export default css`
     padding: 0;
 
     a {
-      ${linkStyle};
+      ${linkStyle}
     }
   }
 

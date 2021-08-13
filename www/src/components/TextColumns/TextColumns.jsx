@@ -1,6 +1,7 @@
 // vendors
-import React from "react"
-import css from "@emotion/css"
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
+import { css } from "@emotion/react"
 import mediaQuery from "../../utils/media-query"
 
 const TextColumns = ({ columns = 2, children, ...props }) => {

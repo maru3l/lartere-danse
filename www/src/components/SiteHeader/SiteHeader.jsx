@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { css } from "@emotion/core"
+import { css } from "@emotion/react"
 import { Match } from "@reach/router"
 import LogoLartere from "../../images/LogoLartere"
 import wrapper from "../../utils/wrapper"
@@ -20,7 +22,7 @@ const viewBreak = 300
 
 const LogoComponent = ({ children, ...rests }) => (
   <Match path="/">
-    {props => {
+    {(props) => {
       return props.match ? (
         <h1 {...rests}>{children}</h1>
       ) : (
@@ -156,19 +158,19 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
           position: sticky;
 
           ${(visible || open) &&
-            css`
-              opacity: 1;
-              pointer-events: auto;
-            `}
+          css`
+            opacity: 1;
+            pointer-events: auto;
+          `}
 
           ${mediaQuery.greaterThen(breakpoint)} {
             padding-top: ${96 / 33}rem;
 
             ${isOnTop &&
-              css`
-                display: flex;
-                justify-content: space-between;
-              `}
+            css`
+              display: flex;
+              justify-content: space-between;
+            `}
           }
         `}
       >
@@ -220,10 +222,10 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                 margin-top: ${27 / 33}rem;
 
                 ${isOnTop &&
-                  css`
-                    display: none;
-                    pointer-events: none;
-                  `}
+                css`
+                  display: none;
+                  pointer-events: none;
+                `}
               }
             `}
           >
@@ -247,27 +249,27 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
             ${mediaQuery.greaterThen(breakpoint)} {
               ${!isOnTop &&
-                css`
-                  position: fixed;
-                  top: 0;
-                  right: 0 !important;
-                  bottom: 0;
-                  left: 0;
-                  background-color: ${background};
-                  opacity: 0;
-                  pointer-events: none;
-                `}
+              css`
+                position: fixed;
+                top: 0;
+                right: 0 !important;
+                bottom: 0;
+                left: 0;
+                background-color: ${background};
+                opacity: 0;
+                pointer-events: none;
+              `}
             }
 
             ${open &&
-              css`
-                overflow: auto;
-                display: grid;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                transition: opacity ${transition.speed.default}
-                  ${transition.curve.default};
-              `}
+            css`
+              overflow: auto;
+              display: grid;
+              opacity: 1 !important;
+              pointer-events: auto !important;
+              transition: opacity ${transition.speed.default}
+                ${transition.curve.default};
+            `}
           `}
         >
           <FocusLock disabled={!open}>
@@ -285,19 +287,19 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                 ${mediaQuery.greaterThen(breakpoint)} {
                   padding-top: ${27 / 33}rem;
                   ${!isOnTop &&
-                    css`
-                      padding-top: ${123 / 33}rem;
-                      ${wrapper.bolt("padding")}
-                      display: grid;
-                      grid-template-rows: 1fr auto 1fr;
-                      padding-bottom: 1em;
-                    `}
+                  css`
+                    padding-top: ${123 / 33}rem;
+                    ${wrapper.bolt("padding")}
+                    display: grid;
+                    grid-template-rows: 1fr auto 1fr;
+                    padding-bottom: 1em;
+                  `}
                 }
 
                 ${open &&
-                  css`
-                    display: grid;
-                  `}
+                css`
+                  display: grid;
+                `}
               `}
             >
               <div
@@ -307,10 +309,10 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
                   ${mediaQuery.greaterThen(breakpoint)} {
                     ${isOnTop &&
-                      css`
-                        display: none;
-                        pointer-events: none;
-                      `}
+                    css`
+                      display: none;
+                      pointer-events: none;
+                    `}
                   }
                 `}
               >
@@ -340,10 +342,10 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                   }
 
                   ${!isOnTop &&
-                    css`
-                      grid-row: 2 / span 1;
-                      flex-flow: column;
-                    `}
+                  css`
+                    grid-row: 2 / span 1;
+                    flex-flow: column;
+                  `}
                 `}
               >
                 <ul
@@ -357,68 +359,68 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
 
                     ${mediaQuery.greaterThen(breakpoint)} {
                       ${isOnTop &&
-                        css`
-                          display: grid;
-                          grid-template-columns: repeat(2, 1fr);
-                          align-items: start;
-                          grid-auto-flow: column dense;
-                          grid-column-gap: 1em;
-                        `}
+                      css`
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        align-items: start;
+                        grid-auto-flow: column dense;
+                        grid-column-gap: 1em;
+                      `}
                     }
 
                     li {
                       ${(isMobile || !isOnTop) &&
-                        css`
-                          font-size: ${30 / 16}em;
-                          font-weight: 500;
-                          margin: 0.5em 0;
-                        `}
+                      css`
+                        font-size: ${30 / 16}em;
+                        font-weight: 500;
+                        margin: 0.5em 0;
+                      `}
 
                       ${mediaQuery.greaterThen(breakpoint)} {
                         ${isOnTop &&
-                          css`
-                            grid-column: 2;
+                        css`
+                          grid-column: 2;
 
-                            &:nth-child(1),
-                            &:nth-child(2),
-                            &:nth-child(3) {
-                              grid-column: 1;
-                            }
-                          `}
+                          &:nth-child(1),
+                          &:nth-child(2),
+                          &:nth-child(3) {
+                            grid-column: 1;
+                          }
+                        `}
 
                         ${!isOnTop &&
-                          css`
-                            font-weight: 900;
-                            margin-top: 0;
-                            font-size: ${between(
-                              "25px",
-                              "96px",
-                              "375px",
-                              "1920px"
-                            )};
-                            margin-bottom: ${between(
-                              "12.5px",
-                              "0px",
-                              "375px",
-                              "1920px"
-                            )};
+                        css`
+                          font-weight: 900;
+                          margin-top: 0;
+                          font-size: ${between(
+                            "25px",
+                            "96px",
+                            "375px",
+                            "1920px"
+                          )};
+                          margin-bottom: ${between(
+                            "12.5px",
+                            "0px",
+                            "375px",
+                            "1920px"
+                          )};
 
-                            :last-child {
-                              margin-bottom: 0;
-                            }
+                          :last-child {
+                            margin-bottom: 0;
+                          }
 
-                            ${mediaQuery.greaterThen(1920)} {
-                              font-size: 96px;
-                            }
-                          `}
+                          ${mediaQuery.greaterThen(1920)} {
+                            font-size: 96px;
+                          }
+                        `}
                       }
                     }
                   `}
                 >
-                  {data.primary.items.map(item => (
+                  {data.primary.items.map((item) => (
                     <li>
                       <Match path={item.link}>
-                        {props => (
+                        {(props) => (
                           <>
                             <Link
                               to={item.link}
@@ -436,9 +438,9 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                                 }
 
                                 ${props.match &&
-                                  css`
-                                    color: ${hoverColor};
-                                  `}
+                                css`
+                                  color: ${hoverColor};
+                                `}
                               `}
                             >
                               {item.title}
@@ -452,7 +454,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                                   }
                                 `}
                               >
-                                {item.subMenu.map(subMenu => (
+                                {item.subMenu.map((subMenu) => (
                                   <li>
                                     <Link
                                       to={subMenu.link}
@@ -487,7 +489,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                                   }
                                 `}
                               >
-                                {activityLinks.map(subMenu => (
+                                {activityLinks.map((subMenu) => (
                                   <li>
                                     <Link
                                       to={subMenu.link}
@@ -555,14 +557,14 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                       }
 
                       ${isOnTop &&
-                        css`
-                          margin-left: 1em;
+                      css`
+                        margin-left: 1em;
 
-                          a {
-                            display: block;
-                            margin-right: 0;
-                          }
-                        `}
+                        a {
+                          display: block;
+                          margin-right: 0;
+                        }
+                      `}
                     }
                   `}
                 >

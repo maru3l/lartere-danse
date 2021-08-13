@@ -1,7 +1,9 @@
 // vendors
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
 import React from "react"
 import VisuallyHidden from "@reach/visually-hidden"
-import css from "@emotion/css"
+import { css } from "@emotion/react"
 
 // components
 import Layout from "../components/Layout"
@@ -14,11 +16,9 @@ import mediaQuery from "../utils/media-query"
 import PortableText from "../components/PortableText/PortableText"
 import SEO from "../components/Seo/Seo"
 import { between } from "polished"
+import { StaticImage } from "gatsby-plugin-image"
 
 const AProposPage = ({ data }) => {
-  const imgAboutIntro = data.imgAboutIntro.childImageSharp.fluid
-  const imgAboutMandat = data.imgAboutMandat.childImageSharp.fluid
-  const imgAboutHistory = data.imgAboutHistory.childImageSharp.fluid
   const teamMembers = data.teamMembers.edges.map(({ node }) => node)
   const boardMembers = data.boardMembers.edges.map(({ node }) => node)
   const partners = data.partners.edges.map(({ node }) => node)
@@ -99,30 +99,18 @@ const AProposPage = ({ data }) => {
           </p>
         </section>
 
-        <picture
+        <StaticImage
+          src="../images/img-about-intro.jpg"
+          sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
+          alt=""
+          width={1800}
+          quality={90}
           css={css`
             display: block;
             margin-top: ${200 / 55}em;
             margin-bottom: ${200 / 55}em;
-
-            * {
-              width: 100%;
-            }
           `}
-        >
-          <source
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutIntro.srcSetWebp}
-            type="image/webp"
-          />
-
-          <img
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutIntro.srcSet}
-            src={imgAboutIntro.src}
-            alt=""
-          />
-        </picture>
+        />
 
         <section id="mission">
           <h2 className="h3">Mission</h2>
@@ -244,30 +232,18 @@ const AProposPage = ({ data }) => {
           </TextColumns>
         </section>
 
-        <picture
+        <StaticImage
+          src="../images/img-about-mandat.jpg"
+          sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
+          alt=""
+          width={1800}
+          quality={90}
           css={css`
             display: block;
             margin-top: ${200 / 55}em;
             margin-bottom: ${200 / 55}em;
-
-            * {
-              width: 100%;
-            }
           `}
-        >
-          <source
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutMandat.srcSetWebp}
-            type="image/webp"
-          />
-
-          <img
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutMandat.srcSet}
-            src={imgAboutMandat.src}
-            alt=""
-          />
-        </picture>
+        />
 
         <section id="historique">
           <h2 className="h3 color-black">Historique</h2>
@@ -360,30 +336,18 @@ const AProposPage = ({ data }) => {
           </TextColumns>
         </section>
 
-        <picture
+        <StaticImage
+          src="../images/img-about-history.jpg"
+          sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
+          alt=""
           css={css`
             display: block;
             margin-top: ${200 / 55}em;
             margin-bottom: ${200 / 55}em;
-
-            * {
-              width: 100%;
-            }
           `}
-        >
-          <source
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutHistory.srcSetWebp}
-            type="image/webp"
-          />
-
-          <img
-            sizes={`(min-width: 1920px) 1800px, ${(1800 / 1920) * 100}vw`}
-            srcSet={imgAboutHistory.srcSet}
-            src={imgAboutHistory.src}
-            alt=""
-          />
-        </picture>
+          width={1800}
+          quality={90}
+        />
 
         <section id="organisation">
           <p
@@ -473,7 +437,7 @@ const AProposPage = ({ data }) => {
               }
             `}
           >
-            {partners.map(partner => (
+            {partners.map((partner) => (
               <li
                 css={css`
                   break-inside: avoid; /* Chrome, Safari */
@@ -528,36 +492,6 @@ export default AProposPage
 
 export const query = graphql`
   query {
-    imgAboutIntro: file(relativePath: { eq: "img-about-intro.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1800, quality: 90) {
-          src
-          srcSet
-          srcSetWebp
-        }
-      }
-    }
-
-    imgAboutMandat: file(relativePath: { eq: "img-about-mandat.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1800, quality: 90) {
-          src
-          srcSet
-          srcSetWebp
-        }
-      }
-    }
-
-    imgAboutHistory: file(relativePath: { eq: "img-about-history.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1800, quality: 90) {
-          src
-          srcSet
-          srcSetWebp
-        }
-      }
-    }
-
     partners: allSanityPartner(sort: { fields: order, order: ASC }) {
       edges {
         node {
@@ -576,11 +510,7 @@ export const query = graphql`
           portrait {
             alt
             asset {
-              fluid(maxWidth: 610) {
-                src
-                srcSet
-                srcSetWebp
-              }
+              gatsbyImageData(width: 610)
             }
             hotspot {
               x
@@ -600,11 +530,7 @@ export const query = graphql`
           portrait {
             alt
             asset {
-              fluid(maxWidth: 610) {
-                src
-                srcSet
-                srcSetWebp
-              }
+              gatsbyImageData(width: 610)
             }
             hotspot {
               x

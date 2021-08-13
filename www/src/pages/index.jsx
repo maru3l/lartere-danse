@@ -1,6 +1,7 @@
 // vendors
-import React from "react"
-import { css } from "@emotion/core"
+/** @jsx jsx */
+import { jsx } from "@emotion/react"
+import { css } from "@emotion/react"
 
 // components
 import Layout from "../components/Layout"
@@ -23,7 +24,7 @@ const twoMonth = new Date(now.getFullYear(), now.getMonth() + 2, 1)
 const IndexPage = ({ data }) => {
   const activites = (data.activites.edges || [])
     .map(({ node }) => node)
-    .filter(node => {
+    .filter((node) => {
       const oldest = node.date.reduce((acc, cur) =>
         Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur
       )
@@ -46,7 +47,7 @@ const IndexPage = ({ data }) => {
             ...getWeeklyDateBetweenDate(date.from, date.to, day),
           ]
         }, [])
-        .map(date => {
+        .map((date) => {
           return {
             link,
             slug,
