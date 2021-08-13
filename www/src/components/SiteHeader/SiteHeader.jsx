@@ -191,6 +191,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
             `}
           >
             <LogoLartere
+              showSubTitle={isOnTop}
               css={css`
                 display: block;
                 max-width: 876px;
