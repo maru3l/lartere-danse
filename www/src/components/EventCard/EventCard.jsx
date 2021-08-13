@@ -16,6 +16,7 @@ import { getSrc, getSrcSet } from "gatsby-plugin-image"
 const EventCard = ({ event, small = false, ...props }) => {
   const src = getSrc(event.featuredImage.asset)
   const srcSet = getSrcSet(event.featuredImage.asset)
+
   return (
     <article
       id={event.slug.current}
@@ -195,6 +196,59 @@ const EventCard = ({ event, small = false, ...props }) => {
               >
                 <PortableText blocks={event._rawAdditionalInformation} />
               </div>
+            </section>
+          )}
+
+          {event.targetAudience && event.targetAudience.length > 0 && (
+            <section>
+              <VisuallyHidden>
+                <h2>Public cible</h2>
+              </VisuallyHidden>
+
+              <ul
+                css={css`
+                  list-style: none;
+                  padding-left: 0;
+                  display: flex;
+
+                  li {
+                    padding: 0em 0.5em;
+                  }
+                `}
+              >
+                {event.targetAudience.map((target) => {
+                  if (target === "professionnel")
+                    return (
+                      <li
+                        css={css`
+                          background-color: ${colors.PortlandOrange};
+                        `}
+                      >
+                        Professionnel·le·s
+                      </li>
+                    )
+                  if (target === "artist")
+                    return (
+                      <li
+                        css={css`
+                          background-color: ${colors.PaleCerulean};
+                        `}
+                      >
+                        Bougeur·se·s
+                      </li>
+                    )
+                  if (target === "generalPublic")
+                    return (
+                      <li
+                        css={css`
+                          background-color: ${colors.canary};
+                        `}
+                      >
+                        Tout public
+                      </li>
+                    )
+                })}
+              </ul>
             </section>
           )}
 

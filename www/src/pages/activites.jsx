@@ -99,45 +99,6 @@ const ActivitesPage = ({ data }) => {
           <h1>Activités</h1>
         </VisuallyHidden>
 
-        <nav>
-          <ul
-            className="h2"
-            css={css`
-              max-width: 1340px;
-              list-style: none;
-              padding: 0;
-
-              li {
-                font-size: ${between("25px", "96px", "375px", "1920px")};
-                margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
-
-                :last-child {
-                  margin-bottom: 0;
-                }
-
-                ${mediaQuery.greaterThen(1920)} {
-                  font-size: 96px;
-                  margin-bottom: 0px;
-                }
-              }
-
-              a {
-                text-decoration: none;
-              }
-            `}
-          >
-            {activityTypes.map(({ name, slug: { current }, alwaysOn }) => {
-              return (
-                (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
-                  <li>
-                    <a href={`#${current}`}>{name}</a>
-                  </li>
-                )
-              )
-            })}
-          </ul>
-        </nav>
-
         <section id="intro">
           <TextColumns className="h3 color-orange">
             <p className="prevent-column-break">
@@ -183,6 +144,45 @@ const ActivitesPage = ({ data }) => {
           <EventTargetAudienceLegend />
 
           <Calendar switcher events={calendarEvents} />
+
+          <nav>
+            <ul
+              className="h2"
+              css={css`
+                max-width: 1340px;
+                list-style: none;
+                padding: 0;
+
+                li {
+                  font-size: ${between("25px", "96px", "375px", "1920px")};
+                  margin-bottom: ${between("12.5px", "0px", "375px", "1920px")};
+
+                  :last-child {
+                    margin-bottom: 0;
+                  }
+
+                  ${mediaQuery.greaterThen(1920)} {
+                    font-size: 96px;
+                    margin-bottom: 0px;
+                  }
+                }
+
+                a {
+                  text-decoration: none;
+                }
+              `}
+            >
+              {activityTypes.map(({ name, slug: { current }, alwaysOn }) => {
+                return (
+                  (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
+                    <li>
+                      <a href={`#${current}`}>{name}</a>
+                    </li>
+                  )
+                )
+              })}
+            </ul>
+          </nav>
         </section>
 
         <div>
