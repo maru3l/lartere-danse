@@ -214,6 +214,10 @@ const EventCard = ({ event, small = false, ...props }) => {
                   li {
                     padding: 0em 0.5em;
                   }
+
+                  abbr {
+                    text-decoration: none;
+                  }
                 `}
               >
                 {event.targetAudience.map((target) => {
@@ -224,7 +228,9 @@ const EventCard = ({ event, small = false, ...props }) => {
                           background-color: ${colors.PortlandOrange};
                         `}
                       >
-                        Professionnel·le·s
+                        <abbr title="Professionnel·le·s des arts de la danse et du mouvement">
+                          Professionnel·le·s
+                        </abbr>
                       </li>
                     )
                   if (target === "artist")
@@ -234,7 +240,9 @@ const EventCard = ({ event, small = false, ...props }) => {
                           background-color: ${colors.PaleCerulean};
                         `}
                       >
-                        Bougeur·se·s
+                        <abbr title="Bougeur·se·s expérimenté·e·s et artistes des arts de la scène (cirque • arts martiaux • théâtre • musique • etc.)">
+                          Bougeur·se·s
+                        </abbr>
                       </li>
                     )
                   if (target === "generalPublic")

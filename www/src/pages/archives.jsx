@@ -1,7 +1,6 @@
 // vendors
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import React from "react"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo/Seo"
 import { graphql, Link } from "gatsby"
