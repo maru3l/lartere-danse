@@ -22,7 +22,6 @@ const getNewestDate = (dates) =>
   )
 
 const DateCard = ({ date }) => {
-  console.log(date.from)
   const [fromYear, fromMonth, fromDate] = date.from.split("-")
   const [toYear, toMonth, toDate] = date.to.split("-")
   const fromDateObj = new Date(fromYear, fromMonth - 1, fromDate)

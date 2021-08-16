@@ -1,7 +1,6 @@
 // vendors
 /** @jsx jsx */
 import { jsx } from "@emotion/react"
-import React from "react"
 import { css } from "@emotion/react"
 import { colors } from "../../styles/variables"
 import VisuallyHidden from "@reach/visually-hidden"
@@ -14,8 +13,8 @@ import DateCard from "./DateCard"
 import { getSrc, getSrcSet } from "gatsby-plugin-image"
 
 const EventCard = ({ event, small = false, ...props }) => {
-  const src = getSrc(event.featuredImage.asset)
-  const srcSet = getSrcSet(event.featuredImage.asset)
+  const src = getSrc(event.featuredImage?.asset)
+  const srcSet = getSrcSet(event.featuredImage?.asset)
 
   return (
     <article

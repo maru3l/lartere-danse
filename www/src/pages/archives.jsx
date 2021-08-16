@@ -14,11 +14,9 @@ import mediaQuery from "../utils/media-query"
 import { getSrc, getSrcSet } from "gatsby-plugin-image"
 
 const ArchiveCard = ({ title, picture, slug, ...props }) => {
-  console.log(picture)
-  const src = getSrc(picture.asset)
-  const srcSet = getSrcSet(picture.asset)
+  const src = getSrc(picture?.asset)
 
-  console.log(src)
+  const srcSet = getSrcSet(picture?.asset)
 
   return (
     <div
