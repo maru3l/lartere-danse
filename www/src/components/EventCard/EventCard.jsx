@@ -1,5 +1,6 @@
 // vendors
 /** @jsx jsx */
+import { Fragment } from "react"
 import { jsx } from "@emotion/react"
 import { css } from "@emotion/react"
 import { colors } from "../../styles/variables"
@@ -163,18 +164,18 @@ const EventCard = ({ event, small = false, ...props }) => {
                 {event.rate.map((rate) => (
                   <li>
                     {rate._type === "regularRate" && (
-                      <>
-                        {rate.amount}${rate.by && <>/</>}
+                      <Fragment>
+                        {rate.amount}${rate.by && <Fragment>/</Fragment>}
                         {rate.by && getByTerm(rate.by)} (
                         {rate.member ? "membre" : "non-membres"})
-                      </>
+                      </Fragment>
                     )}
                     {rate._type === "free" && (
-                      <>
+                      <Fragment>
                         {rate.voluntaryContribution
                           ? "Contribution volontaire"
                           : "Gratuit"}
-                      </>
+                      </Fragment>
                     )}
                   </li>
                 ))}
@@ -272,7 +273,7 @@ const EventCard = ({ event, small = false, ...props }) => {
               >
                 {event.registration.map((el) => {
                   return (
-                    <>
+                    <Fragment>
                       {el._type === "registrationEmail" && (
                         <a
                           href={`mailto:${el.email}`}
@@ -296,7 +297,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                           Inscription
                         </Button>
                       )}
-                    </>
+                    </Fragment>
                   )
                 })}
               </p>
