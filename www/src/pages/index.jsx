@@ -25,8 +25,9 @@ const IndexPage = ({ data }) => {
   const activites = (data.activites.edges || [])
     .map(({ node }) => node)
     .filter((node) => {
-      const oldest = node.date.reduce((acc, cur) =>
-        Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur
+      const oldest = node.date.reduce(
+        (acc, cur) => (Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur),
+        {}
       )
 
       return (
@@ -167,11 +168,10 @@ const IndexPage = ({ data }) => {
           L’Artère est un organisme à but non lucratif œuvrant à faire rayonner
           l’art de la danse et du mouvement sur le territoire de la
           Capitale-Nationale. Sa mission est de soutenir le dévelop&shy;pement
-          artistique et professionnel des artistes en danse contemporaine en
-          offrant une program&shy;mation de stages et de services à la fine
-          pointe de la pratique actuelle de l’art de la danse et du mouvement,
-          contribuant ainsi à la rétention d’artistes de grand talent sur le
-          territoire.
+          artistique et professionnel des artistes en danse en offrant une
+          program&shy;mation de formations et de services à la fine pointe de la
+          pratique actuelle de l’art de la danse et du mouvement, contribuant
+          ainsi à la rétention d’artistes de grand talent sur le territoire.
         </p>
       </section>
 
