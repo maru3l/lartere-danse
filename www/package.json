@@ -114,8 +114,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "npm run format:code",
-      "git add"
+      "npm run format:code"
     ]
   },
   "jest": {
