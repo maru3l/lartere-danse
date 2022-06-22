@@ -21,8 +21,9 @@ import dateStillAvailable from "../utils/datesStillAvailable"
 import EventTargetAudienceLegend from "../components/EventTargetAudienceLegend"
 
 const getClosestDate = (dates = []) => {
-  return dates.reduce((acc, cur) =>
-    Date.parse(acc.from) < Date.parse(cur.from) ? acc : cur
+  return dates.reduce(
+    (acc, cur) => (Date.parse(acc.from) < Date.parse(cur.from) ? acc : cur),
+    {}
   )
 }
 
