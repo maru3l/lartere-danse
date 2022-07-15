@@ -68,6 +68,11 @@ export default {
           name: "weekly",
           type: "weekly",
         },
+        {
+          title: "Session personnalisée",
+          name: "customEvent",
+          type: "customEvent",
+        }
       ],
     },
     {
