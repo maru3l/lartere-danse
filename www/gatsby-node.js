@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const events = result.data.allSanityEvent.edges || []
-  events.forEach((edge, index) => {
+  events.forEach((edge) => {
     const path = `/archives/${edge.node.slug.current}`
 
     if (!eventStillAvailable(edge.node.date)) {
