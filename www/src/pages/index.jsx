@@ -41,7 +41,6 @@ const IndexPage = ({ data }) => {
 
       const link = stillActive ? `/activites#${slug}` : `/archives/${slug}`
       const dates = cur.date
-        .filter((date) => date._type !== "customEvent")
         .reduce((datesAcc, date) => {
           const { day = [] } = date
           return [
