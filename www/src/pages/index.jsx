@@ -195,7 +195,7 @@ const IndexPage = ({ data }) => {
           background-color: ${colors.PortlandOrange};
         `}
       >
-        <h2 css={hideVisually}>S'abonner à l'infolettre de l'Artère</h2>
+        <h2 css={hideVisually}>S'abonner à l'infolettre de L'Artère</h2>
 
         <div
           css={css`

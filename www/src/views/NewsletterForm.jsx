@@ -28,7 +28,7 @@ const NewsletterForm = ({ themeColor }) => {
         `}
       >
         S'abonner <br />à l'infolettre <br />
-        de l'Artère.
+        de L'Artère.
         {/* Oui, j’aimerais <br />
         m’abonner <br />à l’infolettre <br />
         de L’Artère. */}
