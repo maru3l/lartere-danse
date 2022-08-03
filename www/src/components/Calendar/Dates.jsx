@@ -146,10 +146,11 @@ const Dates = ({ month, year, events = [] }) => {
                 css={css`
                   position: absolute;
                   display: flex;
-                  justify-content: center;
+                  justify-content: left;
+                  /* justify-content: center; */
                   width: 2ch;
                   color: #000;
-                  margin-left: 0.25em;
+                  /* margin-left: 0.25em; */
                   font-size: ${94 / 32}em;
 
                   /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
