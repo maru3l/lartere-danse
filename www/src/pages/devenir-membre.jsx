@@ -189,13 +189,6 @@ const DevenirMembrePage = ({ data }) => {
               appropriées pour en vérifier la conformité.
             </p>
 
-            <p>
-              La période d’adhésion à L’Artère commence au 1er septembre et
-              prend fin au 31 août, même en cas d’adhésion tardive. Des frais de
-              50 $ seront exigés pour le remplacement de chèques sans provision
-              ou retournés par l’institution financière.
-            </p>
-
             <h3 className="color-orange">Cas particuliers</h3>
 
             <p className="color-orange">
