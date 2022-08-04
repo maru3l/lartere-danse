@@ -16,7 +16,7 @@ const NewsletterForm = ({ themeColor }) => {
       css={css`
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-end;
+        align-items: center;
       `}
     >
       <p
@@ -27,9 +27,11 @@ const NewsletterForm = ({ themeColor }) => {
           margin: 0;
         `}
       >
-        Oui, j’aimerais <br />
+        S'abonner <br />à l'infolettre <br />
+        de L'Artère.
+        {/* Oui, j’aimerais <br />
         m’abonner <br />à l’infolettre <br />
-        de L’Artère.
+        de L’Artère. */}
       </p>
 
       <Formik
@@ -46,10 +48,7 @@ const NewsletterForm = ({ themeColor }) => {
           return errors
         }}
         onSubmit={(values, actions) => {
-          addToMailchimp(values.email, {
-            FNAME: values.firstName,
-            LNAME: values.lastName,
-          })
+          addToMailchimp(values.email)
             .then((data) => {
               actions.setSubmitting(false)
               actions.setStatus(data)
@@ -71,7 +70,7 @@ const NewsletterForm = ({ themeColor }) => {
               min-width: 50%;
             `}
           >
-            <label htmlFor="firstName">
+            {/* <label htmlFor="firstName">
               <Field
                 type="text"
                 name="firstName"
@@ -115,9 +114,18 @@ const NewsletterForm = ({ themeColor }) => {
               >
                 votre nom
               </span>
-            </label>
+            </label> */}
 
             <label htmlFor="email">
+              <span
+                css={css`
+                  display: block;
+                  font-size: ${24 / 33}em;
+                  /* margin-bottom: 1em; */
+                `}
+              >
+                votre courriel
+              </span>
               <Field
                 type="email"
                 name="email"
@@ -126,18 +134,9 @@ const NewsletterForm = ({ themeColor }) => {
                   width: 100%;
                   line-height: 50px;
                   font-size: ${36 / 33}em;
-                `}
-              />
-
-              <span
-                css={css`
-                  display: block;
-                  font-size: ${24 / 33}em;
                   margin-bottom: 1em;
                 `}
-              >
-                votre courriel
-              </span>
+              />
             </label>
 
             {/* <ErrorMessage name="email" /> */}

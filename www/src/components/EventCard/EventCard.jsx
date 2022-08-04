@@ -110,9 +110,15 @@ const EventCard = ({ event, small = false, ...props }) => {
                   padding: 0;
                 `}
               >
-                {event.date.map((date) => (
-                  <DateCard date={date} />
-                ))}
+                {event.date.map((date) =>
+                  date._type === "customEvent" ? (
+                    <li>
+                      <PortableText blocks={date._rawCustomDate} />
+                    </li>
+                  ) : (
+                    <DateCard date={date} />
+                  )
+                )}
               </ul>
             )}
 
@@ -226,6 +232,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                       <li
                         css={css`
                           background-color: ${colors.PortlandOrange};
+                          color: ${colors.Isabelline};
                         `}
                       >
                         <abbr title="Professionnel·le·s des arts de la danse et du mouvement">
@@ -238,6 +245,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                       <li
                         css={css`
                           background-color: ${colors.PaleCerulean};
+                          color: ${colors.Isabelline};
                         `}
                       >
                         <abbr title="Bougeur·se·s expérimenté·e·s et artistes des arts de la scène (cirque • arts martiaux • théâtre • musique • etc.)">
@@ -250,6 +258,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                       <li
                         css={css`
                           background-color: ${colors.canary};
+                          color: ${colors.Jet};
                         `}
                       >
                         Tout public

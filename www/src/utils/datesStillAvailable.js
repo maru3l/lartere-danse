@@ -8,7 +8,7 @@ module.exports = (dates) => {
     return Date.parse(dateToEvaluateAcc) > Date.parse(dateToEvaluateCur)
       ? acc
       : cur
-  })
+  }, {})
 
   return now.getTime() < Date.parse(oldest.to)
 }

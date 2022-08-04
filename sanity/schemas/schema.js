@@ -26,6 +26,7 @@ import customTime from './objects/customTime'
 import weekly from './objects/recurrenceType/weekly'
 import daily from './objects/recurrenceType/daily'
 import singleEvent from './objects/recurrenceType/single'
+import customEvent from './objects/recurrenceType/custom'
 import free from './objects/rate/free'
 import regularRate from './objects/rate/regularRate'
 import registrationLink from './objects/registrationType/registrationLink'
@@ -66,6 +67,7 @@ export default createSchema({
     regularRate,
     richText,
     singleEvent,
+    customEvent,
     venue,
     weekly,
   ])

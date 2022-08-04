@@ -21,8 +21,9 @@ import dateStillAvailable from "../utils/datesStillAvailable"
 import EventTargetAudienceLegend from "../components/EventTargetAudienceLegend"
 
 const getClosestDate = (dates = []) => {
-  return dates.reduce((acc, cur) =>
-    Date.parse(acc.from) < Date.parse(cur.from) ? acc : cur
+  return dates.reduce(
+    (acc, cur) => (Date.parse(acc.from) < Date.parse(cur.from) ? acc : cur),
+    {}
   )
 }
 
@@ -35,10 +36,15 @@ const ActivitesPage = ({ data }) => {
   const activityTypes = (data.activityTypes.edges || []).map(({ node }) => node)
 
   const getActivitesByTypeSlug = (slug) => {
-    return (
+    const activitiesGroupedBySlug =
       (data.activites.group.find(({ fieldValue }) => slug === fieldValue) || [])
         .nodes || []
+
+    const activitiesWithCustomDate = activitiesGroupedBySlug.filter(
+      ({ date }) => date.filter((d) => d._type === "customEvent").length > 0
     )
+
+    const activitiesWithDate = activitiesGroupedBySlug
       .filter(({ date }) => dateStillAvailable(date))
       .sort((a, b) => {
         const closestA = getClosestDate(a.date)
@@ -46,6 +52,8 @@ const ActivitesPage = ({ data }) => {
 
         return Date.parse(closestA.from) - Date.parse(closestB.from)
       })
+
+    return [...activitiesWithDate, ...activitiesWithCustomDate]
   }
 
   const calendarEvents = activites.reduce((acc, cur) => {
@@ -56,6 +64,7 @@ const ActivitesPage = ({ data }) => {
     const link = stillActive ? `/activites#${slug}` : `/archives/${slug}`
 
     const dates = cur.date
+      .filter((date) => date._type !== "customEvent")
       .reduce((datesAcc, date) => {
         const { day = [] } = date
         return [
@@ -305,6 +314,10 @@ export const query = graphql`
                 hour
                 minute
               }
+            }
+            ... on SanityCustomEvent {
+              _type
+              _rawCustomDate
             }
           }
           venue {

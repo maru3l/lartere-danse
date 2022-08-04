@@ -45,10 +45,14 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const events = result.data.allSanityEvent.edges || []
-  events.forEach((edge, index) => {
+  events.forEach((edge) => {
     const path = `/archives/${edge.node.slug.current}`
 
-    if (!eventStillAvailable(edge.node.date)) {
+    const hasDate = edge.node.date.every(
+      (date) => Object.keys(date).length !== 0
+    )
+
+    if (hasDate && !eventStillAvailable(edge.node.date)) {
       createPage({
         path,
         component: require.resolve("./src/templates/Activity.jsx"),

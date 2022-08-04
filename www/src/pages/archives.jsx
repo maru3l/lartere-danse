@@ -12,6 +12,7 @@ import wrapper from "../utils/wrapper"
 import { colors } from "../styles/variables"
 import mediaQuery from "../utils/media-query"
 import { getSrc, getSrcSet } from "gatsby-plugin-image"
+import isEmpty from "../utils/isEmpty"
 
 const ArchiveCard = ({ title, picture, slug, ...props }) => {
   const src = getSrc(picture?.asset)
@@ -103,7 +104,10 @@ const ArchiveCard = ({ title, picture, slug, ...props }) => {
 
 const ArchivesPage = ({ data }) => {
   const events = (data.events.edges || [])
-    .filter(({ node: { date } }) => !datesStillAvailable(date))
+    .filter(
+      ({ node: { date } }) =>
+        date.every((d) => !isEmpty(d)) && !datesStillAvailable(date)
+    )
     .map(({ node }) => node)
 
   return (

@@ -1,21 +1,30 @@
 // vendors
 /** @jsx jsx */
+import { graphql } from "gatsby"
 import { jsx } from "@emotion/react"
 import { css } from "@emotion/react"
+import { hideVisually } from "polished"
 
 // components
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import Calendar from "../components/Calendar"
+import EventTargetAudienceLegend from "../components/EventTargetAudienceLegend"
 
-import Cress from "../images/vector-header.svg"
-import { colors } from "../styles/variables"
+// views
+import NewsletterForm from "../views/NewsletterForm"
+
+// utils
 import mediaQuery from "../utils/media-query"
 import wrapper from "../utils/wrapper"
-import Calendar from "../components/Calendar"
-import { graphql } from "gatsby"
-import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
 import dateStillAvailable from "../utils/datesStillAvailable"
-import EventTargetAudienceLegend from "../components/EventTargetAudienceLegend"
+import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
+
+// images
+import Cress from "../images/vector-header.svg"
+
+// styles
+import { colors } from "../styles/variables"
 
 const now = new Date()
 const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1)
@@ -25,8 +34,9 @@ const IndexPage = ({ data }) => {
   const activites = (data.activites.edges || [])
     .map(({ node }) => node)
     .filter((node) => {
-      const oldest = node.date.reduce((acc, cur) =>
-        Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur
+      const oldest = node.date.reduce(
+        (acc, cur) => (Date.parse(acc.to) > Date.parse(cur.to) ? acc : cur),
+        {}
       )
 
       return (
@@ -82,6 +92,8 @@ const IndexPage = ({ data }) => {
           }
         `}
       >
+        <h2 css={hideVisually}>Introduction</h2>
+
         <img
           src={Cress}
           alt="Logo en forme de A dansant."
@@ -167,39 +179,85 @@ const IndexPage = ({ data }) => {
           L’Artère est un organisme à but non lucratif œuvrant à faire rayonner
           l’art de la danse et du mouvement sur le territoire de la
           Capitale-Nationale. Sa mission est de soutenir le dévelop&shy;pement
-          artistique et professionnel des artistes en danse contemporaine en
-          offrant une program&shy;mation de stages et de services à la fine
-          pointe de la pratique actuelle de l’art de la danse et du mouvement,
-          contribuant ainsi à la rétention d’artistes de grand talent sur le
-          territoire.
+          artistique et professionnel des artistes en danse en offrant une
+          program&shy;mation de formations et de services à la fine pointe de la
+          pratique actuelle de l’art de la danse et du mouvement, contribuant
+          ainsi à la rétention d’artistes de grand talent sur le territoire.
         </p>
+      </section>
+
+      <section
+        css={css`
+          position: sticky;
+          top: 0;
+          z-index: 1;
+
+          background-color: ${colors.PortlandOrange};
+        `}
+      >
+        <h2 css={hideVisually}>S'abonner à l'infolettre de L'Artère</h2>
+
+        <div
+          css={css`
+            ${wrapper.bolt()}
+
+            padding: ${285 / 33}em 0;
+          `}
+        >
+          <NewsletterForm />
+        </div>
       </section>
 
       <section
         id="activites"
         css={css`
-          ${wrapper.bolt()}
+          position: relative;
+          z-index: 2;
+
+          background-color: ${colors.Jet};
+
+          // fix z-index for sticky element on safari
+          // https://www.scottohara.me/note/2019/03/26/fix-sticky.html
+          transform: translate3d(0, 0, 0);
+
+          &::before {
+            margin-top: 0;
+            height: 100px;
+          }
         `}
       >
-        <p className="h3">Calendrier des activitées</p>
+        <h2
+          className="h3"
+          css={css`
+            ${wrapper.bolt()}
+          `}
+        >
+          Calendrier des activitées
+        </h2>
 
-        <EventTargetAudienceLegend />
+        <div
+          css={css`
+            ${wrapper.bolt()}
+          `}
+        >
+          <EventTargetAudienceLegend />
 
-        <Calendar
-          month={now.getUTCMonth() + 1}
-          year={now.getUTCFullYear()}
-          events={activites}
-        />
-        <Calendar
-          month={nextMonth.getUTCMonth() + 1}
-          year={nextMonth.getUTCFullYear()}
-          events={activites}
-        />
-        <Calendar
-          month={twoMonth.getUTCMonth() + 1}
-          year={twoMonth.getUTCFullYear()}
-          events={activites}
-        />
+          <Calendar
+            month={now.getUTCMonth() + 1}
+            year={now.getUTCFullYear()}
+            events={activites}
+          />
+          <Calendar
+            month={nextMonth.getUTCMonth() + 1}
+            year={nextMonth.getUTCFullYear()}
+            events={activites}
+          />
+          <Calendar
+            month={twoMonth.getUTCMonth() + 1}
+            year={twoMonth.getUTCFullYear()}
+            events={activites}
+          />
+        </div>
       </section>
     </Layout>
   )
