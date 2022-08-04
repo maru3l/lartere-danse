@@ -205,7 +205,18 @@ const DevenirMembrePage = ({ data }) => {
             </p>
           </section>
 
-          <section id="status-de-membres" className="prevent-column-break">
+          <section
+            id="status-de-membres"
+            className="prevent-column-break"
+            css={css`
+              /** Fix columns break issue on safari only */
+              @media not all and (min-resolution: 0.001dpcm) {
+                @supports (-webkit-appearance: none) {
+                  display: inline-block;
+                }
+              }
+            `}
+          >
             <h2>Statuts de membres</h2>
 
             <h3
