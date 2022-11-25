@@ -18,7 +18,7 @@ import NewsletterForm from "../views/NewsletterForm"
 import mediaQuery from "../utils/media-query"
 import wrapper from "../utils/wrapper"
 import dateStillAvailable from "../utils/datesStillAvailable"
-import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
+import getWeeklyDateBetweenDate from "../utils/getWeeklyDateBetweenDate"
 
 // images
 import Cress from "../images/vector-header.svg"

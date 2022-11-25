@@ -13,7 +13,7 @@ import { graphql } from "gatsby"
 import Calendar from "../components/Calendar"
 import { between } from "polished"
 import mediaQuery from "../utils/media-query"
-import getWeeklyDateBetweenDate from "../../../utils/getWeeklyDateBetweenDate"
+import getWeeklyDateBetweenDate from "../utils/getWeeklyDateBetweenDate"
 import SEO from "../components/Seo/Seo"
 import ActivitySection from "../views/ActivitySection"
 
