@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "lerna run build --parallel",
-    "build-web": "(cd www && npm run build --ignore-scripts)",
+    "build-web": "(cd www && npm run build)",
     "develop": "lerna run develop --parallel",
     "format": "lerna run format",
     "lint": "lerna run lint",
