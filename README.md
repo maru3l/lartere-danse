@@ -1,8 +1,12 @@
-# ZIA.ca
+<h1 align="center">
+  L'Artère
+</h1>
 
-_A website for ZIA._
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c83ae2a6-7399-4dc1-ab4b-8bdbec4f647c/deploy-status)](https://app.netlify.com/sites/larteredanse/deploys)
+<p align="center">
+  <strong>
+    Art de la danse et du mouvement
+  </strong>
+</p>
 
 ## What you have
 
