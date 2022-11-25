@@ -3,7 +3,7 @@
 import { jsx } from "@emotion/react"
 import React from "react"
 import { css } from "@emotion/react"
-import dayToConditionalString from "../../../../utils/dayToConditionalString"
+import dayToConditionalString from "../../utils/dayToConditionalString"
 
 const getOldestDate = (dates) =>
   new Date(
