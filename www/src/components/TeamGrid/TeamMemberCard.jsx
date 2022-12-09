@@ -66,7 +66,7 @@ const TeamMemberCard = ({ name, role, email = [], portrait }) => {
         <picture>
           <img
             sizes="(min-width: 653px) 46vw, (min-width: 994px) 30vw, (min-width: 1348px) 23vw, (min-width: 1920px) 478px, 94vw"
-            srcset={srcSet}
+            srcSet={srcSet}
             src={src}
             alt={(portrait.asset || { alt: null }).alt || ""}
           />
