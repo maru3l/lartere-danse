@@ -79,7 +79,7 @@ const EventCard = ({ event, small = false, ...props }) => {
               {event.featuredImage && (
                 <img
                   sizes="(min-width: 514px) 480px, 94vw"
-                  srcset={srcSet}
+                  srcSet={srcSet}
                   src={src}
                   alt={event.featuredImage.alt}
                 />
@@ -112,11 +112,14 @@ const EventCard = ({ event, small = false, ...props }) => {
               >
                 {event.date.map((date) =>
                   date._type === "customEvent" ? (
-                    <li>
+                    <li key={`date-${date._key}-${event.slug}`}>
                       <PortableText blocks={date._rawCustomDate} />
                     </li>
                   ) : (
-                    <DateCard date={date} />
+                    <DateCard
+                      key={`date-${date._key}-${event.slug}`}
+                      date={date}
+                    />
                   )
                 )}
               </ul>
@@ -167,8 +170,8 @@ const EventCard = ({ event, small = false, ...props }) => {
                   padding: 0;
                 `}
               >
-                {event.rate.map((rate) => (
-                  <li>
+                {event.rate.map((rate, index) => (
+                  <li key={`rate-${rate._type}-${index}`}>
                     {rate._type === "regularRate" && (
                       <Fragment>
                         {rate.amount}${rate.by && <Fragment>/</Fragment>}
@@ -226,10 +229,11 @@ const EventCard = ({ event, small = false, ...props }) => {
                   }
                 `}
               >
-                {event.targetAudience.map((target) => {
+                {event.targetAudience.map((target, index) => {
                   if (target === "professionnel")
                     return (
                       <li
+                        key={`target-${target}-${index}`}
                         css={css`
                           background-color: ${colors.PortlandOrange};
                           color: ${colors.Isabelline};
@@ -243,6 +247,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                   if (target === "artist")
                     return (
                       <li
+                        key={`target-${target}-${index}`}
                         css={css`
                           background-color: ${colors.PaleCerulean};
                           color: ${colors.Isabelline};
@@ -256,6 +261,7 @@ const EventCard = ({ event, small = false, ...props }) => {
                   if (target === "generalPublic")
                     return (
                       <li
+                        key={`target-${target}-${index}`}
                         css={css`
                           background-color: ${colors.canary};
                           color: ${colors.Jet};
@@ -280,11 +286,12 @@ const EventCard = ({ event, small = false, ...props }) => {
                   margin-top: 3em;
                 `}
               >
-                {event.registration.map((el) => {
+                {event.registration.map((el, index) => {
                   return (
                     <Fragment>
                       {el._type === "registrationEmail" && (
                         <a
+                          key={`registration-link-${index}`}
                           href={`mailto:${el.email}`}
                           css={css`
                             color: ${colors.PortlandOrange};
@@ -296,6 +303,7 @@ const EventCard = ({ event, small = false, ...props }) => {
 
                       {el._type === "registrationLink" && (
                         <Button
+                          key={`registration-link-${index}`}
                           tag="a"
                           href={el.url}
                           secondary

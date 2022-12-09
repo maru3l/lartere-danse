@@ -146,7 +146,7 @@ const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
           `}
         >
           {navigation.primary.items.map(({ title, link }) => (
-            <li>
+            <li key={link}>
               <Link
                 to={link}
                 css={css`

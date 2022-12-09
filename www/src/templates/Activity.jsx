@@ -57,6 +57,7 @@ export const query = graphql`
       }
       date {
         ... on SanityDaily {
+          _key
           _type
           from
           to
@@ -70,6 +71,7 @@ export const query = graphql`
           }
         }
         ... on SanitySingleEvent {
+          _key
           _type
           from
           fromTime {
@@ -83,6 +85,7 @@ export const query = graphql`
           }
         }
         ... on SanityWeekly {
+          _key
           _type
           from
           day
