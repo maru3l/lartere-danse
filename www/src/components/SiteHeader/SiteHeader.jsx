@@ -10,7 +10,7 @@ import wrapper from "../../utils/wrapper"
 import { colors, transition, zIndices } from "../../styles/variables"
 import IconFacebook from "../../images/IconFacebook"
 import useScroll from "../../hooks/useScroll"
-import useMobile from "../../hooks/useMobile"
+import useMedia from "../../hooks/useMedia"
 import { between } from "polished"
 import mediaQuery from "../../utils/media-query"
 import IconInstagram from "../../images/IconInstagram"
@@ -40,7 +40,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
   const scroll = useScroll()
   const [open, setOpen] = useState(false)
   // const [prevScrollPos, setPrevScrollPos] = useState(scroll.y || 0)
-  const isMobile = useMobile(breakpoint) || false
+  const isMobile = useMedia(`(max-width: ${breakpoint}px)`) || false
   const isOnTop = scroll ? !(scroll.y > viewBreak) : false
   const visible = prevScrollPos > scroll.y || scroll.y < 200
   prevScrollPos = scroll.y
@@ -419,7 +419,7 @@ const SiteHeader = ({ themeColor = "DARK", onNewsletterOpen }) => {
                   `}
                 >
                   {data.primary.items.map((item) => (
-                    <li>
+                    <li key={item.link}>
                       <Match path={item.link}>
                         {(props) => (
                           <>

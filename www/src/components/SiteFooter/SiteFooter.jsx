@@ -68,6 +68,7 @@ const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
       css={css`
         ${wrapper.bolt("padding")}
         margin-top: 10em;
+        margin-bottom: 1em;
 
         ${mediaQuery.greaterThen(breakpoint)} {
           display: grid;
@@ -146,7 +147,7 @@ const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
           `}
         >
           {navigation.primary.items.map(({ title, link }) => (
-            <li>
+            <li key={link}>
               <Link
                 to={link}
                 css={css`

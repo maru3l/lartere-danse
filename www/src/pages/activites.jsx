@@ -184,7 +184,7 @@ const ActivitesPage = ({ data }) => {
               {activityTypes.map(({ name, slug: { current }, alwaysOn }) => {
                 return (
                   (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
-                    <li>
+                    <li key={current}>
                       <a href={`#${current}`}>{name}</a>
                     </li>
                   )
@@ -203,21 +203,18 @@ const ActivitesPage = ({ data }) => {
               _rawDescription,
               display,
               order,
-            }) => {
-              return (
-                (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
-                  <ActivitySection
-                    activities={getActivitesByTypeSlug(current)}
-                    description={_rawDescription}
-                    title={name}
-                    id={current}
-                    grid={display === "grid"}
-                    sortOrder={order}
-                    key={current}
-                  />
-                )
+            }) =>
+              (alwaysOn || getActivitesByTypeSlug(current).length > 0) && (
+                <ActivitySection
+                  activities={getActivitesByTypeSlug(current)}
+                  description={_rawDescription}
+                  title={name}
+                  id={current}
+                  grid={display === "grid"}
+                  sortOrder={order}
+                  key={current}
+                />
               )
-            }
           )}
         </div>
       </article>
@@ -276,6 +273,7 @@ export const query = graphql`
           }
           date {
             ... on SanityDaily {
+              _key
               _type
               from
               to
@@ -289,6 +287,7 @@ export const query = graphql`
               }
             }
             ... on SanitySingleEvent {
+              _key
               _type
               from
               fromTime {
@@ -302,6 +301,7 @@ export const query = graphql`
               }
             }
             ... on SanityWeekly {
+              _key
               _type
               from
               day
@@ -316,6 +316,7 @@ export const query = graphql`
               }
             }
             ... on SanityCustomEvent {
+              _key
               _type
               _rawCustomDate
             }

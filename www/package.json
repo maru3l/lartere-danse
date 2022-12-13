@@ -96,6 +96,7 @@
     "build": "gatsby build",
     "build-storybook": "build-storybook",
     "develop": "gatsby develop -H 0.0.0.0",
+    "clean:cache": "gatsby clean",
     "format": "npm run format:code && npm run format:style",
     "format:code": "eslint --fix --ignore-path ./.gitignore --ignore-path ./.prettierignore --ext .js,.jsx .",
     "format:style": "stylelint './src/**/*.{js,jsx,css,scss}' --fix",

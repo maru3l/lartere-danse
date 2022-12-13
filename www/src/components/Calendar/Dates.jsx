@@ -5,7 +5,7 @@ import React from "react"
 import { css } from "@emotion/react"
 import { colors } from "../../styles/variables"
 import { keyframes } from "@emotion/react"
-import useMobile from "../../hooks/useMobile"
+import useMedia from "../../hooks/useMedia"
 import { Link } from "gatsby"
 
 const getColorForAudience = (audience) => {
@@ -66,7 +66,7 @@ const Event = ({ event }) => {
 }
 
 const Dates = ({ month, year, events = [] }) => {
-  const isMobile = useMobile()
+  const isMobile = useMedia("(max-width: 1024px)")
 
   const daysInMonth = new Date(year, month + 1, 0, 0, 0, 0).getUTCDate()
   const firstDayInMonthPosition = new Date(year, month, 1, 0, 0, 0).getUTCDay()
@@ -102,7 +102,7 @@ const Dates = ({ month, year, events = [] }) => {
 
                 ${index === 0 &&
                 css`
-                  grid-column: ${!isMobile ? firstDayInMonthPosition + 1 : "1"};
+                  grid-column: ${isMobile ? "1" : firstDayInMonthPosition + 1};
                 `}
               `}
             >

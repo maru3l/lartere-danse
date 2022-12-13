@@ -83,7 +83,7 @@ const ArchiveCard = ({ title, picture, slug, ...props }) => {
             (min-width: 1920px) 478px,
             94vw
           "
-              srcset={srcSet}
+              srcSet={srcSet}
               src={src}
               alt={picture.alt}
             />

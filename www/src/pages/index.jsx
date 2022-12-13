@@ -218,7 +218,7 @@ const IndexPage = ({ data }) => {
 
           // fix z-index for sticky element on safari
           // https://www.scottohara.me/note/2019/03/26/fix-sticky.html
-          transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 1px, 0);
 
           &::before {
             margin-top: 0;
@@ -238,6 +238,10 @@ const IndexPage = ({ data }) => {
         <div
           css={css`
             ${wrapper.bolt()}
+
+            > * + * {
+              margin-top: 2.5em;
+            }
           `}
         >
           <EventTargetAudienceLegend />
