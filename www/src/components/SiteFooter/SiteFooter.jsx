@@ -68,6 +68,7 @@ const SiteFooter = ({ themeColor, onNewsletterOpen }) => {
       css={css`
         ${wrapper.bolt("padding")}
         margin-top: 10em;
+        margin-bottom: 1em;
 
         ${mediaQuery.greaterThen(breakpoint)} {
           display: grid;
