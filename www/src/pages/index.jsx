@@ -3,7 +3,7 @@
 import { graphql } from "gatsby"
 import { jsx } from "@emotion/react"
 import { css } from "@emotion/react"
-import { hideVisually } from "polished"
+import { hideVisually, between } from "polished"
 
 // components
 import Layout from "../components/Layout"
@@ -75,115 +75,182 @@ const IndexPage = ({ data }) => {
       <SEO />
 
       <section
-        id="intro"
         css={css`
-          ${wrapper.bolt()}
-          display: grid;
-          margin-top: ${(135 / 1920) * 100}vw;
-          margin-bottom: ${(135 / 1920) * 100}vw;
+          position: sticky;
+          top: ${between("180px", "428px", "768px", "1920px")};
+          z-index: 1;
 
-          ${mediaQuery.greaterThen(475)} {
-            grid-template-columns: repeat(2, auto);
-          }
+          background-color: ${colors.PortlandOrange};
 
           ${mediaQuery.greaterThen(1920)} {
-            margin-top: 135px;
-            margin-bottom: 135px;
+            top: 428px;
+          }
+        `}
+      >
+        <div
+          css={css`
+            ${wrapper.bolt()};
+            display: flex;
+            justify-content: center;
+
+            padding: 16px;
+          `}
+        >
+          <p
+            css={css`
+              margin: 0;
+              text-align: center;
+              color: ${colors.Jet};
+            `}
+          >
+            Campagne de sociofinancement en cours /{" "}
+            <a
+              href="https://laruchequebec.com/fr/projet/lartere-seclate-depuis-20-ans"
+              target="_blank"
+              rel="noopener noreferrer"
+              css={css`
+                &:hover,
+                &:focus {
+                  color: ${colors.Isabelline};
+                }
+              `}
+            >
+              Soutenez L'Artère!
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="intro"
+        css={css`
+          position: relative;
+          z-index: 2;
+
+          background-color: ${colors.Jet};
+
+          // fix z-index for sticky element on safari
+          // https://www.scottohara.me/note/2019/03/26/fix-sticky.html
+          transform: translate3d(0, 1px, 0);
+
+          &::before {
+            margin-top: 0;
+            height: 100px;
           }
         `}
       >
         <h2 css={hideVisually}>Introduction</h2>
 
-        <img
-          src={Cress}
-          alt="Logo en forme de A dansant."
+        <div
           css={css`
-            grid-column: 1 / span 1;
-            grid-row: 1 / span 1;
-            margin-bottom: ${(150 / 1920) * 100}vw;
+            ${wrapper.bolt()}
+
+            display: grid;
+            padding-top: ${(135 / 1920) * 100}vw;
+            padding-bottom: ${(135 / 1920) * 100}vw;
 
             ${mediaQuery.greaterThen(475)} {
-              grid-column: 1 / span 2;
-              grid-row: 1 / span 1;
+              grid-template-columns: repeat(2, auto);
             }
 
             ${mediaQuery.greaterThen(1920)} {
-              margin-bottom: 150px;
+              padding-top: 135px;
+              padding-bottom: 135px;
             }
           `}
-        />
+        >
+          <img
+            src={Cress}
+            alt="Logo en forme de A dansant."
+            css={css`
+              grid-column: 1 / span 1;
+              grid-row: 1 / span 1;
+              margin-bottom: ${(150 / 1920) * 100}vw;
 
-        <p
-          css={css`
-            color: ${colors.PortlandOrange};
-            font-size: ${122 / 33}em;
-            letter-spacing: ${55 / 1000}em;
-            grid-column: 1 / span 1;
-            grid-row: 2 / span 1;
-            text-transform: lowercase;
-            margin: 0;
+              ${mediaQuery.greaterThen(475)} {
+                grid-column: 1 / span 2;
+                grid-row: 1 / span 1;
+              }
 
-            ${mediaQuery.greaterThen(475)} {
+              ${mediaQuery.greaterThen(1920)} {
+                margin-bottom: 150px;
+              }
+            `}
+          />
+
+          <p
+            css={css`
+              color: ${colors.PortlandOrange};
+              font-size: ${122 / 33}em;
+              letter-spacing: ${55 / 1000}em;
               grid-column: 1 / span 1;
               grid-row: 2 / span 1;
-              color: ${colors.text};
-            }
-          `}
-        >
-          Art de la danse
-        </p>
-        <p
-          css={css`
-            color: ${colors.PortlandOrange};
-            font-size: ${122 / 33}em;
-            letter-spacing: ${55 / 1000}em;
-            text-transform: lowercase;
-            grid-column: 1 / span 1;
-            grid-row: 3 / span 1;
-            margin-top: 0;
-            margin-bottom: ${(378 / 1920) * 100}vw;
+              text-transform: lowercase;
+              margin: 0;
 
-            ${mediaQuery.greaterThen(475)} {
-              margin-bottom: 0;
-              grid-column: 2 / span 1;
-              grid-row: 3 / span 1;
-              writing-mode: tb;
-              writing-mode: sideways-rl;
-            }
-
-            ${mediaQuery.greaterThen(1920)} {
-              margin-bottom: 378px;
-            }
-          `}
-        >
-          {" "}
-          Et du mouvement
-        </p>
-
-        <p
-          className="h3"
-          css={css`
-            grid-column: 1 / span 1;
-            grid-row: 4 / span 1;
-            max-width: 1280px;
-
-            ${mediaQuery.greaterThen(475)} {
-              width: ${(1280 / 1920) * 100}vw;
+              ${mediaQuery.greaterThen(475)} {
+                grid-column: 1 / span 1;
+                grid-row: 2 / span 1;
+                color: ${colors.text};
+              }
+            `}
+          >
+            Art de la danse
+          </p>
+          <p
+            css={css`
+              color: ${colors.PortlandOrange};
+              font-size: ${122 / 33}em;
+              letter-spacing: ${55 / 1000}em;
+              text-transform: lowercase;
               grid-column: 1 / span 1;
               grid-row: 3 / span 1;
-              margin-bottom: 0;
-              align-self: end;
-            }
-          `}
-        >
-          L’Artère est un organisme à but non lucratif œuvrant à faire rayonner
-          l’art de la danse et du mouvement sur le territoire de la
-          Capitale-Nationale. Sa mission est de soutenir le dévelop&shy;pement
-          artistique et professionnel des artistes en danse en offrant une
-          program&shy;mation de formations et de services à la fine pointe de la
-          pratique actuelle de l’art de la danse et du mouvement, contribuant
-          ainsi à la rétention d’artistes de grand talent sur le territoire.
-        </p>
+              margin-top: 0;
+              margin-bottom: ${(378 / 1920) * 100}vw;
+
+              ${mediaQuery.greaterThen(475)} {
+                margin-bottom: 0;
+                grid-column: 2 / span 1;
+                grid-row: 3 / span 1;
+                writing-mode: tb;
+                writing-mode: sideways-rl;
+              }
+
+              ${mediaQuery.greaterThen(1920)} {
+                margin-bottom: 378px;
+              }
+            `}
+          >
+            {" "}
+            Et du mouvement
+          </p>
+
+          <p
+            className="h3"
+            css={css`
+              grid-column: 1 / span 1;
+              grid-row: 4 / span 1;
+              max-width: 1280px;
+
+              ${mediaQuery.greaterThen(475)} {
+                width: ${(1280 / 1920) * 100}vw;
+                grid-column: 1 / span 1;
+                grid-row: 3 / span 1;
+                margin-bottom: 0;
+                align-self: end;
+              }
+            `}
+          >
+            L’Artère est un organisme à but non lucratif œuvrant à faire
+            rayonner l’art de la danse et du mouvement sur le territoire de la
+            Capitale-Nationale. Sa mission est de soutenir le dévelop&shy;pement
+            artistique et professionnel des artistes en danse en offrant une
+            program&shy;mation de formations et de services à la fine pointe de
+            la pratique actuelle de l’art de la danse et du mouvement,
+            contribuant ainsi à la rétention d’artistes de grand talent sur le
+            territoire.
+          </p>
+        </div>
       </section>
 
       <section
