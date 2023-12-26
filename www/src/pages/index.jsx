@@ -74,7 +74,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO />
 
-      <section
+      {/* <section
         css={css`
           position: sticky;
           top: ${between("180px", "428px", "768px", "1920px")};
@@ -119,7 +119,7 @@ const IndexPage = ({ data }) => {
             </a>
           </p>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="intro"
