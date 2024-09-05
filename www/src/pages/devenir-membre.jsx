@@ -95,7 +95,7 @@ const DevenirMembrePage = ({ data }) => {
               <p>
                 Identifier sa catégorie de membre en consultant notre{" "}
                 <a
-                  href={siteConfiguration.membershipPolicy.file.asset.url}
+                  href={siteConfiguration.membershipPolicy.file?.asset?.url}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -193,7 +193,7 @@ const DevenirMembrePage = ({ data }) => {
 
             <p className="color-orange">
               Toute personne ne répondant pas à tous les critères de la{" "}
-              <a href={siteConfiguration.membershipPolicy.file.asset.url}>
+              <a href={siteConfiguration.membershipPolicy.file?.asset?.url}>
                 Politique d’adhésion
               </a>{" "}
               de L’Artère, mais se considérant comme un·e professionnel·le de la
@@ -251,7 +251,7 @@ const DevenirMembrePage = ({ data }) => {
               Pour chacun des statuts, les conditions d’admis&shy;­sibilité, les
               pièces justificatives à fournir ainsi que les privilèges sont
               spécifiés dans le document de{" "}
-              <a href={siteConfiguration.membershipPolicy.file.asset.url}>
+              <a href={siteConfiguration.membershipPolicy.file?.asset?.url}>
                 politique d’adhésion
               </a>
               .
