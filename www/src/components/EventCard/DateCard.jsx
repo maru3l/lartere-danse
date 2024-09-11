@@ -5,25 +5,9 @@ import React from "react"
 import { css } from "@emotion/react"
 import dayToConditionalString from "../../utils/dayToConditionalString"
 
-// const getOldestDate = (dates) =>
-//   new Date(
-//     Math.min.apply(
-//       null,
-//       dates.map(({ from }) => new Date(`${from}T00:00:00`))
-//     )
-//   )
-
-// const getNewestDate = (dates) =>
-//   new Date(
-//     Math.min.apply(
-//       null,
-//       dates.map(({ to }) => new Date(`${to}T00:00:00`))
-//     )
-//   )
-
 const DateCard = ({ date, ...rest }) => {
   const [fromYear, fromMonth, fromDate] = date.from.split("-")
-  const [toYear, toMonth, toDate] = date.to.split("-")
+  const [toYear, toMonth, toDate] = (date.to ?? date.from).split("-")
   const fromDateObj = new Date(fromYear, fromMonth - 1, fromDate)
   const toDateObj = new Date(toYear, toMonth - 1, toDate)
 
